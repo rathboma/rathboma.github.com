@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Some fun Hadoop and Hive Bugs
+subject: hadoop
+---
+<p>If you&#8217;re running Hadoop 0.20 with Hive 0.7 here are a couple of bugs that it&#8217;s useful to know about:</p>
+<p><strong>NullPointerException</strong></p>
+<p>If you have an external partitioned table, this could mean you forgot to recover the partitions before running the query:</p>
+<blockquote>
+<p>ALTER TABLE sample RECOVER PARTITIONS;</p>
+</blockquote>
+<p><strong>MR jobs hanging on 0/0 completed map tasks</strong></p>
+<p>Creating an external table that points to an empty location will cause hive to generate mapreduce jobs that hang *forever*. It&#8217;s because the map tasks stay at 0% complete (0/0 completed).</p>
+<p>There is a <a href="https://issues.apache.org/jira/browse/HADOOP-5850">Hadoop patch for this</a> (so long as you have the ability to patch your cluster), and it should already be integrated into hadoop version 0.21.</p>
+<p><strong>Bonus:</strong></p>
+<p>If you have some sort of delimited data (eg, tab delimited) in a Hive external table, and you want to find all records where a particular string field is non-existent,  you need to test for empty string and not NULL:</p>
+<blockquote>
+<p>select * from events where venue IS NULL &lt;= Won&#8217;t work</p>
+<p>select * from events where venue = &#8220;&#8221; &lt;= Will work</p>
+</blockquote>

@@ -1,0 +1,21 @@
+--- 
+layout: post
+title: Adding JARS to hive without using ADD JAR
+subject: hadoop
+---
+<p>Say you&#8217;ve built some library you want to use in Hive, or even in Hadoop. If this library is a UDF for use in hive queries you can load it like this:</p>
+<blockquote>
+<p>ADD JAR &#8216;s3n://matthewsbucket/superudf.jar&#8217;;</p>
+<p>CREATE TEMPORARY FUNCTION super as &#8216;com.matthewrathbone.SuperFunction&#8217;;</p>
+</blockquote>
+
+<p>If you&#8217;re creating a bunch of these you don&#8217;t want to have to &#8216;ADD JAR&#8217; _every_single_time_ you want the function, you want it to be in the library already.</p>
+<p>To do that either put it in hive/lib, or hadoop/lib on all the nodes. If you&#8217;re using <a title="emr" target="_blank" href="http://aws.amazon.com/elasticmapreduce/">Elastic Mapreduce</a> you can do this in a bootstrap script:</p>
+<blockquote>
+<p>sudo apt-get install wget</p>
+<p>wget -o /home/hadoop/lib/super.jar <a href="http://somewhere.com/superudf.jar">http://somewhere.com/superudf.jar</a></p>
+</blockquote>
+<p>Now you can skip the ADD JAR step in function creation (which is much faster by the way):</p>
+<blockquote>
+<p>CREATE TEMPORARY FUNCTION super as &#8216;com.matthewrathbone.SuperFunction&#8217;;</p>
+</blockquote>

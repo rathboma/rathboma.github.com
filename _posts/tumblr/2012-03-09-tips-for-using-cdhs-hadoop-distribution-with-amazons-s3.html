@@ -1,0 +1,13 @@
+--- 
+layout: post
+title: Tips for using CDH's Hadoop Distribution with Amazon's S3
+subject: hadoop
+---
+<ol><li>Hive doesn&#8217;t play well with extension-less files in s3. Make sure each file has an extension (eg by default it can&#8217;t read file-00000, but it can read file-0000.tar.gz).</li>
+<li>If you&#8217;re using Oozie, no file/folder actions performed in the &lt;prepare&gt; block will work for s3 files. Oozie helpers are hard-coded to use HDFS paths only.</li>
+<li>Also with oozie, workflow.xml files cannot be stored in s3 (only hdfs) for the same reason. [hard coded dependencies]</li>
+<li>Remember that s3 credentials added to core-site.xml are available for ANY job, no matter who runs it, so make sure those credentials have strict enough permissions to stop users deleting production data.</li>
+</ol><p>UPDATE</p>
+<p>There&#8217;s actually a fix for (1) &#8212; do this:</p>
+<p>SET hive.input.format=org.apache.hadoop.hive.ql.io.HiveInputFormat;</p>
+<p>Now it can read any files!</p>

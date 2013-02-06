@@ -1,0 +1,75 @@
+--- 
+layout: post
+title: "Operation Algorithm: Quicksort in C and Scheme"
+subject: programming
+tags: 
+- c
+- scheme
+- quicksort
+- programming
+- algorithms
+---
+<p><span> </span>This is the first post in my quest to be a better programmer. Quicksort is one of the &#8216;standard&#8217; sorting algorithms. Its fairly easy to implement, and normally runs fairly quickly. I&#8217;ve implemented quicksort in both C and Scheme, although I think my Scheme implementation is more of a pseudo-quicksort due to a reluctance to break from the functional style encouraged by Scheme syntax.</p>
+<h3>Quicksort Overview</h3>
+<p>The &#8216;Partition&#8217; algorithm is at the core of a quicksort implementation, and this partitions an array into groups of &#8216;less than x&#8217; and &#8216;more than x&#8217;, with x itself being placed inbetween. The final position of x is the value returned by the partition function. In my simple implementation, the choice of x remains constant (either the first or last element). Randomizing this is the main way to increase the worst case speed of this algorithm.</p>
+<p>After partitioning the initial input, quicksort recursivly calls itself on the &#8216;less-than&#8217; and &#8216;more-than&#8217; groups returned from partition. The result is a chain of recursive calls which continues until quicksort is trying to sort a single number.</p>
+<p>Check out Wikipedia to get a more in-depth understanding of quicksort.</p>
+<h3>Special Property</h3>
+<p>Quicksort is good because it sorts &#8216;in-place&#8217;. In other words it doesn&#8217;t use a secondary array to sort the elements into. This can save a lot of memory, especially if you are sorting a list of complicated data structures which are a few KB each.</p>
+<h3>My C Implementation</h3>
+<blockquote>
+<pre>void Quicksort(int A[], int p, int r){
+	
+	if(p&lt;r){
+		int q = Partition(A, p, r);
+		Quicksort(A, p, q-1);
+		Quicksort(A, q+1, r);
+	}
+}
+
+int Partition(int A[], int p, int r){
+	int j, temp;
+	
+	int x = A[r];
+	int i = p -1;
+	
+	for(j = p;j&lt;r;j++){
+		if(A[j]&lt;= x)
+		{
+			i++;
+			temp = A[i];
+			A[i] = A[j];
+			A[j] = temp;
+		}
+	}
+	temp = A[r];
+	A[r] = A[i +1];
+	A[i+1] = temp;
+	
+	return i+1;<br/></pre>
+</blockquote>
+<p><span>My Scheme Implementation</span><br/><span> </span></p>
+<p>I think its worth noting that the scheme implementation doesn&#8217;t exactly sort &#8216;in-place&#8217;. Instead it recursivly builds up secondary lists then joins them together at the end as the return value instead of moving the elements around in a single list. However the amount of memory used should still be in the order of the number of elements in the input array unlike other sorting algorithms (counting-sort, and bucket-sort come to mind) which use secondary arrays which do not form part of the solution.</p>
+<blockquote>
+<pre><span><pre>(define pHelper (lambda (all chk l m)
+                  (cond ((null? all) (cons l (cons chk (cons m '()))))
+                        (else
+                        (let ((x (car all)))
+                          (if (&lt;= x chk) 
+                              (pHelper (cdr all) chk (cons x l) m)
+                              (pHelper (cdr all) chk l (cons x m))))))))
+
+(define partition (lambda (l)
+                      (pHelper (cdr l) (car l) '() '())))
+
+
+
+(define quicksort (lambda (l)
+                    (cond ((null? l) l)
+                          (else
+                          (let ((lx (partition l)))
+                            (append (quicksort (car lx)) (cons (cadr lx) (quicksort (caddr lx)))))))))</pre>
+</span></pre>
+</blockquote>
+<p><span> </span></p>
+<pre><br/></pre>

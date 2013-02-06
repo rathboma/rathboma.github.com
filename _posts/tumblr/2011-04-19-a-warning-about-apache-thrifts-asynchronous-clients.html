@@ -1,0 +1,15 @@
+--- 
+layout: post
+title: A Warning About Apache Thrift's Asynchronous Clients
+subject: programming
+tags: 
+- flume
+- thrift
+- java
+---
+<p>By default if you use the asynchronous client for <a href="https://github.com/apache/thrift">thrift</a> it will be using a FRAMED transport layer, even though there is no mention of this in the code / docs.</p>
+<p>You&#8217;ll know this is happening because your server will give you the following error message when it receives an rpc:</p>
+<blockquote>
+<p>org.apache.thrift.protocol.TProtocolException: Missing version in readMessageBegin, old client?</p>
+</blockquote>
+<p>If you have no control over the server code (eg, if you&#8217;re using <a href="https://github.com/cloudera/flume">flume</a>), then you&#8217;ll have to fall back to the synchronous client, sorry.</p>

@@ -1,0 +1,33 @@
+--- 
+layout: post
+title: Ruby JSON Serialization sucks for Time objects
+subject: programming
+tags: 
+- ruby
+- programming
+- json
+---
+<p>This is something to be very careful of if you need to transfer data between two ruby-based systems using JSON. If you serialize a Time object it will serialize as a string, this means on deserialization it stays as a string</p>
+<p>Let me demonstrate:</p>
+<blockquote>
+<p>test_data = {&#8220;time&#8221; =&gt; Time.now}</p>
+<p>json = test_data.to_json</p>
+<p># the timestamp looks like this in json &#8220;Tue Sep 28&#160;14:37:37 -0400&#160;2010&#8221;</p>
+<p>results = JSON.parse(json)</p>
+<p>results[&#8220;time&#8221;].is_a?(Time) #false!!! its still a string!</p>
+</blockquote>
+<p>This can cause real problems if used in a real system when timestamps are critical to application logic.</p>
+<p><em><strong>Solutions</strong></em></p>
+<p><strong>1. require &#8216;json/add/core&#8217;</strong></p>
+<p>if you use the json-ruby gem, it comes with a set of object extensions, these extensions serialize Time objects in a different way allowing them to be re-cast back to proper time objects during deserialization.</p>
+<p>The negative to this is that you are producing very ruby-specific JSON, and you need to make sure you explicitly require these extensions whenever you want to serialize/deserialize which can be tricky.</p>
+<p>Here is what a time object would look like using this:</p>
+<blockquote>
+<p>&#8221;{&#34;n&#34;:364019000,&#34;json_class&#34;:&#34;Time&#34;,&#34;s&#34;:1285689344}&#8221;</p>
+</blockquote>
+<p>Not pretty.</p>
+<p><strong>2. Make time objects integers</strong></p>
+<p>This is the easiest and best solution for all involved. Just make them into unix timestamps by calling time.to_i. JSON deserializers in every language know how to parse integers, and unix timestamps are very easy to convert into a time object</p>
+<blockquote>
+<p>Time.at(unix_timestamp)</p>
+</blockquote>

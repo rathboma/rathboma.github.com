@@ -1,0 +1,45 @@
+--- 
+layout: post
+title: Be Careful of Data Obtained From Bloomberg using RTD or BDP Functions
+subject: bloomberg
+tags: 
+- real-time,
+- bloomberg
+- vba
+- financial data
+- finance
+- scripting
+---
+<p><span> </span></p>
+
+<p>The RTD / BDP functions provide real-time data from bloomberg directly to an excel sheet. However if you&#8217;re subscribing to fields which Bloomberg hasn&#8217;t designated to be &#8216;real-time enabled&#8217; you have to manually refresh bloomberg data for it to have any effect.</p>
+
+<p><strong>Let&#8217;s look at an example</strong></p>
+<p>FUT_CTD_PX (Cheapest to deliver price) is a static FIELD for a real-time VALUE. IE, if you check in the BB terminal this value will be constantly changing, but excel sees it as a static field.</p>
+<p>To get the CTD price for a future we can use the following formula:</p>
+<p><em>=BDP(&#8220;SOME FUTURE&#8217;S TICKER&#8221;, &#8220;FUT_CTD_PX&#8221;)</em></p>
+<p>This field will never update, it will stay static with it&#8217;s initial value. If the spreadsheet has been open for 5 days, it&#8217;s the price from 5 days ago which will be displayed.</p>
+<p>Microsoft&#8217;s RTD server model is event driven, in that the data-source notifies the RTD server when a new value is available and that value is picked up by a spreadsheet when excel calls it&#8217;s RTD.RefreshData method (which it does every 2 seconds by default). In our example, Bloomberg&#8217;s data-source never notifies the RTD server of a change in value for any of it&#8217;s STATIC fields, and they therefore remain the same indefinitely.</p>
+<p>This also explains why calling RTD.RefreshData from VBA code has no effect, as the RTD server has no new value to pass forwards.</p>
+
+<p><strong>Solutions</strong></p>
+<p>The only REAL solution is for Bloomberg to provide such key fields as real-time. Static fields should be reserved for values which do not change on a regular basis, such as instrument name, maturity date, ISIN, and so forth.</p>
+<p>As a manual solution, Bloomberg does provide a Excel menu containing data-refresh commands. Clicking &#8216;refresh entire workbook&#8217; will eventually update all static values (it can take up to 10 seconds), but only for the =BDP formula. If you&#8217;re using =RTD you&#8217;ll have to re-open your workbook or delete and re-type the formulas.</p>
+<p>&#8220;Can I do this Programatically?&#8221; I hear you cry&#8230;. Why yes you can!</p>
+<p>It&#8217;s not a graceful solution by any means but you can use one of the following to activate the respective bloomberg command:</p>
+<p>be sure to wrap any use of these in good error checking to avoid Excel getting mad at the user.</p>
+
+<blockquote>
+<pre>Application.Run ("bloombergui.xla!RefreshData") [Default]
+
+Application.Run ("bloombergui.xla!RefreshCurrentSelection")
+
+Application.Run ("bloombergui.xla!RefreshEntireWorksheet")
+
+Application.Run ("bloombergui.xla!RefreshEntireWorkbook")
+
+Application.Run ("bloombergui.xla!RefreshAllWorkbooks")</pre>
+<p><span><span><br/></span></span></p>
+</blockquote>
+<p><strong>Summary</strong></p>
+<p>It&#8217;s important to be aware that some bloomberg fields are not real-time. If you&#8217;re using one of these fields for a key calculation you&#8217;ll have to make sure that you manually refresh regularly, or that you have integrated a crude automation into your code.</p>

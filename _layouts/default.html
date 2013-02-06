@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {% if page.title %} {{ page.title }} | {% endif %} Matthew Rathbone </title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link href="/feed.rss" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+      <h2 class="muted"><a href="/">Matthew Rathbone</a></h2>
+    </div>
+    <div class="mrow maincontent">
+      <div class="block9">
+        {{ content }}    
+      </div>
+      <div class="block3">
+        <div class="sidebar">
+          <h3>About</h3>
+            <img class="img-polaroid" src="http://www.gravatar.com/avatar/d7d1ac2de76fe378ce8d6553d63ad063.png?s=80" alt="me" />  
+          <p>British born software engineer living in <s>London</s> <s>New York</s> Madison WI.</p>
+          <p>I work on large-scale offline data infrastructure for <a href="http://foursquare.com">Foursquare</a>.</p>
+          <p>I am generally inspired at all times by wife Alexandra.</p>
+          <p>Opinions on this website are my own.</p>
+          <h3>Get in touch</h3>
+          <ul>
+            <li><a href="http://twitter.com/rathboma">twitter</a></li>
+            <li><a href="http://github.com/rathboma">github</a></li>
+            <li><a href="http://www.linkedin.com/profile/view?id=10238652">linkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p><a href="http://twitter.com/rathboma">twitter</a> /
+         <a href="http://github.com/rathboma">github</a>
+         <span class="right">Copyright Matthew Rathbone 2013, All Rights Reserved.</span></p>
+    </div>
+    <footer>
+      
+    </footer>
+  </div>
+</body>
+</html>

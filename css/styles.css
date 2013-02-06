@@ -1,0 +1,160 @@
+body {
+  /*background:url('/img/background.png');*/
+  color:#444;
+  font-size:16px;
+  line-height:26px;
+}
+
+li {
+  line-height:26px;
+}
+p {
+  margin-bottom:13px;
+}
+
+h1 {
+  font-size:1.6em;
+  font-weight:normal;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight:normal;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+div.mrow {
+  padding-left:30px;
+  padding-right:30px;
+  padding-top:30px;
+  clear:both;
+  float:left;
+  /*1110 remaining*/
+}
+
+div.mrow div.block9 {
+  max-width:800px;
+  float:left;
+}
+
+div.mrow div.block3 {
+  max-width:275px;
+  float:left;
+  margin-left:30px;
+}
+
+div.header {
+  margin-top:30px;
+  margin-bottom: 30px;
+  border-bottom: solid 1px #ccc;
+}
+
+div.header ul.nav {
+  margin-bottom:10px;
+  margin-left:20px;
+}
+
+div.header h2.muted a {
+  color: #556B2F;
+  /*text-transform: uppercase;*/
+  font-size:1.5em;
+}
+
+div.header h2.muted a:hover {
+  text-decoration: none;
+}
+
+/*div.narrow {
+  max-width:790px;
+  padding-left:5px;
+  padding-right:5px;
+}*/
+
+div.maincontent {
+  
+  border:solid 1px #eee;
+}
+
+div.post p.subtitle {
+  color:#888;
+  padding-bottom:15px;
+}
+
+div.post img {
+  display:block;
+  margin:auto;
+}
+
+div#related {
+  margin-top:25px;
+  padding-top:10px;
+  border-top: solid 1px #eee;
+  margin-bottom:50px;
+}
+
+div#related ul.posts {
+  list-style:none;
+}
+
+div#related ul.posts li {
+  padding-bottom:8px;
+}
+
+div.sidebar {
+  color:#666;
+  padding-left:10px;
+  border-left:solid 1px #eee;
+}
+
+div.sidebar img {
+  float:left;
+  
+  opacity:0.9;
+  margin-top:6px;
+  margin-right:10px;
+}
+
+
+div.footer {
+  color:#aaa;
+  padding:2%;
+  width:96%;
+  float:left;
+  margin-top:50px;
+}
+
+div.footer span.right {
+  text-align: right;
+  float:right;
+}
+
+div.postlist div.post {
+  padding-bottom:30px;
+  border-bottom: solid 1px #eee;
+  margin-bottom:30px;
+}
+
+div.pagination {
+  text-align: center;
+}
+
+div.archivetitle {
+  width:100%;
+  float:left;
+  border-bottom: solid 1px #eee;
+  margin-bottom:30px;
+}
+
+div.archivetitle h2 {
+  float:left;
+}
+
+div.archivetitle ul {
+  float:right;
+  margin-top:15px;
+}

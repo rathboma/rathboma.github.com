@@ -1,0 +1,18 @@
+--- 
+layout: post
+title: NullPointerException when performing a join with Hadoop Hive 0.50
+subject: hadoop
+tags: 
+- hadoop
+- hive
+- mapreduce
+---
+<p>If you get this NullPointer exception when joining two tables in hadoop hive, the problem may be that in one of the two tables the join key value is &#8220;&#8221; (blank string).</p>
+<p>For example, if you&#8217;re running this query:</p>
+<blockquote>
+<p>select users.id, locations.address from users left outer join locations on users.location_id = locations.id;</p>
+</blockquote>
+<p>and users.location_id happens to be &#8220;&#8221; somewhere, then you will get this error.</p>
+<p>(sometimes I&#8217;ve even had it happen because another, non-join column was &#8220;&#8221;)</p>
+<p>To get around this an easy workaround is to create a temporary table holding users with location_id&#8217;s that aren&#8217;t &#8220;&#8221;, and with only the columns absolutely needed to process the job.</p>
+<p>This drove me crazy for hours today, so hopefully it won&#8217;t happen again</p>
