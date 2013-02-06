@@ -19,7 +19,7 @@ layout: default
   <ul class="posts">
     {% if page.subject %}
       {% for post in site.posts %}
-        {% if post.category AND post.subject == page.subject AND page.title != post.title %}
+        {% if post.subject == page.subject AND page.title != post.title %}
           <li><span>{{ post.date | date: "%Y-%m-%d"}}</span>: <a href="{{post.url}}">{{post.title}}</a></li>
         {% endif %}
       {% endfor %}
