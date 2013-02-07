@@ -34,6 +34,7 @@ div.mrow {
   padding-top:30px;
   clear:both;
   float:left;
+  width:95%;
   /*1110 remaining*/
 }
 
@@ -44,7 +45,7 @@ div.mrow div.block9 {
 
 div.mrow div.block3 {
   max-width:275px;
-  float:left;
+  float:right;
   margin-left:30px;
 }
 
