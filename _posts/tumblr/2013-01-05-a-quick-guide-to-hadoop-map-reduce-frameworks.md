@@ -2,9 +2,14 @@
 layout: post 
 title: A Quick Guide to Hadoop Map-Reduce Frameworks 
 subject: hadoop 
+description: A constantly expanding list of 12+ hadoop frameworks, with code examples and documentation links
 tags: 
 - hadoop 
 - mapreduce 
+- java
+- pig
+- hive
+- jvm
 --- 
 
 There are a lot of frameworks for writing map-reduce pipelines for Hadoop, but
@@ -29,51 +34,53 @@ knowledge of programming to operate.
 
 ### Any JVM Language
 
-  * Basic Hadoop map-reduce ([documentation](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html))
+* Basic Hadoop map-reduce 
+  * [documentation](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html)
+  * [code sample + walkthrough][1]
 
 ### Java
 
-  * Cascading ([documentation](http://www.cascading.org/))
-  * Crunch ([documentation](https://github.com/cloudera/crunch))
+* Cascading ([documentation](http://www.cascading.org/))
+* Crunch ([documentation](https://github.com/cloudera/crunch))
 
 ### Clojure
 
-  * Cascalog ([documentation](https://github.com/nathanmarz/cascalog))
+* Cascalog ([documentation](https://github.com/nathanmarz/cascalog))
 
 ### Scala
 
-  * Scrunch ([documentation](https://github.com/cloudera/crunch/tree/master/scrunch))
-  * Scalding ([documentation](https://github.com/twitter/scalding))
-  * Scoobi ([documentation](https://github.com/NICTA/scoobi))
+* Scrunch ([documentation](https://github.com/cloudera/crunch/tree/master/scrunch))
+* Scalding ([documentation](https://github.com/twitter/scalding))
+* Scoobi ([documentation](https://github.com/NICTA/scoobi))
 
 ### Any Language \[low-med level\]
 
-  * hadoop-streaming ([documentation](http://hadoop.apache.org/docs/r0.15.2/streaming.html))
+* hadoop-streaming ([documentation](http://hadoop.apache.org/docs/r0.15.2/streaming.html))
 
 ### Ruby
 
-  * Wukong ([documentation](https://github.com/infochimps-labs/wukong))
-  * Cascading JRuby ([documentation](https://github.com/etsy/cascading.jruby))
+* Wukong ([documentation](https://github.com/infochimps-labs/wukong))
+* Cascading JRuby ([documentation](https://github.com/etsy/cascading.jruby))
 
 ### PHP
 
-  * HadooPHP ([documentation](https://github.com/dzuelke/HadooPHP))
+* HadooPHP ([documentation](https://github.com/dzuelke/HadooPHP))
 
 ### Python
 
-  * MR Job ([documentation](https://github.com/Yelp/mrjob))
-  * Dumbo ([documentation](https://github.com/klbostee/dumbo))
-  * Hadooppy ([documentation](https://github.com/bwhite/hadoopy))
-  * Pydoop ([documentation](http://pydoop.sourceforge.net/docs/))
+* MR Job ([documentation](https://github.com/Yelp/mrjob))
+* Dumbo ([documentation](https://github.com/klbostee/dumbo))
+* Hadooppy ([documentation](https://github.com/bwhite/hadoopy))
+* Pydoop ([documentation](http://pydoop.sourceforge.net/docs/))
 
 ### R
 
-  * RHadoop ([documentation](https://github.com/RevolutionAnalytics/RHadoop))
+* RHadoop ([documentation](https://github.com/RevolutionAnalytics/RHadoop))
 
 ### Special Scripting Languages \[high level\]
 
-  * Hive ([documentation](http://hive.apache.org/))
-  * Pig ([documentation](http://pig.apache.org/))
+* Hive ([documentation](http://hive.apache.org/))
+* Pig ([documentation](http://pig.apache.org/))
 
 please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 
@@ -84,8 +91,8 @@ small map-reduce pipeline to do the following:
 
 Given two (fake) datasets:
 
-  1. A set of user demographic information containing \[id, email, language, location\]
-  2. A set of item purchases, containing fields \[transaction-id, product-id, user-id, purchase-amount, product-description\]
+1. A set of user demographic information containing \[id, email, language, location\]
+2. A set of item purchases, containing fields \[transaction-id, product-id, user-id, purchase-amount, product-description\]
 
 Calculate the number of locations in which a product is purchased.
 
@@ -100,8 +107,14 @@ example.
 
 ## My Commonly used Frameworks
 
-  * Hive -- Hive is amazing because anyone can query the data with a little knowledge of SQL. Hook it up to a visual query designer and you don't even need that.
-  * Pig -- the perfect framework for prototyping and quick-investigation. It's a simple scripting language with a bunch of powerful map-reduce specific features.
-  * Scoobi -- I use this a lot to build pipelines in Scala because it's very functional, and in many way's you just treat the data like a regular list, which is great.
-  * Raw Map/Reduce -- Sometimes I like to program directly to the API, especially when doing something mission critical. I also find the individual map and reduce functions easier to test.
+* Hive -- Hive is amazing because anyone can query the data with a little knowledge of SQL. Hook it up to a visual query designer and you don't even need that.
+* Pig -- the perfect framework for prototyping and quick-investigation. It's a simple scripting language with a bunch of powerful map-reduce specific features.
+* Scoobi -- I use this a lot to build pipelines in Scala because it's very functional, and in many way's you just treat the data like a regular list, which is great.
+* Raw Map/Reduce -- Sometimes I like to program directly to the API, especially when doing something mission critical. I also find the individual map and reduce functions easier to test.
 
+
+## Updates 
+
+2013-02-09: first framework walkthrough published - [regular map reduce][1]
+
+[1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
