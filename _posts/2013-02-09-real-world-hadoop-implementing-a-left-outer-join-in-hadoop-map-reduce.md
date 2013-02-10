@@ -32,6 +32,8 @@ tags:
 
 This article is part of [my guide to map reduce frameworks][1], in which I implement a solution to a real-world problem in each of the most popular hadoop frameworks.
 
+If you're impatient, you can find the code for the map-reduce implementation [on my github][5], otherwise, read on!
+
 ## The Problem
 
 Let me quickly restate the problem from [my original article][2].
@@ -77,8 +79,6 @@ grouped.foreach{ case(product, locations) =>
 {% endhighlight %}
 
 ## The Map Reduce Solution
-
-If you're impatient, you can find the code for the map-reduce implementation [on my github][5], otherwise, lets re-think the solution in a distributed manner.
 
 First off, the problem requires that we write a two stage map-reduce:
 
