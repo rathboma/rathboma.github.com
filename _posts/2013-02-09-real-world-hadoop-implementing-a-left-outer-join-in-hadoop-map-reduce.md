@@ -1,6 +1,6 @@
 ---
 title: Real World Hadoop -  Implementing a Left Outer Join in Map Reduce
-description: A real-world hadoop map reduce example in which two datasets are joined together, requiring multiple computation stages, custom partitioning, sorting, and grouping.
+description: A walkthrough to a real-world hadoop map reduce example in which two datasets are joined together, requiring multiple computation stages, custom partitioning, sorting, and grouping.
 subject: hadoop
 layout: post
 tags:
