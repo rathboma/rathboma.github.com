@@ -1,5 +1,5 @@
 ---
-title: An Excellent Hadoop Resouce: The Hadoop Weekly newsletter
+title: An Excellent Hadoop Resouce - The Hadoop Weekly Newsletter
 subject: hadoop
 tags:
 - newsletter
