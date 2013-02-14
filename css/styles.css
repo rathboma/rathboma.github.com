@@ -90,6 +90,7 @@ div.post p.subtitle {
 div.post img {
   display:block;
   margin:auto;
+  border: solid 2px #eee;
 }
 
 div#related {
