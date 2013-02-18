@@ -1,5 +1,6 @@
 ---
 title: An Excellent Hadoop Resouce - The Hadoop Weekly Newsletter
+layout: post
 subject: hadoop
 tags:
 - newsletter
