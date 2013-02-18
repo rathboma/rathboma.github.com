@@ -1,8 +1,8 @@
-
-
 template = <<-eos
 ---
 title: TITLE
+layout: post
+description: blog post by Matthew Rathbone
 subject: SUBJECT
 tags:
 - tag1
