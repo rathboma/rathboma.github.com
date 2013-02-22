@@ -20,7 +20,7 @@ task :new do
   subject = STDIN.gets.chomp
   dt = Time.now.strftime("%Y-%m-%d")
 
-  filename = "_posts/#{dt}-#{title.gsub(/\s+/, "-")}.md"
+  filename = "_posts/#{dt}-#{title.downcase.gsub(/\s+/, "-")}.md"
   File.open(filename, 'w') { |file|
     file.puts template.gsub("TITLE", title).gsub("SUBJECT", subject)
   }

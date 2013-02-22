@@ -12,6 +12,8 @@ tags:
 - jvm
 --- 
 
+**Updated 2013-02-21** with several walkthroughs, listed in-line or [at the bottom of the article](#updates)
+
 There are a lot of frameworks for writing map-reduce pipelines for Hadoop, but
 it can be pretty hard to navigate everything to get a good sense of what
 framework you should be using. I felt very overwhelmed when I started working
@@ -36,7 +38,7 @@ knowledge of programming to operate.
 
 * Basic Hadoop map-reduce 
   * [documentation](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html)
-  * [code sample + walkthrough][1]
+  * [code sample and walkthrough][1]
 
 ### Java
 
@@ -79,14 +81,17 @@ knowledge of programming to operate.
 
 ### Special Scripting Languages \[high level\]
 
-* Hive ([documentation](http://hive.apache.org/))
+* Hive 
+  * [documentation](http://hive.apache.org/)
+  * [code sample and walkthrough][2]
+
 * Pig ([documentation](http://pig.apache.org/))
 
 please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 
 ## Framework Walkthroughs ## {#walkthrough}
 
-I will create a separate article for each framework in which I will build a
+I will create a separate article for each framework ( [current articles listed here](#updates) ) in which I will build a
 small map-reduce pipeline to do the following:
 
 Given two (fake) datasets:
@@ -113,8 +118,10 @@ example.
 * Raw Map/Reduce -- Sometimes I like to program directly to the API, especially when doing something mission critical. I also find the individual map and reduce functions easier to test.
 
 
-## Updates 
+## Updates {#updates}
 
-2013-02-09: first framework walkthrough published - [regular map reduce][1]
+* 2013-02-09: [map reduce walkthrough published][1]
+* 2012-02-21: [hive walkthrough published][2]
 
 [1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
+[2]: /2013/02/20/Real-World-Hadoop---Implementing-Left-Outer-Join-in-Hive.html
