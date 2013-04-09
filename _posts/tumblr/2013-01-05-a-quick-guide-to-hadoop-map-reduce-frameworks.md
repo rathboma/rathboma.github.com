@@ -12,7 +12,7 @@ tags:
 - jvm
 --- 
 
-**Updated 2013-02-21** with several walkthroughs, listed in-line or [at the bottom of the article](#updates)
+**Updated 2013-04-07** with several walkthroughs (java, hive, pig), listed in-line or [at the bottom of the article](#updates)
 
 There are a lot of frameworks for writing map-reduce pipelines for Hadoop, but
 it can be pretty hard to navigate everything to get a good sense of what
@@ -85,7 +85,9 @@ knowledge of programming to operate.
   * [documentation](http://hive.apache.org/)
   * [code sample and walkthrough][2]
 
-* Pig ([documentation](http://pig.apache.org/))
+* Pig 
+  * [documentation](http://pig.apache.org/)
+  * [code sample and walkthrough][3]
 
 please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 
@@ -121,7 +123,9 @@ example.
 ## Updates {#updates}
 
 * 2013-02-09: [map reduce walkthrough published][1]
-* 2012-02-21: [hive walkthrough published][2]
+* 2013-02-21: [hive walkthrough published][2]
+* 2013-04-07: [pig walkthrough published][3]
 
 [1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [2]: /2013/02/20/Real-World-Hadoop---Implementing-Left-Outer-Join-in-Hive.html
+[3]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
