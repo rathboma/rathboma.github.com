@@ -82,6 +82,13 @@ div.maincontent {
   border:solid 1px #eee;
 }
 
+
+div.post {
+  padding-bottom:10px;
+  border-bottom: solid 1px #eee;
+  margin-bottom:25px;
+}
+
 div.post p.subtitle {
   color:#888;
   padding-bottom:15px;
@@ -94,9 +101,6 @@ div.post img {
 }
 
 div#related {
-  margin-top:25px;
-  padding-top:10px;
-  border-top: solid 1px #eee;
   margin-bottom:50px;
 }
 
@@ -108,10 +112,19 @@ div#related ul.posts li {
   padding-bottom:8px;
 }
 
+div#related span.related_date {
+  color:#777;
+}
+
 div.sidebar {
   color:#666;
   padding-left:10px;
   border-left:solid 1px #eee;
+}
+
+div.sidebar a.subscribe-link {
+  font-size: 0.8em;
+  float: right;
 }
 
 div.sidebar img {

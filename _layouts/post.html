@@ -14,14 +14,28 @@ layout: default
   {{ content }}
 </div>
 
+<h1>Enjoy this Article?</h1>
+<div id="email-subscribe">
+  <h2>Subscribe to get updates by email</h2>
+  <form action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+    <div class="input-append">
+      
+      <input type="email" value="" name="EMAIL" class="span3" id="mce-EMAIL" placeholder="email address" required />
+      <button name="subscribe" id="mc-embedded-subscribe" class="btn">Subscribe</button>
+    </div>  
+  </form>
+</div>
+<!-- Begin MailChimp Signup Form -->
+
+
 <div id="related">
-  <h1>{% if page.subject %} Other posts about {{page.subject}} {% else %} Related Posts {% endif %}</h1>
+  <h2>{% if page.subject %} Read more articles about {{page.subject}} {% else %} Related articles {% endif %}</h2>
   <ul class="posts">
     {% if page.subject %}
       {% for post in site.posts %}
         {% if post.subject == page.subject %}
           {% if page.title != post.title %}
-            <li><span>{{ post.date | date: "%Y-%m-%d"}}</span>: <a href="{{post.url}}">{{post.title}}</a></li>
+            <li><span class="related_date">{{ post.date | date: "%Y-%m-%d"}}: </span><a href="{{post.url}}">{{post.title}}</a></li>
           {% endif %}
         {% endif %}
       {% endfor %}
@@ -31,7 +45,9 @@ layout: default
       {% endfor %}
     {% endif %}
   </ul>
+  <h2>Join the discussion</h2>
   <div id="disqus_thread"></div>
+
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'rathboma'; // required: replace example with your forum shortname

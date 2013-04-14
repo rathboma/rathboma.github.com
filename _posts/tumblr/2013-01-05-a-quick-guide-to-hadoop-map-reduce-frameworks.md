@@ -74,6 +74,7 @@ knowledge of programming to operate.
 * Dumbo ([documentation](https://github.com/klbostee/dumbo))
 * Hadooppy ([documentation](https://github.com/bwhite/hadoopy))
 * Pydoop ([documentation](http://pydoop.sourceforge.net/docs/))
+* Luigi ([documentation](https://github.com/spotify/luigi))
 
 ### R
 
