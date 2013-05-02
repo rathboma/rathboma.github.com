@@ -39,6 +39,7 @@ knowledge of programming to operate.
 * Basic Hadoop map-reduce 
   * [documentation](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html)
   * [code sample and walkthrough][1]
+  * [Hadoop Book][hadoop-book] on Amazon
 
 ### Java
 
@@ -85,10 +86,12 @@ knowledge of programming to operate.
 * Hive 
   * [documentation](http://hive.apache.org/)
   * [code sample and walkthrough][2]
+  * [Programming Hive - book on Amazon][hive-book]
 
 * Pig 
   * [documentation](http://pig.apache.org/)
   * [code sample and walkthrough][3]
+  * [Programming Pig - book on Amazon][pig-book]
 
 please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 
@@ -130,3 +133,6 @@ example.
 [1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [2]: /2013/02/20/Real-World-Hadoop---Implementing-Left-Outer-Join-in-Hive.html
 [3]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
+[hadoop-book]:http://www.amazon.com/gp/product/1449311520/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449311520&linkCode=as2&tag=matratsblo-20
+[hive-book]: http://www.amazon.com/gp/product/1449319335/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449319335&linkCode=as2&tag=matratsblo-20
+[pig-book]: http://www.amazon.com/gp/product/1449302645/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449302645&linkCode=as2&tag=matratsblo-20
