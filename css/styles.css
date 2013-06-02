@@ -176,3 +176,10 @@ div.archivetitle ul {
 }
 
 .c1 {color:#aaa;}
+
+
+div#email-subscribe {
+  background-color: #FAFAD2;
+  padding-left: 5px;
+  padding-right: 5px;
+}
