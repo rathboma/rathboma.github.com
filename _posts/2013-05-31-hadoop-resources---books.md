@@ -1,5 +1,5 @@
 ---
-title: Hadoop Resources - Books
+title: 15+ Great Books for Hadoop
 layout: post
 description: A compilation of books for Hadoop and related projects (hive, pig, hbase, etc).
 subject: hadoop
@@ -37,6 +37,7 @@ If you want to learn more about Hadoop there are many resources at your disposal
 - [Hadoop in Practice by Alex Holmes][hadoop-practice]
 
   A slightly more advanced guide to running Hadoop. It includes chapters that detail how to best move data around, how to think in Map Reduce, and (importantly) how to debug and optimize your jobs.
+
 - [Pro Hadoop by Jason Venner][pro-hadoop]
   
   This A-Press book claims it will guide you through initial hadoop set up while also helping you avoid many of the pitfalls that usual Hadoop novices encounter. Again it is similar in contents to [Hadoop in Action][hadoop-action] and [The Definitive Guide][hadoop-guide]

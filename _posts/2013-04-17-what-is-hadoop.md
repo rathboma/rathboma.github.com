@@ -1,7 +1,7 @@
 ---
-title: What is Hadoop?
+title: A Beginners Guide to Hadoop
 layout: post
-description: A high level overview of Hadoop without going in to too much technical detail.
+description: What is Hadoop - A high level overview of Hadoop without going in to too much technical detail.
 subject: hadoop
 tags:
 - about hadoop
