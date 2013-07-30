@@ -77,7 +77,7 @@ A diverse background gives me abilities in problem solving, research, writing, a
 - [Madison Ruby Conference][madison-ruby] <span class="date">Aug 2012</span>
 - Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers
 
-### Big Data Madison Meetup <span class="date"></span>
+### Big Data Madison Meetup <span class="date">Jan 2013 - Present</span>
 #### Organizer
 
 - [Meetup group][big-data] focusing on big data technologies
