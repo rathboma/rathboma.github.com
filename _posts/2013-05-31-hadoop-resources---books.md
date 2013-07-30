@@ -56,7 +56,7 @@ If you want to learn more about Hadoop there are many resources at your disposal
 
 - [Enterprise Data Workflows with Cascading][cascading-book]
 
-  Released July 2013 this book promises to guide readers through writing and testing Cascading based workflows. This is one of the few frameworks for higher level Map Reduce frameworks, so I'm excited to give it a read.
+  Released July 2013 this book promises to guide readers through writing and testing Cascading based workflows. This is one of the few books written about higher level Map Reduce frameworks, so I'm excited to give it a read.
 
 
 ## Books for Other Hadoop Projects
