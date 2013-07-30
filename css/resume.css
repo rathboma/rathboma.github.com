@@ -43,7 +43,8 @@ h4 {
   margin-top:0px;
   font-weight: normal;
   font-style: italic;
-  margin-bottom:0px;
+  margin-bottom:5px;
+  margin-top:-5px;
 }
 
 h3 span.date {
@@ -96,5 +97,6 @@ div.buttoncontainer {
   a:link:after, a:visited:after {
     content: "";
   }
+
 }
 

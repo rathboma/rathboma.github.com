@@ -17,7 +17,7 @@ A diverse background gives me abilities in problem solving, research, writing, a
 ### Foursquare, New York NY <span class="date">Nov 2010 - Present</span>
 #### Software Engineer - Data Infrastructure
 
-- Built and supported a Hadoop-based offline data processing infrastructure.
+- Built and supported a Hadoop-based off-line data processing infrastructure.
 - Created Map/Reduce pipelines to ingest data, generate datasets, and feed production systems.
 - Worked closely with other engineers to design and produce a suite of software tools to enable easy development and testing of data processing and machine learning algorithms.
 - Designed and built internal web tools to help non-engineers query and visualize large-scale datasets and processes.
@@ -50,13 +50,13 @@ A diverse background gives me abilities in problem solving, research, writing, a
 ### UBS Securities LLC, New York, NY <span class="date">Sep 2005 - Sep 2006</span>
 #### Analyst
 
-- Led automation initiatives to improve the accuracy and efficiency of several high-risk processes, in one example reducing daily man-hours from 3 hours to 15 minutes in each affected role.
-- Automated departmental management information reporting using client-side scripting languages, incorporating data validation and increasing reporting accuracy.
+- Led the data collection and filing of 144a class action lawsuit claims.
+- Automated departmental management information reporting, increasing accuracy and validating data.
 
 
 ## Education
 
-### Courant Institute of New York Univirsity, New York, NY <span class="date">2009 - 2011</span>
+### Courant Institute of New York University, New York, NY <span class="date">2009 - 2011</span>
 #### MS in Computer Science
 
 - Awarded the [2012 Matthew Smosna Prize][prize] for academic achievement.
@@ -77,21 +77,22 @@ A diverse background gives me abilities in problem solving, research, writing, a
 - [Madison Ruby Conference][madison-ruby] <span class="date">Aug 2012</span>
 - Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers
 
-### Madison Big Data Meetup Organizer <span class="date"></span>
+### Big Data Madison Meetup <span class="date"></span>
+#### Organizer
 
-- Meetup group focusing on big data technologies
+- [Meetup group][big-data] focusing on big data technologies
 - arrange for speakers, lead the meetup, organize funding, lead training, evangelize
 
-### Masters Association of Computer Science President / Officer <span class="date">Sep 2009 - May 2011</span>
+### NYU Masters Association of Computer Science <span class="date">Sep 2009 - May 2011</span>
+####  President / Officer
 
-- Enhancing the student experience through collaboration and networking events.
-
-### Charity Committee Board Member @ Threadneedle Asset Management <span class="date">2008 - 2009</span>
+### TAM Charity Committee <span class="date">2008 - 2009</span>
+#### Board Member
 
 - Coordinate with charities, encourage staff participation, arrange funds.
-
 
 [me]:http://matthewrathbone.com
 [hadoop-summit]:http://www.youtube.com/watch?v=V07Kuo41A8M
 [madison-ruby]:http://www.youtube.com/watch?v=jCzTD2Fpb-Y
 [prize]:http://cims.nyu.edu/webapps/content/programs/prizes/prizes_12
+[big-data]:http://meetup.com/BigDataMadison
