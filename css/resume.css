@@ -10,6 +10,9 @@ div.mainwrapper {
   background-color: white;
   border: solid 1px #ccc;
   margin-top:30px;
+  margin-bottom:30px;
+  border-right:solid 3px #ccc;
+  border-bottom:solid 3px #ccc;
 }
 
 h1 {
@@ -63,6 +66,10 @@ span.subtitle a, span.subtitle a:hover {
   color:#aaa;
 }
 
+div.buttoncontainer {
+  text-align: center;
+}
+
 @media print {
   div.mainwrapper {
     padding: 0;
@@ -70,12 +77,24 @@ span.subtitle a, span.subtitle a:hover {
   }
   ul {
     page-break-after: auto;
+    page-break-inside: avoid;
+    page-break-before: avoid;
   }
-  h1, h2, h3, h4, li {
+  h1, h2, h3, h4 {
     page-break-after: avoid;
+    page-break-inside: avoid;
   }
+
+  h1, h4 {
+    page-break-before:avoid;
+  }
+
   .btn {
     display:none;
+  }
+
+  a:link:after, a:visited:after {
+    content: "";
   }
 }
 

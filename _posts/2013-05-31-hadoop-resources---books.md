@@ -54,6 +54,10 @@ If you want to learn more about Hadoop there are many resources at your disposal
   
   The cookbook provides an introduction to installing / configuring Hadoop along with 'more than 50 ready-to-use Hadoop MapReduce recipes'.
 
+- [Enterprise Data Workflows with Cascading][cascading-book]
+
+  Released July 2013 this book promises to guide readers through writing and testing Cascading based workflows. This is one of the few frameworks for higher level Map Reduce frameworks, so I'm excited to give it a read.
+
 
 ## Books for Other Hadoop Projects
 - [Programming Hive by Edward Capriolo, Dean Wampler & Jason Rutherglen][programming-hive]
@@ -98,3 +102,4 @@ There are many, many books on more general topics of big data, data science, ana
 [real-world-hadoop]:http://www.amazon.com/dp/1849519129?tag=matratsblo-20
 [hadoop-cookbook]:http://www.amazon.com/dp/1849517282?tag=matratsblo-20
 [sqoop-cookbook]:http://www.amazon.com/dp/1449364624?tag=matratsblo-20
+[cascading-book]:http://www.amazon.com/dp/1449358721?tag=matratsblo-20
