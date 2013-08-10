@@ -17,10 +17,10 @@ A diverse background gives me abilities in problem solving, research, writing, a
 ### Foursquare, New York NY <span class="date">Nov 2010 - Present</span>
 #### Software Engineer - Data Infrastructure
 
-- Built and supported a Hadoop-based off-line data processing infrastructure.
-- Created Map/Reduce pipelines to ingest data, generate datasets, and feed production systems.
+- Built and supported production batch data processing infrastructure using Hadoop (over 100TB).
+- Created ETL pipelines in Map/Reduce to ingest 1TB of daily data, generate other datasets, and feed production systems.
 - Worked closely with other engineers to design and produce a suite of software tools to enable easy development and testing of data processing and machine learning algorithms.
-- Designed and built internal web tools to help non-engineers query and visualize large-scale datasets and processes.
+- Designed and built several internal web tools to help the whole company to query and visualize large-scale datasets.
 
 ### Drop.io, Brooklyn, NY <span class="date">May 2010 - Nov 2010</span>
 #### Software Engineer
