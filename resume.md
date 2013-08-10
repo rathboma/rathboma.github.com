@@ -81,7 +81,7 @@ A diverse background gives me abilities in problem solving, research, writing, a
 #### Organizer
 
 - [Meetup group][big-data] focusing on big data technologies
-- arrange for speakers, lead the meetup, organize funding, lead training, evangelize
+- arrange speakers, lead the meetup, organize funding, evangelize
 
 ### NYU Masters Association of Computer Science <span class="date">Sep 2009 - May 2011</span>
 ####  President / Officer
