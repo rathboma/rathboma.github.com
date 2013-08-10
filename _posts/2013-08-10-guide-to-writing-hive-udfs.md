@@ -1,7 +1,7 @@
 ---
 title: Writing User Defined Functions (UDFs) for Apache Hive
 layout: post
-description: a walkthrough (with code) of writing user defined functions (UDFs) for Apache Hive. There are two APIs, so my walkthrough will include examples for both.
+description: a walk-through (with code) of writing user defined functions (UDFs) for Apache Hive. There are two APIs, so my walkthrough will include examples for both.
 subject: hadoop
 tags:
 - hive
@@ -37,8 +37,6 @@ class SimpleUDFExample extends UDF {
 {% endhighlight %}
 
 [(full code available here)][code]
-
-In fact, the function can even accept regular java types as parameters instead of the `Writable` equivilents. In my above example, the `input` variable could in fact be a `String`.
 
 ### Testing a simple UDF
 
@@ -255,7 +253,7 @@ Again, all the code in this blogpost is [open source and on Github][code].
 Hopefully this article has given you an idea of how to extend Hive with custom functions.
 
 Although I ignored them in this article, there are also [User Defined Aggregation Functions (UDAF)][udaf] which allow the processing and aggregation of many rows in a single function.
-If you're interested in learning more, there are a [few][case-study] [resources][adaltas] online on this topic which can help.
+If you're interested in learning more, there are a [few][case-study] [resources][adaltas] on-line on this topic which can help.
 
 Also worth a note is the [Apache Hive Book from O'Reilly][book] which contains brief tutorials and code samples for both UDFs and UDAFs, and at the very least gives you a good idea of how to structure these functions, what exceptions you should use, and what types you should return.
 
