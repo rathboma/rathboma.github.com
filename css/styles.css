@@ -89,6 +89,7 @@ div.post {
   margin-bottom:25px;
 }
 
+
 div.post p.subtitle {
   color:#888;
   padding-bottom:15px;
@@ -151,7 +152,7 @@ div.footer span.right {
 
 div.postlist div.post {
   padding-bottom:30px;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 20px #eee;
   margin-bottom:30px;
 }
 
@@ -187,4 +188,6 @@ div#email-subscribe {
 ol li ul {
   margin-bottom:15px;
 }
+
+
 
