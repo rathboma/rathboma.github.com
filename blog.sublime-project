@@ -11,6 +11,10 @@
     {
 	"path":"../blogcode",
 	"folder_exclude_patterns":["**/target"]
+    },
+    {
+	"path":"../hive-extension-examples",
+	"folder_exclude_patterns":["**/target"]
     }
   ]
 }
