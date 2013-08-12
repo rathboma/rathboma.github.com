@@ -8,9 +8,7 @@ layout: cv
 
 ## Overview
 
-Experienced software engineer with strong software implementation skills and a focus on back-end web technologies. 
-A diverse background gives me abilities in problem solving, research, writing, and interpersonal communication.
-
+I am a seasoned software engineer with experience in offline data processing, and back-end web technologies. I believe that constant measurement, instrumentation, automation, and experimentation are fundamental to building a successful product that can easily evolve to meet the needs of its users. 
 
 ## Professional Experience
 
@@ -61,13 +59,12 @@ A diverse background gives me abilities in problem solving, research, writing, a
 
 - Awarded the [2012 Matthew Smosna Prize][prize] for academic achievement.
 - Highlighted Courses: Parallel Computing, NLP, Machine Learning
+- My machine learning project was featured in [New Scientist Magazine][new-scientist]
 
 ### Northumbria University, Newcastle-upon-Type, UK <span class="date">2001 - 2005</span>
 #### LLB Law Exempting - 2:2
 
 - Thesis: "An international study of corporate manslaughter law".
-- Highlighted Courses: Intellectual Property Law, Corporate Law, Human Rights Law.
-
 
 ## Activities
 
@@ -96,3 +93,4 @@ A diverse background gives me abilities in problem solving, research, writing, a
 [madison-ruby]:http://www.youtube.com/watch?v=jCzTD2Fpb-Y
 [prize]:http://cims.nyu.edu/webapps/content/programs/prizes/prizes_12
 [big-data]:http://meetup.com/BigDataMadison
+[new-scientist]:http://www.newscientist.com/article/mg21128251.500-datacasting-what-will-you-buy-tomorrow.html
