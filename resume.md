@@ -12,45 +12,49 @@ I am a seasoned software engineer with experience in offline data processing, an
 
 ## Professional Experience
 
-### Foursquare, New York NY <span class="date">Nov 2010 - Present</span>
+### Foursquare, New York, NY <span class="date">Nov 2010 - Present</span>
 #### Software Engineer - Data Infrastructure
 
-- Built and supported production batch data processing infrastructure using Hadoop (over 100TB).
-- Created ETL pipelines in Map/Reduce to ingest 1TB of daily data, generate other datasets, and feed production systems.
-- Worked closely with other engineers to design and produce a suite of software tools to enable easy development and testing of data processing and machine learning algorithms.
-- Designed and built several internal web tools to help the whole company to query and visualize large-scale datasets.
+- Built and supported production batch data processing infrastructure using Hadoop.
+- Created ETL pipelines in Map/Reduce to ingest 1TB of daily data and feed production systems.
+- Worked closely with other engineers to design and produce a suite of software tools for easy development (and testing) of data processing and machine learning algorithms.
+- Designed and built internal tools to allow the whole company to access and query large-scale datasets.
+- Led an initiative to integrate a standardized event-logging system across all 5 major clients.
 
 ### Drop.io, Brooklyn, NY <span class="date">May 2010 - Nov 2010</span>
 #### Software Engineer
 
-- Developed a high throughput event-data collection & reporting system to allow real-time and offline reporting.
-- Developed a scalable distributed user billing system in order to generate accurate charges for api and disk usage.
+- Built a high throughput real-time event-data collection and reporting system.
+- Developed a distributed user billing system to generate accurate charges for api and disk usage.
 - The company was acquired by Facebook in November 2010.
 
 ### New York University, New York, NY <span class="date">Jan 2010 - May 2010</span>
 #### Grader - Graduate Operating Systems
 
-- Graded assignments in various languages implementing such as linking, memory paging, resource allocation, and disk-seeking.
+- Graded programming assignments in linking, memory paging, resource allocation, etc.
 
 ### Threadneedle Asset Management, London, UK <span class="date">Aug 2007 - Jun 2009</span>
 #### Software Engineer - Front Office
 
-- Lead engineering on the development of portfolio management software used to manage hundreds of millions of dollars of assets.
+- Lead development of a portfolio management system used to manage fund assets.
 - Enhanced legacy software to integrate with strategic in-house platforms and utilize external APIs.
-- Worked in a team to create common order processing APIs using an external processing platform. The API's were used across multiple projects.
+- Worked with a team to create common order processing APIs. The API's were used across multiple projects.
 
 ### UBS Investment Bank, London, UK <span class="date">Oct 2006 - Aug 2007</span>
 #### Business Change Specialist
 
-- Provided structured analysis of internal statistics and processes in co-ordination with global management teams in order to support strategic decision making.
-- Played a lead role in the development and deployment of management information systems to meet key business objectives. Delivery was on schedule & within budget.
+- Provided structured analysis of internal statistics and processes in co-ordination with global management teams.
+- Played a lead role in the development and deployment of management information systems.
+
+<div class="pagebreak" >
+  
+</div>
 
 ### UBS Securities LLC, New York, NY <span class="date">Sep 2005 - Sep 2006</span>
 #### Analyst
 
 - Led the data collection and filing of 144a class action lawsuit claims.
-- Automated departmental management information reporting, increasing accuracy and validating data.
-
+- Automated departmental management information reporting, increasing accuracy whilst inproving accuracy.
 
 ## Education
 
@@ -58,32 +62,37 @@ I am a seasoned software engineer with experience in offline data processing, an
 #### MS in Computer Science
 
 - Awarded the [2012 Matthew Smosna Prize][prize] for academic achievement.
-- Highlighted Courses: Parallel Computing, NLP, Machine Learning
-- My machine learning project was featured in [New Scientist Magazine][new-scientist]
+- Highlighted Courses: Parallel Computing, NLP, Machine Learning.
+- My machine learning project was featured in [New Scientist Magazine][new-scientist].
 
 ### Northumbria University, Newcastle-upon-Type, UK <span class="date">2001 - 2005</span>
 #### LLB Law Exempting - 2:2
 
-- Thesis: "An international study of corporate manslaughter law".
+- Thesis: "An international study of corporate manslaughter law."
 
 ## Activities
 
 ### Public Speaking <span class="date">2009 - Present</span>
 
-- [Hadoop Summit Conference, San Jose][hadoop-summit] <span class="date">Jun 2013</span>
-- [Madison Ruby Conference][madison-ruby] <span class="date">Aug 2012</span>
-- Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers
+- [Hadoop Summit Conference, San Jose, CA][hadoop-summit], June 2013.
+- [Madison Ruby Conference, Madison, WI][madison-ruby], August 2012.
+- Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers.
 
 ### Big Data Madison Meetup <span class="date">Jan 2013 - Present</span>
 #### Organizer
 
-- [Meetup group][big-data] focusing on big data technologies
-- arrange speakers, lead the meetup, organize funding, evangelize
+- [Meetup group][big-data] focusing on big data technologies.
+- Arranging speakers, organizing meetups, finding funding, etc.
+
+### Media Arts and Game Development @ UW-Whitewater <span class="date">2011 - Present</span>
+#### Advisory Board Member
+
+- Advise on curriculum & help judge student works at the annual expo.
 
 ### NYU Masters Association of Computer Science <span class="date">Sep 2009 - May 2011</span>
 ####  President / Officer
 
-### TAM Charity Committee <span class="date">2008 - 2009</span>
+### Threadneedle Charity Committee <span class="date">2008 - 2009</span>
 #### Board Member
 
 - Coordinate with charities, encourage staff participation, arrange funds.
