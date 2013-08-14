@@ -1,5 +1,5 @@
 ---
-title: Writing User Defined Functions (UDFs) for Apache Hive
+title: Hadoop Hive UDF Tutorial - Extending Hive with Custom Functions
 layout: post
 description: a walk-through (with code) of writing user defined functions (UDFs) for Apache Hive. There are two APIs, so my walkthrough will include examples for both.
 subject: hadoop
