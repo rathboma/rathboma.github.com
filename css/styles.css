@@ -52,8 +52,8 @@ div.mrow div.block3 {
 
 div.header {
   margin-top:30px;
-  margin-bottom: 30px;
-  border-bottom: solid 1px #ccc;
+  /*margin-bottom: 30px;*/
+  /*border-bottom: solid 1px #ccc;*/
 }
 
 div.header ul.nav {
@@ -78,8 +78,7 @@ div.header h2.muted a:hover {
 }*/
 
 div.maincontent {
-  
-  border:solid 1px #eee;
+  border:solid 1px #ccc;
 }
 
 
@@ -89,10 +88,15 @@ div.post {
   margin-bottom:25px;
 }
 
+div.post h1 {
+  margin-bottom:0;
+}
 
 div.post p.subtitle {
   color:#888;
+  font-size: 0.9em;
   padding-bottom:15px;
+  margin-bottom:0px;
 }
 
 div.post img {
@@ -151,8 +155,12 @@ div.footer span.right {
 
 div.postlist div.post {
   padding-bottom:30px;
-  border-bottom: solid 20px #eee;
+  border-bottom: solid 4px #666;
   margin-bottom:30px;
+}
+
+div.postlist div.post h1 a {
+  text-decoration:underline;
 }
 
 div.pagination {

@@ -8,7 +8,7 @@ title: Home
     {% capture subject %}{% if post.subject %}{{post.subject}}{% else %}general{% endif %}{% endcapture %}
     <div class="post">
       <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      <p class="subtitle">{{ post.date | date: "%B %d %Y" }} in <a href="/archive/topics.html#{{subject}}">{{subject}}</a></p>
+      <p class="subtitle">{{ post.date | date: "%B %d %Y" }}, topic: <a class="badge" href="/archive/topics.html#{{subject}}">{{subject}}</a></p>
       {{ post.content }}
     </div>
      <!-- here add you post markup -->
