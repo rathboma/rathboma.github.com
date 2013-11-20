@@ -174,6 +174,14 @@ FALSE 1
 
 This means you have to do a little state tracking in your reducer. This will be demonstrated in the code below.
 
+To follow along, check out [my git repository](https://github.com/rathboma/hadoop-framework-examples) (on the virtual machine):
+
+{% highlight bash %}
+cd ~/workspace
+git clone https://github.com/rathboma/hadoop-framework-examples.git
+cd hadoop-framework-examples
+{% endhighlight %}
+
 ### Mapper
 
 {% highlight python %}
@@ -253,6 +261,7 @@ chmod +x simple/reducer.py
 Because our example is so simple, we can actually test it without using hadoop at all.
 
 {% highlight bash %}
+cd streaming-python
 cat ~/workspace/nfldata/unixstadiums.csv | simple/mapper.py | sort | simple/reducer.py
 # FALSE 15
 # TRUE 17
@@ -280,9 +289,9 @@ TRUE 17
 
 ## A Complex Example in Python
 
-*Coming soon*
+Check out my [Real World Hadoop Guide for Python][real-world-python] to see how to join two datasets together using python.
 
-
+[real-world-python]:#
 [beginners-guide]:/2013/04/17/what-is-hadoop.html
 [bdm]:http://www.meetup.com/BigDataMadison/events/149122882/
 [play-by-play]:http://www.advancednflstats.com/2010/04/play-by-play-data.html
