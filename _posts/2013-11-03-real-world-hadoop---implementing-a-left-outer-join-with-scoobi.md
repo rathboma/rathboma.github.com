@@ -1,7 +1,7 @@
 ---
-title: Real World Hadoop - Implementing a left outer join with Scoobi
+title: Real World Hadoop - Implementing a left outer join in Scala with Scoobi
 layout: post
-description: How to use Scoobi to perform a left outer join. Includes a comparision with Hive, Pig, and Java Mapreduce
+description: How to use Scala & Scoobi to perform a left outer join. Includes a comparision with Hive, Pig, and Java Mapreduce
 subject: hadoop
 tags:
 - scoobi
@@ -10,7 +10,6 @@ tags:
 This article is part of [my guide to map reduce frameworks][1] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
 
 This time I'm using [Scoobi][2].
-
 
 ## The Problem
 
