@@ -12,7 +12,7 @@ tags:
 - nfl data
 ---
 
-This article orinally accompanied my tutorial session at the [Big Data Madison Meetup, November 2013][bdm].
+This article originally accompanied my tutorial session at the [Big Data Madison Meetup, November 2013][bdm].
 
 The goal of this article is to:
 
