@@ -197,4 +197,37 @@ ol li ul {
 }
 
 
+/*BUTTONS*/
 
+.share {
+  text-align: right;
+}
+
+.share .btn {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+
+.share .btn:hover {
+  color:black;
+}
+
+.btn i {
+  margin-left: -3px;
+  padding-right: 5px;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  background-image:none;
+}
+
+.btn-twitter {
+  background-color: #00aced;
+  background-image:none;
+}
+
+.btn-linkedin {
+  background-color: #4875B4;
+  background-image: none;
+}
