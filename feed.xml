@@ -15,7 +15,6 @@ layout: none
         <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
         <link>{{ site.url }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
-        <author>Matthew Rathbone</author>
         <category>{{ post.subject }}</category>
       </item>
     {% endfor %}
