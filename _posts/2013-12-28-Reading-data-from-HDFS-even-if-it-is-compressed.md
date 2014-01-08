@@ -7,7 +7,7 @@ tags:
 - scala
 - java
 - compression codecs
-description: How to read files from hdfs using java and scala
+description: How to read files from hdfs using Java and Scala, even if they are compressed, using any FileSystem implementation.
 layout: post
 ---
 
