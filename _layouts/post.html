@@ -10,14 +10,13 @@ layout: default
 </ul>
 <div class="post">
   <h1>{{page.title}}</h1>
-  <p class="subtitle">{{ page.date | date: "%B %d %Y" }}</p>
-  <div class="share">
-    <p>
+  <p class="subtitle">{{ page.date | date: "%B %d %Y" }}
+    <span class="share pull-right">
       <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{site.url}}{{page.url}}" class="btn btn-facebook"><i class="fa fa-facebook"></i>Share</a> 
       <a href="https://twitter.com/intent/tweet?text={{page.title}}&url={{site.url}}{{page.url}}&via=rathboma" class="btn btn-twitter" target="_blank"><i class="fa fa-twitter"></i>Tweet</a>
-      <a href="http://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}&title={{page.title}}&summary={{page.description}}&source=rathboma" class="btn btn-linkedin" target="_blank"><i class="fa fa-linkedin-square"></i>Post</a>
-    </p>
-  </div>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}&title={{page.title}}&summary={{page.description}}&source=rathboma" class="btn btn-linkedin" target="_blank"><i class="fa fa-linkedin-square"></i>Post</a>  
+    </span>
+      </p>
   {{ content }}
   <div class="share">
     <p>
