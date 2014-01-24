@@ -27,8 +27,16 @@ layout: default
   </div>
 </div>
 
-<h1>Enjoy this Article?</h1>
-<div id="email-subscribe">
+{% if page.subject == "hadoop" %}
+<h1 id="enjoy">Enjoy this Article?</h1>
+<div class="research">
+  <p>I'm doing some market research on analytics & reporting products for Hadoop. If the article was useful to you, please take my (quick) survey.</p>
+  <a href="https://docs.google.com/forms/d/1slYV1QeBMiARyY7RryA2akJnpLtk8ZW3BsGrSB8ATVk/viewform" class="btn btn-info">take the survey</a>
+  <a class="btn btn-danger" href="http://upload.wikimedia.org/wikipedia/en/a/a9/ScroogeFirst.jpg">no way, I'm a scrooge!</a>
+</div>
+{% endif %}
+
+<!-- <div id="email-subscribe">
   <h2>Subscribe to get {{page.subject}} articles by email</h2>
   <form action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
     <div class="input-append">
@@ -37,7 +45,7 @@ layout: default
       <button name="subscribe" id="mc-embedded-subscribe" class="btn">Subscribe</button>
     </div>  
   </form>
-</div>
+</div> -->
 <!-- Begin MailChimp Signup Form -->
 
 
@@ -74,8 +82,55 @@ layout: default
             dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
+
+
+        var subject = '{{page.subject}}';
+        var modalShownCookie = $.cookie("modalshown");
+        var modalShown = false;
+        if (modalShownCookie != undefined && modalShownCookie == 'true') {
+          console.log("modalshown cookie is TRUE!");
+          modalShown = true;
+        }
+        function isScrolledIntoView(elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+
+            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
+
+        $(window).on('scroll', function(e) {
+          if(isScrolledIntoView($('#enjoy')) && modalShown == false && subject == 'hadoop') {
+            modalShown = true;
+            $.cookie('modalshown', 'true', {expires: 30, path: '/'});
+            $("#surveyModal").modal();
+          }
+        })
+
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
+</div>
+
+<!-- Modal -->
+<div id="surveyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1 id="myModalLabel">Thanks for Reading!</h1>
+  </div>
+  <div class="modal-body">
+    <img src="/img/colorful_tape_drives_640.jpg" alt="" />
+    <small><a href="http://www.flickr.com/photos/28156071@N00/5900040703">(Image from 'Don DeBold' on flickr)</a></small>
+    <p>I'm doing some market research for a Hadoop analytics product.</p>
+    <p>If you found this article useful, I'd appreciate it if you could complete my survey.</p>
+    <p>Thanks in advance!</p>
+  </div>
+  <div class="modal-footer">
+      <a href="https://docs.google.com/forms/d/1slYV1QeBMiARyY7RryA2akJnpLtk8ZW3BsGrSB8ATVk/viewform" class="btn btn-info">take the survey</a>
+  <a class="btn btn-danger" href="http://upload.wikimedia.org/wikipedia/en/a/a9/ScroogeFirst.jpg">no way, I'm a scrooge!</a>
+  </div>
 </div>

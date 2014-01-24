@@ -2,7 +2,7 @@
 title: Data Warehousing and Hadoop 2014 Survey
 layout: post
 description: A survey on data warehousing and Hadoop Deployments. Tell me what problems are you having - I'd love to help you fix them.
-subject: hadoop
+subject: personal
 tags:
 - data warehouse
 - hadoop

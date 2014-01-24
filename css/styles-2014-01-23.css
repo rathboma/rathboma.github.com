@@ -62,9 +62,7 @@ div.maincontent {
 }
 
 div.post {
-  padding-bottom:10px;
   border-bottom: solid 1px #eee;
-  margin-bottom:25px;
 }
 
 div.post h1 {
@@ -203,6 +201,28 @@ ol li ul {
   margin-bottom:15px;
 }
 
+/*.modal {
+  position: absolute;
+}
+*/
+
+.modal h1 {
+  margin:0;
+}
+.modal-body {
+  max-height:450px;
+}
+
+.modal-body img {
+  margin-bottom:10px;
+}
+
+.research {
+  padding:20px;
+  background-color:#333;
+  color:white;
+  border-radius:5px;
+}
 
 /*BUTTONS*/
 
