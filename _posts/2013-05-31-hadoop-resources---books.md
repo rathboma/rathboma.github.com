@@ -3,6 +3,7 @@ title: 15+ Great Books for Hadoop
 layout: post
 description: A compilation of books for Hadoop and related projects (hive, pig, hbase, etc).
 subject: hadoop
+books: true
 tags:
 - hadoop
 - books

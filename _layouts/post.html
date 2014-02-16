@@ -18,6 +18,13 @@ layout: default
     </span>
       </p>
   {{ content }}
+  {% if page.subject == "hadoop" and page.books == null %}
+    <div class="books">
+      <h1>Further Reading</h1>
+
+      <p>There are lots of good Hadoop books on the market covering a variety of topics. Here is <a href="/2013/05/31/hadoop-resources---books.html">a fairly comprehensive list of books</a>, complete with a high level summary for each.</p>
+    </div>
+  {% endif %}
   <div class="share">
     <p>
       <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{site.url}}{{page.url}}" class="btn btn-facebook"><i class="fa fa-facebook"></i>Share</a> 
