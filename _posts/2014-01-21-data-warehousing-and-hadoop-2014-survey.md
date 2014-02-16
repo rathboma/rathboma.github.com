@@ -25,4 +25,4 @@ I want to help organizations make the most of their analytics and reporting infr
 If you have two minutes, your input would be very valuable. I will happily share the outcome of the survey with you if you are interested.
 
 
-[Click here for the survey.](https://docs.google.com/forms/d/1slYV1QeBMiARyY7RryA2akJnpLtk8ZW3BsGrSB8ATVk/viewform)
+[Click here for the survey.](https://docs.google.com/forms/d/11mgsBDhQ0xV0BXeoHoAuucp0U9uzSY98PPo4xbjbaHk/viewform)
