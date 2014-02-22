@@ -17,6 +17,9 @@ tags:
 ---
 If you want to learn more about Hadoop there are many resources at your disposal, one such resource is books. I keep a list of Hadoop books privately, so I thought I'd put it on-line to save other people having to do the same research
 
+### Feb 22nd 2014 - Updated
+3 new books added to the list!
+
 ## Books for Hadoop & Map Reduce
 
 - [Hadoop: The Definitive Guide by Tom White][hadoop-guide]
@@ -59,8 +62,17 @@ If you want to learn more about Hadoop there are many resources at your disposal
 
   Released July 2013 this book promises to guide readers through writing and testing Cascading based workflows. This is one of the few books written about higher level Map Reduce frameworks, so I'm excited to give it a read.
 
+- [Apache Hadoop Yarn by Arun Murthy et al.](http://www.amazon.com/dp/0321934504?tag=matratsblo-20)
 
-## Books for Other Hadoop Projects
+  A front to back guide to YARN, the next generation task management layer for Hadoop. This book is written (in part) by the YARN project founder, and the project lead.
+
+- [Instant Map Reduce Patterns by Srinath Perera](http://www.amazon.com/dp/1782167706?tag=matratsblo-20)
+
+  This book is built around seven map reduce 'recipes' to learn from. It aims to be a consise, practical guide to get you coding.
+
+
+
+## Books for related projects
 - [Programming Hive by Edward Capriolo, Dean Wampler & Jason Rutherglen][programming-hive]
   
   A detailed guide for understanding, running, debugging, and extending Hive
@@ -76,6 +88,10 @@ If you want to learn more about Hadoop there are many resources at your disposal
 - [Mahout in Action by Sean Owen, Robin Anil, Ted Dunning & Ellen Friedman][mahout]
   
   Apache Mahout is a set of machine learning libraries for Hadoop. This book provides a hands-on introduction and some sample use-cases.
+
+- [Fast data processing with Spark by Holden Karau](http://www.amazon.com/dp/1782167064?tag=matratsblo-20)
+
+  Holden walks through the ins and outs of Apache Spark including set up, interactive querying, and job deployment. Fun fact - I used to work with Holden, he's a super smart guy so I'm sure this book is excellent.
 
 ## Bonus
 
