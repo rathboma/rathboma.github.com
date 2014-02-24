@@ -6,6 +6,11 @@ body {
   background-color: #eee;
 }
 
+.container-fluid {
+  max-width:1000px;
+  margin:auto;
+}
+
 li {
   line-height:26px;
 }
