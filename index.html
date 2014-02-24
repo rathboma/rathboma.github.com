@@ -1,86 +1,64 @@
 ---
-layout: default
-title: Home
+layout: basic
+title: Rathboma (Matthew Rathbone)
+description: I'm a systems engineer and entrepreneur specializing in data accessibility, automation, and distributed systems. I run a meetup group, talk at conferences, and make the occasional Android app.
 ---
-<h1 class="top-heading">Latest Articles</h1>
-<div class="postlist">
-  {% for post in site.posts %}
-    <div class="post-highlight">
-      <h2><a href="{{post.url}}">{{post.title}}</a></h2>
-      <p class="subtitle">{{ post.date | date: "%Y-%m-%d"}} in <a href="/archive/topics.html#{{post.subject}}">{{post.subject | capitalize}}</a></p>
-      <p class="description">{{post.description}} <a href="{{post.url}}">Read More</a></p>
+
+<div class="bigheader">
+  <div class="container-fluid">
+    <div class="hero-unit">
+      <h1>Hello.</h1>
+      <p class="lead">{{page.description}}</p>
+      <p>My wife Alexandra should take credit for most of my productivity.</p>
     </div>
-  {% endfor %}
-  <!-- <table class="table table-striped table-condensed">
-    <thead>
-      <tr>
-        <th style="width:100px;">Date</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for post in site.posts %}
-        <tr>
-          <td>{{ post.date | date: "%Y-%m-%d"}}</td>
-          <td><a href="{{ post.url }}">{{ post.title }}</a></td>
-        </tr>
-      {% endfor %}  
-    </tbody>
-  </table> -->
+  </div>
 </div>
 
+<div class="frontpage-stuff">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="stuff-wrapper">
+        <h2><i class="fa fa-book"></i> Articles</h2>
+          <div class="postlist">
+            <dl>
+              {% for post in site.posts limit: 3 %}
+                <dt><a href="{{post.url}}">{{post.title}}</a></dt>
+                <dd class="post-meta">{{post.date | date: "%Y-%m-%d"}} in <a href="/archive/topics.html#{{post.subject}}">{{post.subject | capitalize}}</a></dd>
+              {% endfor %}    
+            </dl>
+            <a href="/archive">more</a>
+          </div>
+        </div>
 
-<!-- 
-<div class="postlist">
-  {% for post in paginator.posts %}
-    {% capture subject %}{% if post.subject %}{{post.subject}}{% else %}general{% endif %}{% endcapture %}
-    <div class="post">
-      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-      <p class="subtitle">{{ post.date | date: "%B %d %Y" }}, topic: <a class="badge" href="/archive/topics.html#{{subject}}">{{subject}}</a></p>
-      {{ post.content }}
+      </div>
+      <div class="span4">
+        <div class="stuff-wrapper">
+          <h2><i class="fa fa-group"></i> Community</h2>
+          <dl>
+            <dt><a href="http://www.meetup.com/bigdatamadison/">Big Data Madison</a></dt>
+            <dd>Data infrastructure meetup group I run in coordination with Pitt Fagan</dd>
+            <dt><i class="fa fa-youtube-play"></i> <a href="http://www.youtube.com/watch?v=V07Kuo41A8M">Building and improving products with Hadoop</a></dt>
+            <dd>Hadoop Summit, San Jose CA, June 2013</dd>
+            <dt><i class="fa fa-youtube-play"></i> <a href="http://www.youtube.com/watch?v=jCzTD2Fpb-Y">Integrating batch processing into your app</a></dt>
+            <dd>Madison Ruby, Madison WI, August 2012</dd>
+          </dl>
+        </div>
+
+      </div>
+      <div class="span4">
+        <div class="stuff-wrapper">
+          <h2><i class="fa fa-code"></i> Projects</h2>
+          <dl>
+            <dt><i class="fa fa-github"></i> <a href="https://github.com/rathboma">Assored Github projects</a></dt>
+            <dd>Mostly libraries and example code for Hadoop.</dd>
+            <dt><i class="fa fa-android"></i> <a href="https://play.google.com/store/apps/details?id=com.matthewrathbone.simplecheckin">Simple Check-In for Foursquare</a></dt>
+            <dd>Check in on Foursquare in 5 seconds.</dd>
+            <dt><i class="fa fa-android"></i> <a href="https://play.google.com/store/apps/details?id=com.matthewrathbone.wificheckin">Wi-Fi Check-in for Foursquare</a></dt>
+            <dd>Automatically check-in to Foursquare when you connect to wi-fi.</dd>
+          </dl>
+        </div>
+      </div>
     </div>
-  {% endfor %}
+  </div>  
 </div>
-
-
-
-<div id="post-pagination" class="pagination">
-
-  
-
-  <ul class="pages">
-    {% if paginator.previous_page %}
-      <li class="previous">
-        {% if paginator.previous_page == 1 %}
-          <a href="/">prev</a>
-        {% else %}
-          <a href="/page{{paginator.previous_page}}">prev</a>
-        {% endif %}
-      </li>
-    {% else %}
-      <li class="disabled"><a href="#">prev</a></li>
-    {% endif %}
-    {% if paginator.page == 1 %}
-      <li class="active"><a href="#">1</a></li>
-    {% else %}
-      <li><a href="/">1</a></li>
-    {% endif %}
-
-    {% for count in (2..paginator.total_pages) %}
-
-      {% if count == paginator.page %}
-        <li class="active"><a href="#">{{count}}</a></li>
-      {% else %}
-        <li><a href="/page{{count}}">{{count}}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if paginator.next_page %}
-      <li><a href="/page{{paginator.next_page}}">next</a></li>
-    {% else %}
-      <li class="disabled"><a href="#">next</a></li>
-    {% endif %}  
-  </ul>
-
-  
-
-</div> -->

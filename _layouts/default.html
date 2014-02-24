@@ -1,92 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{page.description}}">
-  <meta name="tags" content="{{page.tags | join: ", "}}">
-  <title> {% if page.title %} {{ page.title }} | {% endif %} Matthew Rathbone </title>
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-  <!-- <link rel="stylesheet" href="/css/pygment.css" /> -->
-  <link rel="stylesheet" href="/css/zenburn.css">
-  <link rel="stylesheet" href="/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/css/styles-2014-01-23.css" />
-  <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
-  <script type="text/javascript" src="/js/jquery-1.10.2.min.js" ></script>
-  <script type="text/javascript" src="/js/jquery.cookie.js" ></script>
-  <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
-</head>
-<body>
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="/">Home</a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/archive">Archive</a></li>
-          <li><a href="/archive/topics.html">Topics</a></li>
-          <li><a href="/feed.xml">RSS</a></li>
+---
+layout: basic
+---
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="maincontent">
+        {{content}}
+      </div>
+    </div>
+    <div class="span4">
+      <div class="maincontent sidebar">
+        <h1 class="top-heading">About</h1>
+        <img class="img-polaroid" src="http://www.gravatar.com/avatar/d7d1ac2de76fe378ce8d6553d63ad063.png?s=80" alt="me" />  
+        <p>British born software engineer living in <s>London</s> <s>New York</s> Madison WI.</p>
+        <p>I work on systems architecture at <a href="http://shoutlet.com">Shoutlet</a>.</p>
+        <p>I am generally inspired at all times by wife Alexandra.</p>
+        <p>Opinions on this website are my own.</p>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="http://twitter.com/rathboma">twitter</a></li>
+          <li><a href="http://github.com/rathboma">github</a></li>
+          <li><a href="http://www.linkedin.com/profile/view?id=10238652">linkedIn</a></li>
         </ul>
-        <h2 class="muted"><a href="/">Matthew Rathbone</a></h2>
-      </div>
-    </div>  
-    </div>
-  
-    <div class="row-fluid">
-      <div class="span8">
-        <div class="maincontent">
-          {{content}}
-        </div>
-      </div>
-      <div class="span4">
-        <div class="maincontent sidebar">
-<!--             <h2>Subscribe</h2>
-            <form action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="input-block-level" id="mce-EMAIL" placeholder="email address" required />
-                <button name="subscribe" id="mc-embedded-subscribe" class="btn ">Subscribe</button>
-            </form>
-            <p><a href="/feed.xml" class="subscribe-link">or via my rss feed</a></p>
- -->         <h1 class="top-heading">About</h1>
-            <img class="img-polaroid" src="http://www.gravatar.com/avatar/d7d1ac2de76fe378ce8d6553d63ad063.png?s=80" alt="me" />  
-          <p>British born software engineer living in <s>London</s> <s>New York</s> Madison WI.</p>
-          <p>I work on systems architecture at <a href="http://shoutlet.com">Shoutlet</a>.</p>
-          <p>I am generally inspired at all times by wife Alexandra.</p>
-          <p>Opinions on this website are my own.</p>
-          <h3>Get in touch</h3>
-          <ul>
-            <li><a href="http://twitter.com/rathboma">twitter</a></li>
-            <li><a href="http://github.com/rathboma">github</a></li>
-            <li><a href="http://www.linkedin.com/profile/view?id=10238652">linkedIn</a></li>
-          </ul>
-        </div>
-      </div>
       </div>
     </div>
-    
-    <div class="footer">
-      <p><a href="http://twitter.com/rathboma">twitter</a> /
-         <a href="http://github.com/rathboma">github</a>
-         <span class="right">Copyright Matthew Rathbone 2013, All Rights Reserved.</span></p>
-    </div>
-    <footer>
-      
-    </footer>
   </div>
-
-<script type="text/javascript">
-  
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-712293-13']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
-</html>
+</div>
