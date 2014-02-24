@@ -59,6 +59,7 @@ div.bigheader {
   background-repeat:no-repeat;
   background-position:center bottom;
   min-height:400px;
+  background-color: black;
 }
 
 .bigheader .hero-unit {
