@@ -41,6 +41,7 @@
    </div>
  </div>
 
+  <div id="pixel"></div>
  <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -52,6 +53,12 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+
+  $(document).ready(function(){
+    var tag = new Date().getTime();
+    var src = "http://os1.matthewrathbone.com/pixel?tag=" + tag;
+    $('#pixel').append('<img id="pxl" src="' + src +'" />')
+  });
 
 </script>
 </body>
