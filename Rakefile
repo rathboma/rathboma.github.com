@@ -19,7 +19,7 @@ def ask(question)
 end
 
 
-desc "create a new post"
+desc "create a new post, and puts it in the drafts folder"
 
 task :new do
   title = ask("title")
