@@ -133,7 +133,7 @@ example.
 * 2013-11-03: [scoobi walkthrough published][scoobi-walkthrough]
 
 [1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
-[2]: /2013/02/20/Real-World-Hadoop---Implementing-Left-Outer-Join-in-Hive.html
+[2]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
 [3]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
 [hadoop-book]:http://www.amazon.com/gp/product/1449311520/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449311520&linkCode=as2&tag=matratsblo-20
 [hive-book]: http://www.amazon.com/gp/product/1449319335/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449319335&linkCode=as2&tag=matratsblo-20
