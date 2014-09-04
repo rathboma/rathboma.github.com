@@ -8,11 +8,26 @@ layout: cv
 
 ## Overview
 
-I am a seasoned software engineer with experience in offline data processing, and back-end web technologies. I believe that constant measurement, instrumentation, automation, and experimentation are fundamental to building a successful product that can easily evolve to meet the needs of its users. 
+I am passionate about leading teams to build top quality software products. Measurement, instrumentation, automation, and experimentation are at the center of my product development philosophy.
 
 ## Professional Experience
 
-### Foursquare, New York, NY <span class="date">Nov 2010 - Present</span>
+### Beekeeper Data, Madison WI <span class="date">Aug 2014 - Present</span>
+
+#### Co-founder and CEO
+
+- Beekeeper Data lets executives and non-technical staff quickly ask many different questions of their data.
+
+### Shoutlet, Madison, WI <span class="date">Sep 2013 - Aug 2014</span>
+
+#### Lead Architect and Engineering Manager
+
+- Designed distributed software systems and managed a team of 9 engineers.
+- Constructed and led a team to design, build, and scale a set of internal API services for business data.
+- Pushed engineers to embrace testing, monitoring, and automation
+
+### Foursquare, New York, NY <span class="date">Nov 2010 - Sep 2013</span>
+
 #### Software Engineer - Data Infrastructure
 
 - Built and supported production batch data processing infrastructure using Hadoop.
@@ -22,6 +37,7 @@ I am a seasoned software engineer with experience in offline data processing, an
 - Led an initiative to integrate a standardized event-logging system across all 5 major clients.
 
 ### Drop.io, Brooklyn, NY <span class="date">May 2010 - Nov 2010</span>
+
 #### Software Engineer
 
 - Built a high throughput real-time event-data collection and reporting system.
@@ -29,11 +45,13 @@ I am a seasoned software engineer with experience in offline data processing, an
 - The company was acquired by Facebook in November 2010.
 
 ### New York University, New York, NY <span class="date">Jan 2010 - May 2010</span>
+
 #### Grader - Graduate Operating Systems
 
 - Graded programming assignments in linking, memory paging, resource allocation, etc.
 
 ### Threadneedle Asset Management, London, UK <span class="date">Aug 2007 - Jun 2009</span>
+
 #### Software Engineer - Front Office
 
 - Lead development of a portfolio management system used to manage fund assets.
@@ -41,16 +59,14 @@ I am a seasoned software engineer with experience in offline data processing, an
 - Worked with a team to create common order processing APIs. The API's were used across multiple projects.
 
 ### UBS Investment Bank, London, UK <span class="date">Oct 2006 - Aug 2007</span>
+
 #### Business Change Specialist
 
 - Provided structured analysis of internal statistics and processes in co-ordination with global management teams.
 - Played a lead role in the development and deployment of management information systems.
 
-<div class="pagebreak" >
-  
-</div>
-
 ### UBS Securities LLC, New York, NY <span class="date">Sep 2005 - Sep 2006</span>
+
 #### Analyst
 
 - Led the data collection and filing of 144a class action lawsuit claims.
@@ -59,6 +75,7 @@ I am a seasoned software engineer with experience in offline data processing, an
 ## Education
 
 ### Courant Institute of New York University, New York, NY <span class="date">2009 - 2011</span>
+
 #### MS in Computer Science
 
 - Awarded the [2012 Matthew Smosna Prize][prize] for academic achievement.
@@ -66,6 +83,7 @@ I am a seasoned software engineer with experience in offline data processing, an
 - My machine learning project was featured in [New Scientist Magazine][new-scientist].
 
 ### Northumbria University, Newcastle-upon-Type, UK <span class="date">2001 - 2005</span>
+
 #### LLB Law Exempting - 2:2
 
 - Thesis: "An international study of corporate manslaughter law."
@@ -79,20 +97,24 @@ I am a seasoned software engineer with experience in offline data processing, an
 - Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers.
 
 ### Big Data Madison Meetup <span class="date">Jan 2013 - Present</span>
+
 #### Organizer
 
 - [Meetup group][big-data] focusing on big data technologies.
 - Arranging speakers, organizing meetups, finding funding, etc.
 
 ### Media Arts and Game Development @ UW-Whitewater <span class="date">2011 - Present</span>
+
 #### Advisory Board Member
 
 - Advise on curriculum & help judge student works at the annual expo.
 
 ### NYU Masters Association of Computer Science <span class="date">Sep 2009 - May 2011</span>
+
 ####  President / Officer
 
 ### Threadneedle Charity Committee <span class="date">2008 - 2009</span>
+
 #### Board Member
 
 - Coordinate with charities, encourage staff participation, arrange funds.
