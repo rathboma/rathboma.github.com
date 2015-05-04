@@ -7,7 +7,7 @@ body {
 }
 
 .container-fluid {
-  max-width:1000px;
+  max-width:1400px;
   margin:auto;
 }
 
@@ -70,8 +70,9 @@ div.bigheader {
 .bigheader .hero-unit {
   background: none;
   color:white;
+  margin:auto;
   margin-top:50px;
-
+  max-width:1000px;
 }
 
 .frontpage-stuff {
