@@ -26,15 +26,16 @@ task :new do
   subject = ask("subject")
   dt = Time.now.strftime("%Y-%m-%d")
   system("mkdir -p drafts")
-  filename = "drafts/#{dt}-#{title.downcase.gsub(/\s+/, "-")}.md"
+  filename = "_drafts/#{dt}-#{title.downcase.gsub(/\s+/, "-")}.md"
   File.open(filename, 'w') { |file|
     file.puts template.gsub("TITLE", title).gsub("SUBJECT", subject)
   }
 end
 
 
+desc "publish a draft"
 task :publish do
-  docs = Dir.entries('drafts/') - ['.', '..']
+  docs = Dir.entries('_drafts/') - ['.', '..']
   puts "which would you like to move to _posts?"
   docs.each_with_index do |item, idx|
     puts "#{idx} - #{item}"
@@ -43,6 +44,6 @@ task :publish do
   selection = ask("enter your selection")
   exit(0) if selection == 'x'
   selection = selection.to_i
-  FileUtils.mv("drafts/#{docs[selection]}", "_posts/")
+  FileUtils.mv("_drafts/#{docs[selection]}", "_posts/")
   puts("-> _posts/#{docs[selection]}")
 end

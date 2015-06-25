@@ -134,8 +134,15 @@ div.post h1 {
 div.post p.subtitle {
   color:#888;
   font-size: 0.9em;
-  padding-bottom:15px;
+  padding-bottom:5px;
   margin-bottom:0px;
+}
+
+div.post p.coauthor {
+  text-align: left;
+  padding-bottom: 10px;
+  color: #888;
+  font-style: italic;
 }
 
 div.post img {
@@ -291,6 +298,14 @@ ol li ul {
   background-color:#333;
   color:white;
   border-radius:5px;
+}
+
+.research form {
+  margin-bottom: 0
+}
+.research form .help-block {
+  color: #aaa;
+  margin-bottom:0;
 }
 
 /*BUTTONS*/
