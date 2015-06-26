@@ -154,6 +154,7 @@ Hadoop MapReduce comes with two primary services for scheduling and running MapR
 When running, each TT registers itself with the JT and reports the number of 'map' and 'reduce' slots it has available, the JT keeps a central registry of these across all TTs and allocates them to jobs as required. When a task is completed, the TT re-registers that slot with the JT and the process repeats.
 
 Many things can go wrong in a big distributed system, so these services have some clever tricks to ensure that your job finishes successfully:
+
 * **Automatic retries** - if a task fails, it is retried N times (usually 3) on different task trackers.
 * **Data locality optimizations** - if you co-locate a TT with a HDFS Datanode (which you should) it will take advantage of data locality to make reading the data faster
 * **Blacklisting a bad TT** - if the JT detects that a TT has too many failed tasks, it will blacklist it. No tasks will then be scheduled on this task tracker.
