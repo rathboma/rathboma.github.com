@@ -10,6 +10,15 @@ tags:
 - api
 - extending hive
 ---
+
+> This is part 1/3 in my [tutorial series for extending Apache Hive](/2015/07/27/ultimate-guide-to-writing-custom-functions-for-hive.html). 
+> 
+> * [Overview](http://blog.matthewrathbone.com/2015/07/27/ultimate-guide-to-writing-custom-functions-for-hive.html)
+> * Article 1 - you're reading it!
+> * [Article 2 - Guide to Table Functions (UDTF)](http://beekeeperdata.com/posts/hadoop/2015/07/26/Hive-UDTF-Tutorial.html)
+> * Article 3 - Guide to Aggregate Functions (UDAF) (coming soon)
+> 
+
 There are two different interfaces you can use for writing UDFs for Apache Hive. One is really simple, the other... not so much.
 
 The simple API (`org.apache.hadoop.hive.ql.exec.UDF`) can be used so long as your function reads and returns primitive types. By this I mean basic Hadoop & Hive writable types - Text, IntWritable, LongWritable, DoubleWritable, etc.
