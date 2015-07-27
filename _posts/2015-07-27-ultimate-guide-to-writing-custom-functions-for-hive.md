@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Hive customization tutorial series"
+date: 2015-07-27T16:44:12-05:00
 description: "How to implement all sorts of custom functions for hive, including complex functions like 'sum()', 'count()', and 'explode()'"
 subject: hadoop
 layout: post
