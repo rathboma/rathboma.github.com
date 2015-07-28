@@ -18,12 +18,15 @@ layout: default
       <a href="http://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}&title={{page.title}}&summary={{page.description}}&source=rathboma" class="btn btn-linkedin" target="_blank"><i class="fa fa-linkedin-square"></i>Post</a>  
     </span>
   </p>
+
+<!-- COAUTHOR -->
   {% if page.coauthor %}
     <p class="coauthor">
       This article was co-authored by <a href="{{page.coauthor.link}}">{{page.coauthor.name}}</a>
     </p>
-    
   {% endif %}
+
+
   {{ content }}
   {% if page.subject == "hadoop" and page.books == null %}
     <div class="books">

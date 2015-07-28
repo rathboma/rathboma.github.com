@@ -4,10 +4,11 @@ body {
   font-size:16px;
   line-height:26px;
   background-color: #eee;
+  font-family: 'Lato', sans-serif !important; 
 }
 
 .container-fluid {
-  max-width:1400px;
+  max-width:1000px;
   margin:auto;
 }
 
@@ -16,6 +17,15 @@ li {
 }
 p {
   margin-bottom:13px;
+}
+
+a {
+  color: #333;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 h1 {
@@ -34,6 +44,15 @@ h3 {
   text-transform: uppercase;
 }
 
+pre code {
+  font-size:1.1em;
+  white-space: pre;
+  overflow-x: auto;
+  word-wrap: normal;
+  display:block;
+  padding-bottom:5px;
+}
+
 div.header {
   /*margin-bottom: 30px;*/
   /*border-bottom: solid 1px #ccc;*/
@@ -45,8 +64,8 @@ div.header ul.nav {
 }
 
 div.header h2.muted a {
-  color: rgb(15, 121, 136);
-  /*text-transform: uppercase;*/
+  color: #333;
+  text-transform: uppercase;
   font-size:1em;
 }
 
@@ -55,7 +74,7 @@ div.header h2.muted a:hover {
 }
 
 div.header ul.nav a {
-  color:#0f7988;
+  color:#333;
 }
 
 div.bigheader {
@@ -135,7 +154,7 @@ div.post p.subtitle {
   color:#888;
   font-size: 0.9em;
   padding-bottom:5px;
-  margin-bottom:0px;
+  margin-bottom:20px;
 }
 
 div.post p.coauthor {
@@ -201,17 +220,37 @@ div#related span.related_date {
 }
 
 
+div.sidebar h1 {
+  line-height: 1em;
+  font-weight: bold;
+  font-size:2.2em;
+}
+
+div.sidebar p {
+  line-height: 1.5em;
+}
+
 div.sidebar a.subscribe-link {
   font-size: 0.8em;
   float: right;
 }
 
 div.sidebar img {
-  float:left;
-  
-  opacity:0.9;
-  margin-top:6px;
-  margin-right:10px;
+  border-radius: 50%;
+  margin-bottom: 10px
+
+}
+
+div.sidebar a.author-social {
+  display: block;
+  color:inherit;
+  font-weight: bold;
+  font-size:1.1em;
+}
+
+div.sidebar a.author-social:hover {
+  text-decoration: none;
+  color: #666;
 }
 
 div.footer {

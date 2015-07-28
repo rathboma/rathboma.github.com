@@ -1,6 +1,7 @@
 highlighter: pygments
 url: http://blog.matthewrathbone.com
 name: Matthew Rathbone's website
+version: 1.2
 description: Blog posts and articles about Hadoop and other things
 paginate: 5
 exclude: ['ideas', 'drafts']
