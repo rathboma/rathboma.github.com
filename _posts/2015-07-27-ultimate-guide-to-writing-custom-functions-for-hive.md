@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hive customization tutorial series"
+title: "Apache Hive Customization Tutorial Series"
 date: 2015-07-27T16:44:12-05:00
 description: "How to implement all sorts of custom functions for hive, including complex functions like 'sum()', 'count()', and 'explode()'"
 subject: hadoop
@@ -14,9 +14,9 @@ tags:
 - java
 ---
 
-[Apache Hive][hive] is a SQL-on-Hadoop framework that levereges both [MapReduce][mapreduce] and [Tez][tez] to execute queries. It is possible to extend hive with your own code. Hive has a very flexible, so you can write code to do a whole bunch of things, unfortunately the flexibility comes at the expense of complexity.
+[Apache Hive][hive] is a SQL-on-Hadoop framework that levereges both [MapReduce][mapreduce] and [Tez][tez] to execute queries. It is possible to extend hive with your own code. Hive has a very flexible API, so you can write code to do a whole bunch of things, unfortunately the flexibility comes at the expense of complexity.
 
-There are three types of *function* APIs in Hive, UDF, UDTF, and UDAF, and below I provide guides to each group:
+There are three types of *function* APIs in Hive, UDF, UDTF, and UDAF which all do very different things. Only by having a solid grasp of all of them will you truly be able to bend Hive to your will. Below are links to tutorials for each function type.
 
 ## Hive Tutorials
 
