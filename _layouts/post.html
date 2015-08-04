@@ -45,16 +45,35 @@ layout: default
 </div>
 
 
-<h1>Enjoy this Article?</h1>
+<h1 id="enjoy">Enjoy this Article? Subscribe for more</h1>
 <div class="research">
-  <p><strong><i class="fa fa-envelope-o"></i> Subscribe</strong> to get more articles like this (and more exclusive content) via email.</p>
-  <form action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-    <div class="input-append">
-      <input type="email" value="" name="EMAIL" class="email-input" id="mce-EMAIL" placeholder="email address" required />
-      <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-info">Subscribe</button>
-    </div>
-    <span class="help-block">I will not share your details with third parties</span>
-  </form>
+    <div class="row-fluid">
+      <div class="span6">
+        <ul>
+          <li>Hadoop tips</li>
+          <li>Engineering tutorials</li>
+        </ul>
+      </div>
+      <div class="span6">
+        <ul>
+          <li>Open source code</li>
+          <li>Book Reviews</li>
+        </ul>        
+      </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <form class="signup" action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+              <div class="controls">
+              <input type="email" value="" name="EMAIL" class="email-input span12" id="mce-EMAIL" placeholder="email address" required />
+              <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-success span12">Subscribe</button>
+              </div>
+            <span class="help-block">At most one email a month. Your privacy guaranteed - I will not share your details.</span>
+          </form>
+        </div>
+        
+      </div>
+
 </div>
 <!-- Begin MailChimp Signup Form -->
 
@@ -100,3 +119,78 @@ layout: default
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
 </div>
+
+
+<!-- Modal -->
+<div id="surveyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1 id="myModalLabel">Enjoy this post? Subscribe for more</h1>
+  </div>
+  <div class="modal-body">
+    <img src="/img/colorful_tape_drives_640.jpg" alt="" />
+    <small><a href="http://www.flickr.com/photos/28156071@N00/5900040703">(Image from 'Don DeBold' on flickr)</a></small>
+    <div class="row-fluid">
+      <div class="span6">
+        <ul>
+          <li>Hadoop tips</li>
+          <li>Engineering tutorials</li>
+        </ul>
+      </div>
+      <div class="span6">
+        <ul>
+          <li>Open source code</li>
+          <li>Book Reviews</li>
+        </ul>        
+      </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <form class="signup" action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+              <div class="controls">
+              <input type="email" value="" name="EMAIL" class="email-input span12" id="mce-EMAIL" placeholder="email address" required />
+              <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-success span12">Subscribe</button>
+              </div>
+            <span class="help-block">At most one email a month. Your privacy guaranteed - I will not share your details.</span>
+          </form>
+        </div>
+        
+      </div>
+
+  </div>
+</div>
+
+
+<script>
+  
+        var subject = '{{page.subject}}';
+        var modalShownCookie = $.cookie("modalshown");
+        var modalShown = false;
+        if (modalShownCookie != undefined && modalShownCookie == 'true') {
+          console.log("modalshown cookie is TRUE!");
+          // modalShown = true;
+        }
+        function isScrolledIntoView(elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+
+            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
+
+        $(window).on('scroll', function(e) {
+          if(isScrolledIntoView($('#enjoy')) && modalShown == false && subject == 'hadoop') {
+            modalShown = true;
+            $.cookie('modalshown', 'true', {expires: 1, path: '/'});
+            $("#surveyModal").modal();
+          }
+        });
+        $("#closemodal").click(function(){
+          $("#surveyModal").modal('hide');
+        });
+</script>
+
+
+
