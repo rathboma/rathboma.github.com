@@ -44,7 +44,13 @@ h3 {
   text-transform: uppercase;
 }
 
-pre code {
+.post code {
+  word-wrap: break-word;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.post pre code {
   font-size:1.1em;
   white-space: pre;
   overflow-x: auto;
@@ -171,6 +177,14 @@ div.post img {
   display:block;
   margin:auto;
   border: solid 2px #eee;
+}
+
+.post a {
+  border-bottom: solid 1px #ccc;
+}
+
+.post a:hover {
+  text-decoration: none;
 }
 
 div#related {
