@@ -53,6 +53,10 @@ pre code {
   padding-bottom:5px;
 }
 
+.nomargin {
+  margin: 0 !important;
+}
+
 div.header {
   /*margin-bottom: 30px;*/
   /*border-bottom: solid 1px #ccc;*/
@@ -210,12 +214,11 @@ div#related span.related_date {
   margin-top:0;
 }
 
-// Block level inputs
+
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 28px;        // Make inputs at least the height of their button counterpart
-  .box-sizing(border-box); // Makes inputs behave like true block-level elements
+  min-height: 28px;        /*// Make inputs at least the height of their button counterpart*/
 }
 
 
