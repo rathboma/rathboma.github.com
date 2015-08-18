@@ -16,7 +16,7 @@ tags:
 > * [Overview](http://blog.matthewrathbone.com/2015/07/27/ultimate-guide-to-writing-custom-functions-for-hive.html)
 > * Article 1 - you're reading it!
 > * [Article 2 - Guide to Table Functions (UDTF)](http://beekeeperdata.com/posts/hadoop/2015/07/26/Hive-UDTF-Tutorial.html)
-> * Article 3 - Guide to Aggregate Functions (UDAF) (coming soon)
+> * [Article 3 - Guide to Aggregate Functions (UDAF)](http://beekeeperdata.com/posts/hadoop/2015/08/17/hive-udaf-tutorial.html)
 > 
 
 There are two different interfaces you can use for writing UDFs for Apache Hive. One is really simple, the other... not so much.

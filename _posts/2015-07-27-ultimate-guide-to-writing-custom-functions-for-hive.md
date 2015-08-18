@@ -40,7 +40,7 @@ Table functions are similar to UDF functions, but they can output both multiple 
 
 Aggregate functions can operate over an entire table at once to perform some sort of aggregation. This sounds confusing, but it's very useful in practice. Examples of [built-in aggregate functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-Built-inAggregateFunctions(UDAF)) include `sum()`, `count()`, `min()`, and `histogram_numeric()`
 
-<a href="#" class="btn btn-warning" disabled>Click here for my UDTF tutorial (coming soon!)</a>
+<a href="http://beekeeperdata.com/posts/hadoop/2015/08/17/hive-udaf-tutorial.html" class="btn btn-warning">Click here for my UDTF tutorial</a>
 
 [hive]:https://hive.apache.org/
 [mapreduce]:http://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html
