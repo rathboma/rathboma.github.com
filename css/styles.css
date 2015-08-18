@@ -367,6 +367,12 @@ ol li ul {
   border-radius:5px;
 }
 
+.research h2 {
+  font-size:1.8em;
+  font-weight: bold;
+  margin-top:0;
+}
+
 .research form {
   margin-bottom: 0
 }
@@ -376,6 +382,11 @@ ol li ul {
 }
 
 /*BUTTONS*/
+
+.btn {
+  padding-top: 8px;
+  padding-bottom:8px;
+}
 
 .share {
   text-align: right;
