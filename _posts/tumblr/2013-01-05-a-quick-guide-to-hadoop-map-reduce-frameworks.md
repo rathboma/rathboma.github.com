@@ -1,8 +1,3 @@
----
-published: false
----
-
---- 
 layout: post
 title: A Quick Guide to Hadoop Map-Reduce Frameworks
 subject: hadoop
