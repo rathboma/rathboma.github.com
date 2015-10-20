@@ -34,67 +34,68 @@ knowledge of programming to operate.
 
 ## List of Map Reduce Frameworks for each language
 
-### Any JVM Language
+| Java |
+| ---------------- |
+| Basic Map Reduce | [walkthrough][1] | [docs](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html) |
+| Cascading | [walkthrough][cascading-walkthrough]| [docs](http://cascading.org) |
+| Crunch | *coming soon* | [docs](https://github.com/cloudera/crunch) |
+{: .table.table-striped .table-fixed}
 
-* Basic Hadoop map-reduce 
-  * [documentation](http://hadoop.apache.org/docs/r0.20.2/mapred_tutorial.html)
-  * [code sample and walkthrough][1]
-  * [Hadoop Book][hadoop-book] on Amazon
+| Clojore |
+|---|
+| Cascalog | *coming soon* |[docs](https://github.com/cloudera/crunch) |
+{: .table.table-striped .table-fixed}
 
-### Java
+| Scala|
+|---|
+| Scrunch | *coming soon* |[docs](https://github.com/cloudera/crunch/tree/master/scrunch) |
+| Scalding | [walkthrough][scalding-walkthrough] | [docs](https://github.com/twitter/scalding) |
+| Scoobi | [walkthrough][scoobi-walkthrough] | [docs](https://github.com/NICTA/scoobi) |
+{: .table.table-striped .table-fixed}
 
-* Cascading ([documentation](http://www.cascading.org/))
-  * [Code sample and walkthrough][cascading-walkthrough]
-* Crunch ([documentation](https://github.com/cloudera/crunch))
+| Any Language |
+|--|
+| Hadoop Streaming | *coming soon* | [docs](http://hadoop.apache.org/docs/r0.15.2/streaming.html) |
+{: .table.table-striped .table-fixed}
 
-### Clojure
+| Ruby |
+| -- |
+| Wukong | *coming soon* | [docs](https://github.com/infochimps-labs/wukong) |
+| Cascading JRuby | *coming soon* | [docs](https://github.com/etsy/cascading.jruby) |
+{: .table.table-striped .table-fixed}
 
-* Cascalog ([documentation](https://github.com/nathanmarz/cascalog))
 
-### Scala
+| PHP (yes, really) |
+| --- |
+| HadooPHP | *coming soon* | [docs](https://github.com/dzuelke/HadooPHP) |
+{: .table.table-striped .table-fixed}
 
-* Scrunch ([documentation](https://github.com/cloudera/crunch/tree/master/scrunch))
-* Scalding ([documentation](https://github.com/twitter/scalding))
-	* [code sample and walkthrough][scalding-walkthrough]
-* Scoobi ([documentation](https://github.com/NICTA/scoobi))
-    * [code sample and walkthrough][scoobi-walkthrough]
+| Python |
+| --- |
+| MR Job | *coming soon* |[docs](https://github.com/Yelp/mrjob) |
+| Dumbo | *coming soon* | [docs](https://github.com/klbostee/dumbo) |
+| Hadooppy | *coming soon* | [docs](https://github.com/bwhite/hadoopy) |
+| Pydoop | *coming soon* | [docs](http://pydoop.sourceforge.net/docs/) |
+| Luigi | *coming soon* | [docs](https://github.com/spotify/luigi) |
+{: .table.table-striped .table-fixed}
 
-### Any Language \[low-med level\]
+| R |
+| --- |
+| RHadoop | *coming soon* | [docs](https://github.com/RevolutionAnalytics/RHadoop) |
+{: .table.table-striped .table-fixed}
 
-* hadoop-streaming ([documentation](http://hadoop.apache.org/docs/r0.15.2/streaming.html))
+| New Languages |
+| --- |
+| Hive | [walkthrough][2] | [docs](http://hive.apache.org/) |
+| Pig | [walkthrough][3] | [docs](http://pig.apache.org/) |
+{: .table.table-striped .table-fixed}
 
-### Ruby
 
-* Wukong ([documentation](https://github.com/infochimps-labs/wukong))
-* Cascading JRuby ([documentation](https://github.com/etsy/cascading.jruby))
+| Other |
+|---|
+| Spark | *coming soon* | [docs](http://spark.apache.org/) |
+{: .table.table-striped .table-fixed}
 
-### PHP
-
-* HadooPHP ([documentation](https://github.com/dzuelke/HadooPHP))
-
-### Python
-
-* MR Job ([documentation](https://github.com/Yelp/mrjob))
-* Dumbo ([documentation](https://github.com/klbostee/dumbo))
-* Hadooppy ([documentation](https://github.com/bwhite/hadoopy))
-* Pydoop ([documentation](http://pydoop.sourceforge.net/docs/))
-* Luigi ([documentation](https://github.com/spotify/luigi))
-
-### R
-
-* RHadoop ([documentation](https://github.com/RevolutionAnalytics/RHadoop))
-
-### Special Scripting Languages \[high level\]
-
-* Hive 
-  * [documentation](http://hive.apache.org/)
-  * [code sample and walkthrough][2]
-  * [Programming Hive - book on Amazon][hive-book]
-
-* Pig 
-  * [documentation](http://pig.apache.org/)
-  * [code sample and walkthrough][3]
-  * [Programming Pig - book on Amazon][pig-book]
 
 please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 

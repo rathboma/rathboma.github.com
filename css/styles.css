@@ -50,6 +50,14 @@ h3 {
   text-transform: uppercase;
 }
 
+table.table-fixed {
+  table-layout: fixed;
+}
+
+table.table-fixed th {
+  font-size:1.3em;
+}
+
 .post code {
   word-wrap: break-word;
   max-width: 100%;
