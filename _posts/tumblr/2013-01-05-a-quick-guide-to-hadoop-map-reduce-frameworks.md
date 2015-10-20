@@ -3,10 +3,10 @@ published: false
 ---
 
 --- 
-layout: post 
-title: A Quick Guide to Hadoop Map-Reduce Frameworks 
+layout: post
+title: A Quick Guide to Hadoop Map-Reduce Frameworks
 subject: hadoop
-description: A constantly expanding list of 12+ hadoop frameworks, with code examples and documentation links
+description: "A constantly expanding list of 12+ hadoop frameworks, with code examples and documentation links"
 tags: 
 - hadoop 
 - mapreduce 
