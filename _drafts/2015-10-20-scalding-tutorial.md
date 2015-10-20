@@ -10,6 +10,11 @@ tags:
 - hive
 - hadoop
 - Cascading
+image:
+  url: /img/simplify.jpg
+  author:
+    name: Paul Dineed
+    url: https://www.flickr.com/photos/pauldineen/
 ---
 
 

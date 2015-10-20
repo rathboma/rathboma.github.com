@@ -195,6 +195,16 @@ div.post img {
   border: solid 2px #eee;
 }
 
+div.post .header-img img {
+  width:100%;
+  padding:0;
+  border:0;
+}
+
+div.post .header-img p.muted a {
+  color: inherit;
+}
+
 div.post img.inline-img {
   float:left;
   max-width: 150px;

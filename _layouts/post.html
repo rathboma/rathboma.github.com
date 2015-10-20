@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 {% capture subject %}{% if page.subject %}{{page.subject}}{% else %}general{% endif %}{% endcapture %}
 
 <ul class="breadcrumb">
@@ -24,6 +25,13 @@ layout: default
     <p class="coauthor">
       This article was co-authored by <a href="{{page.coauthor.link}}">{{page.coauthor.name}}</a>
     </p>
+  {% endif %}
+
+  {% if page.image %}
+    <div class="header-img">
+      <img src="{{page.image.url}}" alt="">
+      <p class="muted text-right">image by  <a href="{{page.image.author.url}}">{{page.image.author.name}}</a></p>
+    </div>
   {% endif %}
 
 
