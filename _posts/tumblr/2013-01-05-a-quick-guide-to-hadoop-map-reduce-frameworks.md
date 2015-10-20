@@ -1,3 +1,7 @@
+---
+published: false
+---
+
 --- 
 layout: post 
 title: A Quick Guide to Hadoop Map-Reduce Frameworks 
@@ -12,7 +16,7 @@ tags:
 - jvm
 --- 
 
-**Updated 2015-06-28** Full sample code is available for many frameworks, see the list [at the bottom of the article](#updates)
+**Updated October 2015** Full sample code is available for many frameworks, see the list [at the bottom of the article](#updates)
 
 There are a lot of frameworks for writing map-reduce pipelines for Hadoop, but
 it can be pretty hard to navigate everything to get a good sense of what
@@ -55,6 +59,7 @@ knowledge of programming to operate.
 
 * Scrunch ([documentation](https://github.com/cloudera/crunch/tree/master/scrunch))
 * Scalding ([documentation](https://github.com/twitter/scalding))
+	* [code sample and walkthrough][scalding-walkthrough]
 * Scoobi ([documentation](https://github.com/NICTA/scoobi))
     * [code sample and walkthrough][scoobi-walkthrough]
 
@@ -126,13 +131,14 @@ example.
 * Raw Map/Reduce -- Sometimes I like to program directly to the API, especially when doing something mission critical. I also find the individual map and reduce functions easier to test.
 
 
-## Updates {#updates}
+## Updates
 
 * 2013-02-09: [map reduce walkthrough published][1]
 * 2013-02-21: [hive walkthrough published][2]
 * 2013-04-07: [pig walkthrough published][3]
 * 2013-11-03: [scoobi walkthrough published][scoobi-walkthrough]
 * 2015-06-25: [cascading walkthrough published][cascading-walkthrough]
+* 2015-10-19: [scalding walkthrough published][scalding-walkthrough]
 
 [1]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [2]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
@@ -142,3 +148,4 @@ example.
 [pig-book]: http://www.amazon.com/gp/product/1449302645/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1449302645&linkCode=as2&tag=matratsblo-20
 [scoobi-walkthrough]:/2013/11/03/real-world-hadoop---implementing-a-left-outer-join-with-scoobi.html
 [cascading-walkthrough]:/2015/06/25/real-world-hadoop---implementing-a-left-outer-join-in-java-with-cascading.html
+[scalding-walkthrough]:http://blog.matthewrathbone.com/2015/10/20/scalding-tutorial.html
