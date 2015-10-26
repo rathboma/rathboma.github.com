@@ -1,15 +1,17 @@
 ---
-title: 8 SQL-on-Hadoop frameworks worth checking out
+title: "8 SQL-on-Hadoop frameworks worth checking out"
 layout: post
-description: A rundown of the common query engines for Hadoop, with some of their pros/cons
+description: "A rundown of the common query engines for Hadoop, with some of their pros/cons"
 subject: hadoop
-tags:
-- Hadoop
-- hive
-- impala
-- shark
-- Hawq
+tags: 
+  - Hadoop
+  - hive
+  - impala
+  - shark
+  - Hawq
+published: true
 ---
+
 
 The language of data is SQL, so naturally lots of tools have been developed to bring SQL to Hadoop. They range from simple wrappers on top of *Map Reduce* to full data warehouse implementations built on top of HDFS and everywhere in between.
 
@@ -135,7 +137,7 @@ Shark is interesting because it aims to support the entirity of Hive functionali
 
 [![drill](/img/drill.png)][drill]
 
-Oh boy, another one. Apache Drill is an open-source 'interactive' SQL query engine for Hadoop. It is being pushed by [MapR](http://www.mapr.com/), although they are also now supporting Impala. Apache Drill has similar goals to Impala and Presto -- fast interactive queries for large datasets, and like these technologies it also requires installation of worker nodes (drillbits). However, unlike Impala and Presto, Drill aims to support multiple backing stores (HDFS, HBase, MongoDB), and has a focus on complex nested datasets (like JSON). Unfortunately, drill is currently only in Alpha, so it is not widely used. Drill Provides:
+Oh boy, another one. Apache Drill is an open-source 'interactive' SQL query engine for Hadoop. It is being pushed by [MapR](http://www.mapr.com/), although they are also now supporting Impala. Apache Drill has similar goals to Impala and Presto -- fast interactive queries for large datasets, and like these technologies it also requires installation of worker nodes (drillbits). However, unlike Impala and Presto, Drill aims to support multiple backing stores (HDFS, HBase, MongoDB), and has a focus on complex nested datasets (like JSON). I'm unsure how widely used Drill is. Drill Provides:
 
 - ANSI compliant SQL
 - Interoperability with several back-end datastores and metadata-stores (Hive, HBase, MongoDB)
@@ -143,7 +145,7 @@ Oh boy, another one. Apache Drill is an open-source 'interactive' SQL query engi
 
 ### Should you use it?
 
-Probably not. The project is still in the alpha state, so for now it's probably not suitable for production use. It's potentially a project to watch though.
+The project is out of alpha (version 1.2 as of October 2015), so it's certainly becoming more stable as time progresses. It should be fairly easy to test with your Hadoop distribution, I'm just not sure if it will ever become the industry standard.
 
 ### Apache Drill Video
 
@@ -162,9 +164,12 @@ Hawq is a closed-source product from [EMC Pivotal](http://www.gopivotal.com/) of
 - Interoperability with Hive and HBase through the *Pivotal Xtension Framework* (PXF)
 - Interoperability with Pivotal's GemFire XD, their in-memory real-time database backed by HDFS
 
+### Update - October 2015
+Early in 2015 Pivotal actually open sourced a bunch of their stack, this includes now named [Apache Hawq](http://hawq.incubator.apache.org/). Pivotal also partnered with Hortonworks, so Hawq is available on the HDP stack and can be managed by Ambari.
+
 ### Should you use it?
 
-This one is easy. If you use Pivotal's Hadoop distribution then yes, otherwise no. :-)
+Now Hawq is open source, it may be worth trying out. Although of note is that neither HDP or CDH ship with Hawq packages right now (October 2015), so you'll have to get it working yourself.
 
 ### HAWQ Video
 
