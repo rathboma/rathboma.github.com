@@ -113,13 +113,13 @@ public class SparkJoins {
         Map<Integer, Object> result = res.countByKey();
         System.out.println("CountByKey function Output: "+result.toString());
         
-	   List<Tuple2<Integer, Long>> output = new ArrayList<>();
-	    for (Entry<Integer, Object> entry : result.entrySet()){
-	    	   output.add(new Tuple2<>(entry.getKey(), (long)entry.getValue()));
-	   }
+        List<Tuple2<Integer, Long>> output = new ArrayList<>();
+        for (Entry<Integer, Object> entry : result.entrySet()){
+                output.add(new Tuple2<>(entry.getKey(), (long)entry.getValue()));
+        }
 
-	   JavaPairRDD<Integer, Long> output_rdd = sc.parallelizePairs(output);
-	   output_rdd.saveAsHadoopFile(args[2], Integer.class, String.class, TextOutputFormat.class);
+        JavaPairRDD<Integer, Long> output_rdd = sc.parallelizePairs(output);
+        output_rdd.saveAsHadoopFile(args[2], Integer.class, String.class, TextOutputFormat.class);
         sc.close();
     }
 }
