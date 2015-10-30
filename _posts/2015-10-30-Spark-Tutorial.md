@@ -293,3 +293,4 @@ or its on-line variant: [online-book][3].
 [10]: http://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624
 [11]: http://shop.oreilly.com/product/0636920028512.do
 [12]: https://github.com/apache/spark
+[github]: https://github.com/rathboma/hadoop-framework-examples
