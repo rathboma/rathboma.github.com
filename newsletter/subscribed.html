@@ -1,0 +1,21 @@
+---
+layout: basic
+title: Newsletter Subscription - You're all set!
+---
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="maincontent">
+        <h1>{{page.title}}</h1>
+        <p>Wow, that was quick! Thanks for confirming your email and welcome to my newsletter. I'll be in touch soon!</p>
+        <h2>Want something to read?</h2>
+        <ul>
+          {% for post in site.posts limit: 5 %}
+            <li><a href="{{post.url}}">{{post.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

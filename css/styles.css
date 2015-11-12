@@ -7,6 +7,25 @@ body {
   font-family: 'Lato', sans-serif !important; 
 }
 
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -100px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 100px;
+}
+
+
+
 .container-fluid {
   max-width:1000px;
   margin:auto;
