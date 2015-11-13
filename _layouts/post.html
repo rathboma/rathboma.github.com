@@ -36,13 +36,6 @@ layout: default
 
 
   {{ content }}
-  {% if page.subject == "hadoop" and page.books == null %}
-    <div class="books">
-      <h1>Further Reading</h1>
-
-      <p>There are lots of good Hadoop books on the market covering a variety of topics. Here is <a href="/2013/05/31/hadoop-resources---books.html">a fairly comprehensive list of books</a>, complete with a high level summary for each.</p>
-    </div>
-  {% endif %}
   <div class="share">
     <p>
       <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{site.url}}{{page.url}}" class="btn btn-facebook"><i class="fa fa-facebook"></i>Share</a> 
@@ -56,7 +49,7 @@ layout: default
 
 <div class="research">
     <h2 id="enjoy">Enjoy this Article? Subscribe for more</h2>
-    {% include _newsletter.html %}
+    {% include _newsletter.html source="post-footer"%}
 </div>
 <!-- Begin MailChimp Signup Form -->
 
@@ -104,47 +97,78 @@ layout: default
 </div>
 
 
-<!-- Modal -->
+<!-- Original Modal -->
 <div id="surveyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h1 id="myModalLabel">Enjoy this post? Subscribe for more</h1>
+    <h1>Enjoy this post? Subscribe for more</h1>
   </div>
   <div class="modal-body">
-    {% include _newsletter.html %}
+    {% include _newsletter.html source="blog-modal" %}
   </div>
 </div>
 
 
+<!-- Learn more about hadoop modal -->
+<div id="alternativeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1>Learn More about Hadoop</h1>
+  </div>
+  <div class="modal-body">
+    {% include _newsletter.html source="blog-modal"%}
+  </div>
+</div>
+
+
+<script src="//www.google-analytics.com/cx/api.js?experiment=EzMWXFpWRJeEEZJpkIbD6Q"></script>
 <script>
-  
-        var subject = '{{page.subject}}';
-        var modalShownCookie = $.cookie("modalshown");
-        var modalShown = false;
-        if (modalShownCookie != undefined && modalShownCookie == 'true') {
-          console.log("modalshown cookie is TRUE!");
-          modalShown = true;
-        }
-        function isScrolledIntoView(elem) {
-            var docViewTop = $(window).scrollTop();
-            var docViewBottom = docViewTop + $(window).height();
 
-            var elemTop = $(elem).offset().top;
-            var elemBottom = elemTop + $(elem).height();
 
-            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-        }
+  var chosenVariation = cxApi.chooseVariation();
 
-        $(window).on('scroll', function(e) {
-          if(isScrolledIntoView($('#enjoy')) && modalShown == false && subject == 'hadoop') {
-            modalShown = true;
-            $.cookie('modalshown', 'true', {expires: 1, path: '/'});
-            $("#surveyModal").modal();
-          }
-        });
-        $("#closemodal").click(function(){
-          $("#surveyModal").modal('hide');
-        });
+  // experimentid = EzMWXFpWRJeEEZJpkIbD6Q
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
+
+
+  var modalExperiment = [
+    "#surveyModal",
+    "#alternativeModal"
+  ];
+
+  var modal = modalExperiment[chosenVariation];
+
+
+  // MODAL STUFF
+    var subject = '{{page.subject}}';
+    var modalShownCookie = $.cookie("modalshown");
+    var modalShown = false;
+    if (modalShownCookie != undefined && modalShownCookie == 'true') {
+      console.log("modalshown cookie is TRUE!");
+      modalShown = true;
+    }
+    function isScrolledIntoView(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    $(window).on('scroll', function(e) {
+      if(isScrolledIntoView($('#enjoy')) && modalShown == false && subject == 'hadoop') {
+        modalShown = true;
+        $.cookie('modalshown', 'true', {expires: 1, path: '/'});
+        $(modal).modal();
+      }
+    });
+    $("#closemodal").click(function(){
+      $(modal).modal('hide');
+    });
 </script>
 
 
