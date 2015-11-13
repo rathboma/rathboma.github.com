@@ -3,18 +3,27 @@ layout: basic
 ---
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span10">
+    <div class="span9">
       <div class="maincontent">
         {{content}}
       </div>
     </div>
-    <div class="span2">
+    <div class="span3">
       <div class="sidebar">
-        <img src="/img/matthew.png" alt="Matthew Rathbone's Picture">
+        <div class="me">
+          <img src="/img/matthew.png" alt="Matthew Rathbone's Picture">
+        </div>
         <h2>Matthew Rathbone</h2>
         <p>CEO of <a href="http://beekeeperdata.com">Beekeeper Data</a>. British. Data Nerd. Lucky husband and father.</p>
         <a href="http://twitter.com/rathboma" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
-        <a href="http://stackoverflow.com/users/18818/matthew-rathbone" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> SO</a></div>
+        <a href="http://stackoverflow.com/users/18818/matthew-rathbone" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> SO</a>
+        <div class="inverted text-center newsletter-mini">
+          <p><strong>Join my newsletter</strong></p>
+          <p>Hadoop, open-source, reporting, and more.</p>
+          {% include _newsletter_mini.html %}
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

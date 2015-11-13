@@ -92,8 +92,30 @@ table.table-fixed th {
   padding-bottom:5px;
 }
 
+.me {
+  padding:20px;
+  padding-bottom:0;
+  padding-top:0;
+}
+
 .nomargin {
   margin: 0 !important;
+}
+
+
+.inverted {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius:5px;
+}
+
+.inverted p, .inverted h2 {
+  color: white;
+}
+
+.newsletter-mini {
+  margin-top:20px;
 }
 
 div.header {
