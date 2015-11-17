@@ -21,8 +21,8 @@
   var showPanel = function(){
     var submitted = $.cookie("hola-bar-submitted");
     var closed = $.cookie("hola-bar-closed");
-
-    if(submitted || closed) {
+    var mobile = $(window).width() < 620;
+    if(submitted || closed || mobile) {
       return;
     }
 
