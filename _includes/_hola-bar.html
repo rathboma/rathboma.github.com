@@ -1,0 +1,54 @@
+<div class="hola-bar" id="hola-bar">
+  <a href="#" id="hola-bar-close-button" class="close-button"><i class="fa fa-times"></i></a>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <form id="hola-bar-form" class="signup form-inline" action="http://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+          <div class="controls">
+            <span class="pitch">Get Hadoop Tutorials and Big Data Tips</span>
+            <input type="hidden" value="{{include.source}}" name="SOURCE" id="SOURCE" />
+            <input type="email" value="" name="EMAIL" class="email-input" id="mce-EMAIL" placeholder="enter your email" required />
+            <button name="subscribe" id="mc-embedded-subscribe" class="btn">Subscribe</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  var showPanel = function(){
+    var submitted = $.cookie("hola-bar-submitted");
+    var closed = $.cookie("hola-bar-closed");
+
+    if(submitted || closed) {
+      return;
+    }
+
+    $('#hola-bar').slideDown("slow");
+    $('body').animate({"margin-top": "50px"}, "slow");
+  };
+
+  setTimeout(showPanel, 1000);
+
+  var dismiss = function() {
+    $('#hola-bar').slideUp("slow");
+    $('body').animate({"margin-top": "0px"}, "slow")
+  }
+
+
+
+  $("#hola-bar-close-button").click(function(event){
+    event.preventDefault();
+    $.cookie("hola-bar-closed", "true", {path: '/'});
+    dismiss();
+  })
+
+  $("#hola-bar-form").submit(function(event){
+    $.cookie("hola-bar-submitted", "true", { expires: 7, path: '/'});
+    dismiss();
+  })
+
+
+</script>

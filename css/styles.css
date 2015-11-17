@@ -454,18 +454,16 @@ ol li ul {
 
 /*BUTTONS*/
 
-.btn {
-  padding-top: 8px;
-  padding-bottom:8px;
-}
-
 .share {
   text-align: right;
+
 }
 
 .share .btn {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  padding-top: 8px;
+  padding-bottom:8px;
 }
 
 .share .btn:hover {
@@ -491,3 +489,4 @@ ol li ul {
   background-color: #4875B4;
   background-image: none;
 }
+

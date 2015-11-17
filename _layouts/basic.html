@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/styles.css?v={{site.version}}" />
+  <link rel="stylesheet" href="/css/hola-bar.css?v={{site.version}}" />
   <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
   <script type="text/javascript" src="/js/jquery-1.10.2.min.js" ></script>
   <script type="text/javascript" src="/js/jquery.cookie.js" ></script>
@@ -70,6 +71,9 @@
     $('#pixel').append('<img id="pxl" src="' + src +'" />')
   });
 
+
 </script>
+
+{% include _hola-bar.html %}
 </body>
 </html>

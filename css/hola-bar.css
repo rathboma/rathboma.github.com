@@ -1,0 +1,33 @@
+
+div.hola-bar {
+  display:none;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  height:50px;
+  width:100%;
+  background-color: #910666;
+  color: white;
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden; 
+  -webkit-box-shadow: 0 0 2px black;
+  -moz-box-shadow:    0 0 2px black;
+  box-shadow:         0 0 2px black;
+  font-size:1.2em;
+}
+
+div.hola-bar a {
+  color:white;
+}
+
+div.hola-bar .pitch {
+  margin-right:10px;
+}
+
+div.hola-bar a.close-button {
+  float:right;
+  margin-right:10px;
+  margin-left:-20px;
+}
