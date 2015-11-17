@@ -2,14 +2,14 @@
 layout: basic
 ---
 <div class="container-fluid">
-  <div class="row-fluid">
+  <div class="row-fluid post-container">
     <div class="span9">
       <div class="maincontent">
         {{content}}
       </div>
     </div>
     <div class="span3">
-      <div class="sidebar">
+      <div class="sidebar sticky">
         <div class="me">
           <img src="/img/matthew.png" alt="Matthew Rathbone's Picture">
         </div>
@@ -20,10 +20,14 @@ layout: basic
         <div class="inverted text-center newsletter-mini">
           <p><strong>Join my newsletter</strong></p>
           <p>Hadoop, open-source, reporting, and more.</p>
-          {% include _newsletter_mini.html %}
+            {% include _newsletter_mini.html %}
         </div>
 
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(".sticky").stick_in_parent({parent: ".post-container"});
+</script>
