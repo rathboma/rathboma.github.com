@@ -1,16 +1,19 @@
 ---
 layout: post
-title: A Quick Guide to Hadoop Map-Reduce Frameworks
+title: "Hadoop Map-Reduce Framework Tutorials with Examples"
 subject: hadoop
 description: "A constantly expanding list of 12+ hadoop frameworks, with code examples and documentation links"
 tags: 
-- hadoop 
-- mapreduce 
-- java
-- pig
-- hive
-- jvm
---- 
+  - hadoop
+  - mapreduce
+  - java
+  - pig
+  - hive
+  - jvm
+published: true
+---
+
+ 
 
 **Updated October 2015** Full sample code is available for many frameworks, see the list [at the bottom of the article](#updates)
 
