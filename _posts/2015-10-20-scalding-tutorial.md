@@ -1,5 +1,5 @@
 ---
-title: Hadoop Scalding MapReduce Tutorial With Example Code
+title: Scalding Hadoop MapReduce Tutorial With Example Code
 layout: post
 description: "How to implement some real world code with Scalding, a Scala wrapper for Cascading"
 subject: hadoop
@@ -17,6 +17,7 @@ image:
     url: "https://www.flickr.com/photos/pauldineen/"
 published: true
 ---
+
 
 
 
