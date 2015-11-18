@@ -1,14 +1,16 @@
 ---
-title: Real World Hadoop - Implementing a left outer join in Java with Cascading
+title: Cascading MapReduce Hadoop Tutorial with Examples
 layout: post
-description: How to use Java & Cascading to perform a left outer join. Includes a comparison with Hive, Pig, and Java Mapreduce
+description: "How to use Java & Cascading to perform a left outer join. Includes a comparison with Hive, Pig, and Java Mapreduce"
 subject: hadoop
-coauthor:
+coauthor: 
   name: Elena Akhmatova
-  link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
-tags:
-- cascading
+  link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
+tags: 
+  - cascading
+published: true
 ---
+
 
 This article is part of [my guide to map reduce frameworks][1] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
 
@@ -230,4 +232,3 @@ Cascading pipes provide an ability to easily write functions for data cleaning, 
 [17]: http://docs.cascading.org/cascading/2.7/userguide/htmlsingle/#N20C99
 [18]: http://docs.cascading.org/cascading/2.7/javadoc/cascading-core/
 [19]: http://docs.cascading.org/cascading/2.7/javadoc/cascading-platform/
-
