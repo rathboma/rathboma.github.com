@@ -1,16 +1,18 @@
 ---
-title: Python Map Reduce on Hadoop - A Beginners Tutorial
+title: Hadoop Python MapReduce Tutorial for Beginners
 layout: post
-description: A step-by-step tutorial for writing your first map reduce with Python and Hadoop Streaming.
+description: "A step-by-step tutorial for writing your first map reduce with Python and Hadoop Streaming."
 subject: hadoop
-tags:
-- hadoop
-- python
-- big data
-- tutorial
-- hadoop streaming
-- nfl data
+tags: 
+  - hadoop
+  - python
+  - big data
+  - tutorial
+  - hadoop streaming
+  - nfl data
+published: true
 ---
+
 
 This article originally accompanied my tutorial session at the [Big Data Madison Meetup, November 2013][bdm].
 
@@ -297,4 +299,3 @@ Check out my [Real World Hadoop Guide for Python][real-world-python] to see how 
 [play-by-play]:http://www.advancednflstats.com/2010/04/play-by-play-data.html
 [quickstart-vm]:http://www.cloudera.com/content/support/en/downloads/download-components/download-products.html?productID=F6mO278Rvo
 [dashboard-screenshot]:/img/hadoop-dash-screenshot.png
-
