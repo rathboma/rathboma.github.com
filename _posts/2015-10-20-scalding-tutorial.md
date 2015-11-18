@@ -1,21 +1,23 @@
 ---
-title: Real World Hadoop - Implementing a left outer join in Scala with Scalding
+title: Hadoop Scalding MapReduce Tutorial With Example Code
 layout: post
 description: "How to implement some real world code with Scalding, a Scala wrapper for Cascading"
 subject: hadoop
-coauthor:
+coauthor: 
   name: Elena Akhmatova
-  link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
-tags:
-- hive
-- hadoop
-- Cascading
-image:
+  link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
+tags: 
+  - hive
+  - hadoop
+  - Cascading
+image: 
   url: /img/simplify.jpg
-  author:
+  author: 
     name: Paul Dineed
-    url: https://www.flickr.com/photos/pauldineen/
+    url: "https://www.flickr.com/photos/pauldineen/"
+published: true
 ---
+
 
 
 This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
