@@ -22,12 +22,17 @@ layout: basic
           <p>Hadoop, open-source, reporting, and more.</p>
             {% include _newsletter_mini.html %}
         </div>
+        <div class="popular" id="popularPosts"></div>
 
       </div>
     </div>
   </div>
 </div>
 
+
+<script src="https://popular-posts.herokuapp.com/client-script.js?token=CrazyTokenString"></script>
+
 <script>
   $(".sticky").stick_in_parent({parent: ".post-container"});
+    loadTopPosts("#popularPosts");
 </script>
