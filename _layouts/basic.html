@@ -30,8 +30,9 @@
           <div class="header">
             <ul class="nav nav-pills pull-right">
               <li><a href="/">Home</a></li>
+              <li><a href="/about.html">About Me</a></li>
               <li><a href="/archive">Archive</a></li>
-              <li><a href="/archive/topics.html">Topics</a></li>
+
               <li><a href="/feed.xml">RSS</a></li>
             </ul>
             <h2 class="muted"><a href="/">Matthew Rathbone</a></h2>
@@ -45,9 +46,8 @@
   <div class="site-footer">
     <div class="footer">
       <p><a href="http://twitter.com/rathboma">twitter</a> /
-       <a href="http://github.com/rathboma">github</a> / 
+       <a href="http://github.com/rathboma">github</a>
        <span class="right">Copyright Matthew Rathbone 2013, All Rights Reserved.</span> <span id="pixel"></span>
-          <span class="alexandra">My wife <a href="http://alexandrapavlakis.com">Alexandra</a> should take credit for most of my productivity</span>
        </p>
      </div>
   </div>
@@ -55,16 +55,19 @@
 
 
  <script type="text/javascript">
+  
+  {% if jekyll.environment == "production" %}
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-712293-13']);
+    _gaq.push(['_trackPageview']);
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-712293-13']);
-  _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  {% endif %}
 
   $(document).ready(function(){
     var tag = new Date().getTime();

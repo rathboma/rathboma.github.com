@@ -10,26 +10,24 @@ layout: basic
     </div>
     <div class="span3">
       <div class="sidebar sticky">
-        <div class="me">
-          <img src="/img/matthew.png" alt="Matthew Rathbone's Picture">
-        </div>
-        <h2>Matthew Rathbone</h2>
-        <p>CEO of <a href="http://beekeeperdata.com">Beekeeper Data</a>. British. Data Nerd. Lucky husband and father.</p>
-        <a href="http://twitter.com/rathboma" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
-        <a href="http://stackoverflow.com/users/18818/matthew-rathbone" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> SO</a>
-        <div class="inverted text-center newsletter-mini">
-          <p><strong>Join my newsletter</strong></p>
-          <p>Hadoop, open-source, reporting, and more.</p>
+        <div class="card inverted text-center newsletter-mini">
+          <h2>Join my newsletter</h2>
+          <p>Learn more about Hadoop and Big Data.</p>
             {% include _newsletter_mini.html %}
+            {% include _popular_posts.html %}
         </div>
-        <div class="popular" id="popularPosts"></div>
-
+        <div class="popular card" id="popularPosts">
+          <h2>Popular Posts</h2>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<script src="//popular-posts.herokuapp.com/client-script.js?token=CrazyTokenString"></script>
 
 <script>
-  $(".sticky").stick_in_parent({parent: ".post-container"});
+  loadTopPosts(".popular", 5);
 </script>
+
+

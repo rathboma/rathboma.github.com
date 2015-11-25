@@ -27,7 +27,7 @@ html, body {
 
 
 .container-fluid {
-  max-width:1000px;
+  max-width:1200px;
   margin:auto;
 }
 
@@ -77,6 +77,10 @@ table.table-fixed th {
   font-size:1.3em;
 }
 
+.page-wrap.breadcrumb {
+  margin-bottom:10px;
+}
+
 .post code {
   word-wrap: break-word;
   max-width: 100%;
@@ -92,31 +96,28 @@ table.table-fixed th {
   padding-bottom:5px;
 }
 
-.me {
-  padding:20px;
-  padding-bottom:0;
-  padding-top:0;
+.about-me {
+  margin-bottom:20px;
+  min-height:75px;
+  padding-bottom:10px;
+  border-bottom: solid 1px #eee;
+}
+
+.about-me .me {
+  margin-right:10px;
+  padding: 0;
+  float: left;
+  max-width: 75px;
+}
+
+.about-me h2 {
+  margin-bottom:0;
 }
 
 .nomargin {
   margin: 0 !important;
 }
 
-
-.inverted {
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  border-radius:5px;
-}
-
-.inverted p, .inverted h2 {
-  color: white;
-}
-
-.newsletter-mini {
-  margin-top:20px;
-}
 
 div.header {
   /*margin-bottom: 30px;*/
@@ -214,6 +215,7 @@ div.bigheader {
 div.maincontent {
   padding: 20px;
   background-color: white;
+  margin-bottom:20px;
 }
 
 div.post {
@@ -221,7 +223,10 @@ div.post {
 }
 
 div.post h1 {
-  margin-bottom:0;
+  margin-bottom:10px;
+  margin-top:0;
+  font-weight:bold;
+  font-size: 1.8em;
 }
 
 div.post p.subtitle {
@@ -229,7 +234,23 @@ div.post p.subtitle {
   font-size: 0.9em;
   padding-bottom:5px;
   margin-bottom:20px;
+  min-height: 50px;
 }
+
+
+.post .subtitle .avatar {
+  max-width:50px;
+  float:left;
+  margin-right:10px;
+  border: none;
+}
+
+.post .subtitle .author-date {
+  display: inline-block;
+  margin-top:12px;
+}
+
+
 
 div.post p.coauthor {
   text-align: left;
@@ -351,6 +372,37 @@ div.sidebar a.author-social:hover {
   text-decoration: none;
   color: #666;
 }
+
+
+div.card {
+  padding:20px;
+  background-color:white;
+  border-radius: 5px;
+  margin-bottom:20px;
+}
+
+div.card h2 {
+  text-align: center;
+  font-size: 1.3em;
+  border-bottom: solid 1px #eee;
+  padding-bottom: 10px;
+}
+
+.card.inverted {
+  background-color: #333;
+  color: white;
+}
+
+.card.inverted h2 {
+  border-bottom:solid 1px #111;
+}
+
+.card.inverted p, .inverted h2 {
+  color: white;
+}
+
+
+
 
 div.footer {
   color:#eee;
@@ -494,3 +546,17 @@ ol li ul {
   background-image: none;
 }
 
+
+
+/*POPULAR POSTS*/
+
+.popular .popular-posts-list {
+  list-style: none;
+  margin-left:0;
+}
+
+.popular .popular-posts-list li {
+  padding-bottom:10px;
+  padding-top:5px;
+  border-bottom:solid 1px #eee;
+}

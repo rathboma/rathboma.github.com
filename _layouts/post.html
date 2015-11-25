@@ -12,7 +12,8 @@ layout: default
 <div class="post">
   <h1>{{page.title}}</h1>
   <p class="subtitle">
-    {{ page.date | date: "%B %d %Y" }}
+    <img src="/img/matthew.png" alt="" class="avatar">
+    <span class="author-date">By Matthew Rathbone on {{ page.date | date: "%B %d %Y" }}</span>
     <span class="share pull-right">
       <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{site.url}}{{page.url}}" class="btn btn-facebook"><i class="fa fa-facebook"></i>Share</a> 
       <a href="https://twitter.com/intent/tweet?text={{page.title | escape}}&url={{site.url}}{{page.url}}&via=rathboma" class="btn btn-twitter" target="_blank"><i class="fa fa-twitter"></i>Tweet</a>
@@ -44,6 +45,8 @@ layout: default
     </p>
   </div>
 </div>
+
+{% include _me.html %}
 
 
 
@@ -171,7 +174,8 @@ layout: default
     });
 </script>
 
-<script src="https://popular-posts.herokuapp.com/track.js?token=CrazyTokenString"></script>
-
+{% if jekyll.environment == "production" %}
+  <script src="//popular-posts.herokuapp.com/track.js?token=CrazyTokenString"></script>
+{% endif %}
 
 
