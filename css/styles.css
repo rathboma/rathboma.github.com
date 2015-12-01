@@ -11,6 +11,20 @@ body {
 html, body {
   height: 100%;
 }
+
+blockquote {
+  background-color: #eee;
+  border:none;
+  padding:10px;
+  color: #666;
+  border-radius: 5px;
+  padding-top: 25px;
+}
+
+blockquote p {
+  margin-bottom: inherit;
+}
+
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
