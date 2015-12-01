@@ -130,7 +130,7 @@ Technically creating new and transforming existing RDDs - [transformation][13] i
 
 The task we have is solved by using Spark's Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as groupByKey(), and are useful for joins, such as leftOuterJoin(). 
 
-The actual action in our case is `countByKey()`. It is easy to se that using Spark CLI (spark-submit). Transformation returns info about the format the data is in after the transformation. Better to say, transformation notifies about a type of a new dataset it will create from the initial one (as RDDs are immutable). Calling an action will immediately result in getting logs about what is being done and how much has been done at the moment.
+The actual action in our case is `countByKey()` (and `saveAsTextFile()` that is used to output result to HDFS). It is easy to see that using Spark CLI (spark-submit). Transformation returns info about the format the data is in after the transformation. Better to say, transformation notifies about a type of a new dataset it will create from the initial one (as RDDs are immutable). Calling an action will immediately result in getting logs about what is being done and how much has been done at the moment.
 
 The process of transformation the input text file into a Key/value RDD is rather self-explanatory:
 
