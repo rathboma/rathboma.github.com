@@ -34,7 +34,7 @@ It is easy to reason about composing data together when the language is composin
 
 After Scalding I would skip over them all and go straight to Python streaming as my next default.
 
-## Sam Wang, Software Engineer at Foursquare
+## Sam Wang, Engineering Manager at Foursquare
 
 When I worked at Foursquare I would constantly drag Sam into Hadoop infrastructure projects becuase he was so good at them, even though he was meant to be working on machine learning.
 
