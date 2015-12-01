@@ -22,15 +22,15 @@ Note that opinions expressed by those interviewed are personal and do not nessec
 
 As well as running Elodina, Joe runs [All Things Hadoop](http://allthingshadoop.com/), and talks about distributed computing at a range of conferences and events.
 
-_Which MapReduce Framework do you prefer to work in?_
+### Which MapReduce Framework do you prefer to work in?
 
 Scalding
 
-_Why do you like using it vs regular MapReduce_
+### Why do you like using it vs regular MapReduce
 
 It is easy to reason about composing data together when the language is composing functions around the data.
 
-_Why do you like using it vs other frameworks?_
+### Why do you like using it vs other frameworks?
 
 After Scalding I would skip over them all and go straight to Python streaming as my next default.
 
@@ -38,11 +38,11 @@ After Scalding I would skip over them all and go straight to Python streaming as
 
 When I worked at Foursquare I would constantly drag Sam into Hadoop infrastructure projects becuase he was so good at them, even though he was meant to be working on machine learning.
 
-_Which MapReduce Framework do you prefer to work in?_
+### Which MapReduce Framework do you prefer to work in?
 
 Scalding
 
-_Why do you like using it vs regular MapReduce_
+### Why do you like using it vs regular MapReduce
 
 Implementing intuitive joins with Scala types in Scalding is very easy, and is probably the number one feature that our engineers love over writing in any other framework.
 
@@ -50,9 +50,7 @@ In our ecosystem, writing joins in native MR always required writing throw-away 
 
 Being able to depend on the native Scalding serialization for Scala types is also convenient, as users don't have to think too hard about how data flows over a wire, and how to serialize and deserialize their complex types. Finally, there's just less boilerplate code in general, and the code is much more readable to anyone skimming a flow to figure out exactly what the salient bits of it are.
 
-
-
-_Why do you like using it vs other frameworks?_
+### Why do you like using it vs other frameworks?
 
 Foursquare arrived at Scalding via an organic process, which was partially technical, and partially cultural. We had previously invested in a framework called Scoobi, but we wanted to switch to a framework with a richer ecosystem of developers and support.
 
@@ -63,16 +61,16 @@ Scalding, at the time, seemed like the best way to mix our existing codebase wit
 
 ## David Leifker, Software Architect at Spreadfast
 
-_Which MapReduce Framework do you prefer to work in?_
+### Which MapReduce Framework do you prefer to work in?
 
 Spark
 
-_Why do you like using it vs regular MapReduce_
+### Why do you like using it vs regular MapReduce?
 
 Simply put Spark is better able to execute iterative operations faster then M/R. This is readily apparent for ML applications. Currently there is MLlib for Spark, but Mahout is also shifting to use Spark for this reason. The ability to cache, or pin, RDDs in memory also helps to speed up certain operations.
 
 
-_Why do you like using it vs other frameworks?_
+### Why do you like using it vs other frameworks?
 
 Honestly, it was a natural fit for the type of problems I was looking to solve, those being oriented around ML. If you are looking to perform non-iterative batch processing that cannot fit in the distributed memory of your cluster, M/R is still the likely winner.
 
