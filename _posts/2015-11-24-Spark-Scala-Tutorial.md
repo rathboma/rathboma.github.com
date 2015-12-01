@@ -74,32 +74,41 @@ hdfs dfs -put ./transactions.txt input
 All code and data used in this post can be found in my [`hive examples` GitHub repository][github].
 
 {% highlight scala %}
-object Main {
-  def main(args: Array[String]) {
-	val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
-	val sc = new SparkContext(conf)
-	
-	val transactions = sc.textFile(args(0))
+class ExampleJob(sc: SparkContext) {
+  def run(t: String, u: String) : RDD[(String, String)] = {
+        val transactions = sc.textFile(t)
 	val newTransactionsPair = transactions.map{t =>                
 	    val p = t.split("\t")
 	    (p(2).toInt, p(1).toInt)
 	}
 	
-	val users = sc.textFile(args(1))
+	val users = sc.textFile(u)
 	val newUsersPair = users.map{t =>                
 	    val p = t.split("\t")
 	    (p(0).toInt, p(3))
 	}
 	
 	val result = processData(newTransactionsPair, newUsersPair)
-	val r = sc.parallelize(result.toSeq).map(t => (t._1.toString, t._2.toString))
-	
-	r.saveAsTextFile(args(2))
-  }
- 
+	return sc.parallelize(result.toSeq).map(t => (t._1.toString, t._2.toString))
+  } 
+  
   def processData (t: RDD[(Int, Int)], u: RDD[(Int, String)]) : Map[Int,Long] = {
 	var jn = t.leftOuterJoin(u).values.distinct
 	return jn.countByKey
+  }
+}
+
+object ExampleJob {
+  def main(args: Array[String]) {
+    val transactionsIn = args(1)
+    val usersIn = args(0)
+    val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
+    val conext = new SparkContext(conf)
+    val job = new ExampleJob(context)
+    val results = job.run(transactionsIn, usersIn)
+    val output = args(2)
+    results.saveAsTextFile(output)
+    context.stop()
   }
 }
 {% endhighlight %}
@@ -135,9 +144,9 @@ The actual action in our case is `countByKey()` (and `saveAsTextFile()` that is 
 The process of transformation the input text file into a Key/value RDD is rather self-explanatory:
 
 {% highlight scala %}
-val transactions = sc.textFile(args(0))
+val transactions = sc.textFile(t)
 val newTransactionsPair = transactions.map{t =>                
- 	val p = t.split("\t")
+	val p = t.split("\t")
 	(p(2).toInt, p(1).toInt)
 }
 {% endhighlight %}
@@ -183,8 +192,8 @@ The best way to run a spark job is using spark-submit.
 As with other frameworks the idea was to follow closely the existing official tests in [Spark GitHub][2], using scalatests and JUnit in our case.
 
 {% highlight scala %}
-class SparkJoinsTest extends AssertionsForJUnit {
-  
+class SparkJoinsScalaTest extends AssertionsForJUnit {
+
   var sc: SparkContext = _
   
   @Before
@@ -193,20 +202,19 @@ class SparkJoinsTest extends AssertionsForJUnit {
 	 sc = new SparkContext(conf)
   }
   
+  @After
+  def tearDown() {
+    sc.stop()
+  }
+  
   @Test
-  def sortByKey() {
-    val transactions: List[Tuple2[Int, Int]] = List(new Tuple2[Int, Int](1, 1), new Tuple2[Int, Int](2, 1), new Tuple2[Int, Int](2, 1), new Tuple2[Int, Int](3, 2), new Tuple2[Int, Int](3, 1))
-        
-    val users: List[Tuple2[Int, String]] = List(new Tuple2[Int, String](1, "US"), Tuple2[Int, String](2, "GB"), Tuple2[Int, String](3, "FR"))
-    
-    val transactionsRDD = sc.parallelize(transactions.toSeq)
-    val usersRDD = sc.parallelize(users.toSeq)
-    
-    val m = main.scala.com.matthewrathbone.spark.Main
-    val result = m.processData(transactionsRDD, usersRDD);
-
-    assert(result.get(1).get === 3)
-    assert(result.get(2).get === 1)
+  def testExamleJobCode() {
+    val job = new ExampleJob(sc)
+    val result = job.run("./transactions.txt", "./users.txt")
+    assert(result.collect()(0)._1 === "1")
+    assert(result.collect()(0)._2 === "3")
+    assert(result.collect()(1)._1 === "2")
+    assert(result.collect()(1)._2 === "1")
   }
 }
 {% endhighlight %}
