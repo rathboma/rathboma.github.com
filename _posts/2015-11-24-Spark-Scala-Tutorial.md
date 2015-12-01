@@ -126,7 +126,11 @@ RDD is Spark’s main programming abstraction. An RDD in Spark is simply an immu
 
 In Spark all work is expressed as either creating new RDDs, transforming existing RDDs, or calling operations on RDDs to compute a result. Spark automatically distributes the data contained in RDDs across the cluster and parallelizes the operations that are performed on them.
 
+Technically creating new and transforming existing RDDs - [transformation][13] in Spark - is different from calling an action to compute a result - an [action][14] in Spark. Actions result in actual processing the data, lets say by a MapReduce algorithm on HDFS. Work on transformations in its turn may wait till they are requested by an action. 
+
 The task we have is solved by using Spark's Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as groupByKey(), and are useful for joins, such as leftOuterJoin(). 
+
+The actual action in our case is `countByKey()`. It is easy to se that using Spark CLI (spark-submit). Transformation returns info about the format the data is in after the transformation. Better to say, transformation notifies about a type of a new dataset it will create from the initial one (as RDDs are immutable). Calling an action will immediately result in getting logs about what is being done and how much has been done at the moment.
 
 The process of transformation the input text file into a Key/value RDD is rather self-explanatory:
 
@@ -242,3 +246,5 @@ or its on-line variant: [online-book][3].
 [10]: http://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624
 [11]: http://shop.oreilly.com/product/0636920028512.do
 [12]: https://github.com/apache/spark
+[13]: http://spark.apache.org/docs/latest/programming-guide.html#transformations
+[14]: http://spark.apache.org/docs/latest/programming-guide.html#actions
