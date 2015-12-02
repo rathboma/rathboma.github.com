@@ -16,7 +16,7 @@ layout: basic
             {% include _newsletter_mini.html %}
             {% include _popular_posts.html %}
         </div>
-        <div class="popular card" id="popularPosts">
+        <div class="popular card hidden" id="popularPosts">
           <h2>Popular Posts</h2>
         </div>
       </div>
@@ -25,9 +25,30 @@ layout: basic
 </div>
 
 <script src="//popular-posts.herokuapp.com/client-script.js?token=CrazyTokenString"></script>
+<script src="//www.google-analytics.com/cx/api.js?experiment=hTccJMn0SDC4MjlDo8Au1w"></script>
 
 <script>
-  loadTopPosts(".popular", 5);
+
+  $(document).ready(function(){
+    var variations = [
+      function() {
+        // do nothing
+      },
+      function() {
+        // load popular posts
+        $("#popularPosts").removeClass("hidden");
+        loadTopPosts("#popularPosts", 5);
+      }
+    ];
+
+    var chosenVariation = 1; // if experiments doesn't work, show popular posts.
+    if (typeof cxApi !== 'undefined') {
+      chosenVariation = cxApi.chooseVariation();
+    } 
+    variations[chosenVariation]();
+  })
+
+
 </script>
 
 

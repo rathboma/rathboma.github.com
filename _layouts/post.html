@@ -99,19 +99,6 @@ layout: default
     
 </div>
 
-
-<!-- Original Modal -->
-<div id="surveyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h1>Enjoy this post? Subscribe for more</h1>
-  </div>
-  <div class="modal-body">
-    {% include _newsletter.html source="blog-modal" %}
-  </div>
-</div>
-
-
 <!-- Learn more about hadoop modal -->
 <div id="alternativeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -124,25 +111,14 @@ layout: default
 </div>
 
 
-<script src="//www.google-analytics.com/cx/api.js?experiment=EzMWXFpWRJeEEZJpkIbD6Q"></script>
+<!-- <script src="//www.google-analytics.com/cx/api.js?experiment=EzMWXFpWRJeEEZJpkIbD6Q"></script> -->
 <script>
-
-
-  var chosenVariation = cxApi.chooseVariation();
-
-  // experimentid = EzMWXFpWRJeEEZJpkIbD6Q
 
   var _gaq = _gaq || [];
   _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
 
 
-  var modalExperiment = [
-    "#surveyModal",
-    "#alternativeModal"
-  ];
-
-  var modal = modalExperiment[chosenVariation];
-
+  var modal = "#alternativeModal";
 
   // MODAL STUFF
     var subject = '{{page.subject}}';
