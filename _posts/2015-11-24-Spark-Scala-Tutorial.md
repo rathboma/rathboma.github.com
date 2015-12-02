@@ -100,15 +100,15 @@ class ExampleJob(sc: SparkContext) {
 
 object ExampleJob {
   def main(args: Array[String]) {
-    val transactionsIn = args(1)
-    val usersIn = args(0)
-    val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
-    val conext = new SparkContext(conf)
-    val job = new ExampleJob(context)
-    val results = job.run(transactionsIn, usersIn)
-    val output = args(2)
-    results.saveAsTextFile(output)
-    context.stop()
+        val transactionsIn = args(1)
+        val usersIn = args(0)
+        val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
+        val conext = new SparkContext(conf)
+        val job = new ExampleJob(context)
+        val results = job.run(transactionsIn, usersIn)
+        val output = args(2)
+        results.saveAsTextFile(output)
+        context.stop()
   }
 }
 {% endhighlight %}
@@ -137,7 +137,7 @@ In Spark all work is expressed as either creating new RDDs, transforming existin
 
 Technically creating new and transforming existing RDDs - [transformation][13] in Spark - is different from calling an action to compute a result - an [action][14] in Spark. Actions result in actual processing the data, lets say by a MapReduce algorithm on HDFS. Work on transformations in its turn may wait till they are requested by an action. 
 
-The task we have is solved by using Spark's Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as groupByKey(), and are useful for joins, such as leftOuterJoin(). 
+The task we have is solved by using Spark's Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as countByKey(), and are useful for joins, such as leftOuterJoin(). 
 
 The actual action in our case is `countByKey()` (and `saveAsTextFile()` that is used to output result to HDFS). It is easy to see that using Spark CLI (spark-submit). Transformation returns info about the format the data is in after the transformation. Better to say, transformation notifies about a type of a new dataset it will create from the initial one (as RDDs are immutable). Calling an action will immediately result in getting logs about what is being done and how much has been done at the moment.
 
@@ -198,8 +198,8 @@ class SparkJoinsScalaTest extends AssertionsForJUnit {
   
   @Before
   def initialize() {
-	 val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
-	 sc = new SparkContext(conf)
+    val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
+    sc = new SparkContext(conf)
   }
   
   @After
