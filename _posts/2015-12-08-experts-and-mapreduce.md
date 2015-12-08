@@ -12,7 +12,7 @@ image:
 ---
 
 
-Over the last 2 years I've published [numberous MapReduce framework guides][1], but I've given no real direction on *which* framework to use and why.
+Over the last 2 years I've published [numberous MapReduce framework guides][1], but I've given no real direction on **which** framework to use and why.
 
 If you're just getting started with Hadoop and MapReduce I know figuring out where to start can be very overwhelming, so getting direction is important!
 
