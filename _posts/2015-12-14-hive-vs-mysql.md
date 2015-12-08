@@ -4,7 +4,7 @@ date: 2015-12-08
 subject: hadoop
 description: Apache Hive differs significantly from traditional relational databases like MySQL. I'll walk through some key differences in architecture and use cases to give a sense of when and why to use each technology.
 layout: post
-published: false
+published: true
 image:
   url: /img/mysql-hive.jpg
   author:
