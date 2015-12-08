@@ -9,6 +9,7 @@ coauthor:
   link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
 categories:
 - hadoop
+published: false
 tags:
 - hive
 - hadoop
