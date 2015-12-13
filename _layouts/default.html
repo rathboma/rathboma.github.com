@@ -24,29 +24,29 @@ layout: basic
   </div>
 </div>
 
-<script src="//popular-posts.herokuapp.com/client-script.js?token=CrazyTokenString"></script>
-<script src="//www.google-analytics.com/cx/api.js?experiment=hTccJMn0SDC4MjlDo8Au1w"></script>
-
 <script>
 
-  $(document).ready(function(){
-    var variations = [
-      function() {
-        // do nothing
-      },
-      function() {
-        // load popular posts
-        $("#popularPosts").removeClass("hidden");
-        loadTopPosts("#popularPosts", 5);
-      }
-    ];
 
-    var chosenVariation = 1; // if experiments doesn't work, show popular posts.
-    if (typeof cxApi !== 'undefined') {
-      chosenVariation = cxApi.chooseVariation();
-    } 
-    variations[chosenVariation]();
-  })
+
+
+
+  $(document).ready(function(){
+
+    loadTopPosts("#popularPosts");
+
+    $("#popularPosts").easyab({
+      "slot": 1,
+      "name": "popular-sidebar",
+      "alternatives": [
+        {
+          "alternative": function($this) {
+            $this.removeClass("hidden");
+          }
+        }
+      ]
+    });
+
+  });
 
 
 </script>

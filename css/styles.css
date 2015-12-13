@@ -73,8 +73,13 @@ h1 {
 }
 
 h2 {
+  font-size: 1.8em;
+  font-weight:bold;
+}
+
+.post h2 {
   font-size: 1.3em;
-  font-weight:normal;
+  font-weight: normal;
 }
 
 h3 {

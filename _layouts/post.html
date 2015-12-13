@@ -56,29 +56,41 @@ layout: default
 </div>
 <!-- Begin MailChimp Signup Form -->
 
-
-<div id="related">
-  <h2>{% if page.subject %} Read more articles about {{page.subject}} {% else %} Related articles {% endif %}</h2>
-  <ul class="posts">
-    {% if page.subject %}
-      {% for post in site.posts %}
-        {% if post.subject == page.subject %}
-          {% if page.title != post.title %}
-            <li><span class="related_date">{{ post.date | date: "%Y-%m-%d"}}: </span><a href="{{post.url}}">{{post.title}}</a></li>
-          {% endif %}
+<div class="row-fluid" id="relatedContentWrapper">
+  <div class="span12" id="relatedWrapper">
+    <div id="related">
+      <h2>{% if page.subject %} Recent {{page.subject}} articles {% else %} articles {% endif %}</h2>
+      <ul class="posts">
+        {% if page.subject %}
+          {% for post in site.posts %}
+            {% if post.subject == page.subject %}
+              {% if page.title != post.title %}
+                <li><span class="related_date">{{ post.date | date: "%Y-%m-%d"}}: </span><a href="{{post.url}}">{{post.title}}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% for post in site.related_posts limit:3 %}
+            <li><span>{{ post.date | date: "%Y-%m-%d"}}</span>: <a href="{{post.url}}">{{post.title}}</a></li>
+          {% endfor %}
         {% endif %}
-      {% endfor %}
-    {% else %}
-      {% for post in site.related_posts limit:3 %}
-        <li><span>{{ post.date | date: "%Y-%m-%d"}}</span>: <a href="{{post.url}}">{{post.title}}</a></li>
-      {% endfor %}
-    {% endif %}
-  </ul>
+      </ul>
+    </div>
+  </div>
+  <div class="span12" id="popularWrapper">
+    <h2>More Reading</h2>
+  </div>
+</div>
+
+<div>
   <h2>Join the discussion</h2>
   <div id="disqus_thread"></div>
 
 
     <script type="text/javascript">
+
+
+
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'rathboma'; // required: replace example with your forum shortname
         var disqus_identifier = '{{page.id}}';
@@ -116,6 +128,26 @@ layout: default
 
   var _gaq = _gaq || [];
   _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
+
+
+  // popular posts
+  loadTopPosts("#popularWrapper");
+  $("#popularWrapper").hide();
+
+  $("#relatedContentWrapper").easyab({
+    "slot": 2,
+    "name": "popular-bottom",
+    "alternatives": [
+      {
+        "alternative": function($this) {
+          $this.find("#relatedWrapper").remove();
+          $this.find("#popularWrapper").show();
+        }
+      }
+    ]
+  });
+
+
 
 
   var modal = "#alternativeModal";
