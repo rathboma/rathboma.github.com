@@ -80,6 +80,7 @@ hdfs dfs -put ./transactions.txt input
 All code and data used in this post can be found in my [`hive examples` GitHub repository][github].
 
 {% highlight java %}
+
 public class ExampleJob {
     private static JavaSparkContext sc; 
     
