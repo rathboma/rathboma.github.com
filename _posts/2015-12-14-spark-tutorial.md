@@ -36,3 +36,4 @@ I've published the solution to this problem over on the [Beekeeper](http://beeke
 [6]: /2013/01/05/a-quick-guide-to-hadoop-map-reduce-frameworks.html#walkthrough
 [7]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [8]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
+[9]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
