@@ -80,41 +80,38 @@ hdfs dfs -put ./transactions.txt input
 All code and data used in this post can be found in my [`hive examples` GitHub repository][github].
 
 {% highlight java %}
-public class SparkJoins {
-    @SuppressWarnings("serial")
+public class ExampleJob {
+    private static JavaSparkContext sc; 
+    
+    public ExampleJob(JavaSparkContext sc){
+    	this.sc = sc;
+    }
     
     public static final PairFunction<Tuple2<Integer, Optional<String>>, Integer, String> KEY_VALUE_PAIRER =
     new PairFunction<Tuple2<Integer, Optional<String>>, Integer, String>() {
-    	public Tuple2<Integer, String> call(Tuple2<Integer, Optional<String>> a) throws Exception {
-		// a._2.isPresent()
+    	public Tuple2<Integer, String> call(
+    			Tuple2<Integer, Optional<String>> a) throws Exception {
+			// a._2.isPresent()
     		return new Tuple2<Integer, String>(a._1, a._2.get());
     	}
 	};
 	
 	public static JavaRDD<Tuple2<Integer,Optional<String>>> joinData(JavaPairRDD<Integer, Integer> t, JavaPairRDD<Integer, String> u){
-        //Left Outer join operation
         JavaRDD<Tuple2<Integer,Optional<String>>> leftJoinOutput = t.leftOuterJoin(u).values().distinct();
-        //System.out.println("LeftOuterJoins function Output: "+leftJoinOutput.collect());
         return leftJoinOutput;
 	}
 	
 	public static JavaPairRDD<Integer, String> modifyData(JavaRDD<Tuple2<Integer,Optional<String>>> d){
 		return d.mapToPair(KEY_VALUE_PAIRER);
-		//System.out.println("MapToPair function Output: "+res.collect());
 	}
 	
 	public static Map<Integer, Object> countData(JavaPairRDD<Integer, String> d){
-        //System.out.println("MapToPair function Output: "+res.collect());
         Map<Integer, Object> result = d.countByKey();
-        //System.out.println("CountByKey function Output: "+result.toString());
         return result;
 	}
 	
-    
-    public static void main(String[] args) throws FileNotFoundException {
-        JavaSparkContext sc = new JavaSparkContext(new SparkConf().setAppName("SparkJoins").setMaster("local"));
-
-        JavaRDD<String> transactionInputFile = sc.textFile(args[0]);
+	public static JavaPairRDD<String, String> run(String t, String u){
+        JavaRDD<String> transactionInputFile = sc.textFile(t);
         JavaPairRDD<Integer, Integer> transactionPairs = transactionInputFile.mapToPair(new PairFunction<String, Integer, Integer>() {
             public Tuple2<Integer, Integer> call(String s) {
                 String[] transactionSplit = s.split("\t");
@@ -122,7 +119,7 @@ public class SparkJoins {
             }
         });
         
-        JavaRDD<String> customerInputFile = sc.textFile(args[1]);
+        JavaRDD<String> customerInputFile = sc.textFile(u);
         JavaPairRDD<Integer, String> customerPairs = customerInputFile.mapToPair(new PairFunction<String, Integer, String>() {
             public Tuple2<Integer, String> call(String s) {
                 String[] customerSplit = s.split("\t");
@@ -132,26 +129,32 @@ public class SparkJoins {
 
         Map<Integer, Object> result = countData(modifyData(joinData(transactionPairs, customerPairs)));
         
-        List<Tuple2<Integer, Long>> output = new ArrayList<>();
+        List<Tuple2<String, String>> output = new ArrayList<>();
 	    for (Entry<Integer, Object> entry : result.entrySet()){
-	    	output.add(new Tuple2<>(entry.getKey(), (long)entry.getValue()));
+	    	output.add(new Tuple2<>(entry.getKey().toString(), String.valueOf((long)entry.getValue())));
 	    }
 
-	    JavaPairRDD<Integer, Long> output_rdd = sc.parallelizePairs(output);
-	    output_rdd.saveAsHadoopFile(args[2], Integer.class, String.class, TextOutputFormat.class);
-
+	    JavaPairRDD<String, String> output_rdd = sc.parallelizePairs(output);
+	    return output_rdd;
+	}
+	
+    public static void main(String[] args) throws Exception {
+        JavaSparkContext sc = new JavaSparkContext(new SparkConf().setAppName("SparkJoins").setMaster("local"));
+        ExampleJob job = new ExampleJob(sc);
+        JavaPairRDD<String, String> output_rdd = job.run(args[0], args[1]);
+        output_rdd.saveAsHadoopFile(args[2], String.class, String.class, TextOutputFormat.class);
         sc.close();
     }
 }
 {% endhighlight %}
 
-This code does exactly same thing that the corresponding code of the Scala solution does. The sequence of actions is exactly the same, as well as input and output data on each step.
+This code does exactly the same thing that the corresponding code of the Scala solution does. The sequence of actions is exactly the same, as well as the input and output data on each step.
 
 1. read / transform transactions data
 2. read / transform users data
 3. left outer join of transactions on users
-4. getting read of user_id key from the result of the previous step by applying `values()`
-5. fining `distinct()` values
+4. get rid of user_id key from the result of the previous step by applying `values()`
+5. find `distinct()` values
 6. `countByKey()`
 7. transform result to an RDD
 8. save result to Hadoop
@@ -169,12 +172,12 @@ Spark's Key/value RDDs are of JavaPairRDD type. Key/value RDDs are commonly used
 Here is how the input and intermediate data is transformed into a Key/value RDD in Java:
 
 {% highlight java %}
-JavaRDD<String> transactionInputFile = sc.textFile(args[0]);
+JavaRDD<String> transactionInputFile = sc.textFile(t);
 JavaPairRDD<Integer, Integer> transactionPairs = transactionInputFile.mapToPair(new PairFunction<String, Integer, Integer>() {
-	public Tuple2<Integer, Integer> call(String s) {
-		String[] transactionSplit = s.split("\t");
-		return new Tuple2<Integer, Integer>(Integer.valueOf(transactionSplit[2]), Integer.valueOf(transactionSplit[1]));
-	}
+    public Tuple2<Integer, Integer> call(String s) {
+        String[] transactionSplit = s.split("\t");
+        return new Tuple2<Integer, Integer>(Integer.valueOf(transactionSplit[2]), Integer.valueOf(transactionSplit[1]));
+    }
 });
 {% endhighlight %}
 
@@ -183,11 +186,11 @@ and a stand-alone function
 {% highlight java %}
 public static final PairFunction<Tuple2<Integer, Optional<String>>, Integer, String> KEY_VALUE_PAIRER =
 new PairFunction<Tuple2<Integer, Optional<String>>, Integer, String>() {
-    	public Tuple2<Integer, String> call(
-    			Tuple2<Integer, Optional<String>> a) throws Exception {
+    public Tuple2<Integer, String> call(
+    		Tuple2<Integer, Optional<String>> a) throws Exception {
 			// a._2.isPresent()
-    		return new Tuple2<Integer, String>(a._1, a._2.get());
-    	}
+    return new Tuple2<Integer, String>(a._1, a._2.get());
+}
 };
 {% endhighlight %}
 
@@ -213,7 +216,7 @@ public static Map<Integer, Object> countData(JavaPairRDD<Integer, String> d){
 }
 {% endhighlight %}
 
-The `processData()` function from the Scala version was broken into three new functions `joinData()`, `modifyData()` and `countData()`. It was done to add a little bit more value to the test function. It was not necessary to do so. All the data transformation steps could have been put into one function that would be similar to `processData()` from the Scala solution.
+The `processData()` function from the Scala version was broken into three new functions `joinData()`, `modifyData()` and `countData()`. It was done to make the code even clearer. It was not necessary to do so. All the data transformation steps could have been put into one function that would be similar to `processData()` from the Scala solution.
 
 The `leftOuterJoin()` function joins two RDDs on key. 
 
@@ -226,20 +229,20 @@ And finally `countByKey()` counts the number of countries where the product was 
 {% highlight bash%}
 /usr/bin/spark-submit --class main.java.com.matthewrathbone.sparktest.SparkJoins --master local ./spark-example-1.0-SNAPSHOT-jar-with-dependencies.jar /path/to/transactions.txt /path/to/users.txt /path/to/output_folder
 
-15/10/30 11:49:47 INFO DAGScheduler: Job 2 finished: countByKey at SparkJoins.java:74, took 0.171325 s
+15/12/20 11:49:47 INFO DAGScheduler: Job 2 finished: countByKey at SparkJoins.java:74, took 0.171325 s
 CountByKey function Output: {1=3, 2=1}
 
 $ hadoop fs -ls sparkout
 Found 9 items
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/_SUCCESS
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00000
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00001
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00002
--rw-r--r--   1 hadoop hadoop          4 2015-11-30 11:49 sparkout/part-00003
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00004
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00005
--rw-r--r--   1 hadoop hadoop          0 2015-11-30 11:49 sparkout/part-00006
--rw-r--r--   1 hadoop hadoop          4 2015-11-30 11:49 sparkout/part-00007
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/_SUCCESS
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00000
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00001
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00002
+-rw-r--r--   1 hadoop hadoop          4 2015-12-20 11:49 sparkout/part-00003
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00004
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00005
+-rw-r--r--   1 hadoop hadoop          0 2015-12-20 11:49 sparkout/part-00006
+-rw-r--r--   1 hadoop hadoop          4 2015-12-20 11:49 sparkout/part-00007
 $ hadoop fs -tail sparkout/part-00003
 1	3
 $ hadoop fs -tail sparkout/part-00007
@@ -248,62 +251,41 @@ $ hadoop fs -tail sparkout/part-00007
  
 ## Testing
 
-With Java it was a bit easier to create tests similar to the official tests in [Spark GitHub][2]. These official tests are written in Java. The idea and a set up are exactly same for Java and Scala. 
+The idea and the set up are exactly the same for Java and Scala. 
 
 {% highlight java %}
-public class SparkJoinsTest implements Serializable {
-	  private transient JavaSparkContext sc;
-	  private transient File tempDir;
+public class SparkJavaJoinsTest implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private transient JavaSparkContext sc;
 
-	  @Before
-	  public void setUp() {
-	    sc = new JavaSparkContext("local", "SparkJoinsTest");
-	    tempDir = Files.createTempDir();
-	    tempDir.deleteOnExit();
-	  }
+	@Before
+	public void setUp() {
+		sc = new JavaSparkContext("local", "SparkJoinsTest");
+	}
 
-	  @After
-	  public void tearDown() {
-	    sc.stop();
-	    sc = null;
-	  }
-	  
-	  @Test
-	  public void sortByKey() {
-	    List<Tuple2<Integer, Integer>> transactions = new ArrayList<>();
-	    transactions.add(new Tuple2<>(1, 1));
-	    transactions.add(new Tuple2<>(2, 1));
-	    transactions.add(new Tuple2<>(2, 1));
-	    transactions.add(new Tuple2<>(3, 2));
-	    transactions.add(new Tuple2<>(3, 1));
-	    
-	    List<Tuple2<Integer, String>> users = new ArrayList<>();
-	    users.add(new Tuple2<>(1, "US"));
-	    users.add(new Tuple2<>(2, "GB"));
-	    users.add(new Tuple2<>(3, "FR"));
+	@After
+	public void tearDown() {
+		if (sc != null){
+			sc.stop();
+		}
+	}
 
-	    JavaPairRDD<Integer, Integer> transactions_rdd = sc.parallelizePairs(transactions);
-	    JavaPairRDD<Integer, String> users_rdd = sc.parallelizePairs(users);
-
-	    JavaRDD<Tuple2<Integer,Optional<String>>> leftJoinOutput = SparkJoins.joinData(transactions_rdd, users_rdd);
-	    
-	    Assert.assertEquals(4, leftJoinOutput.count());
-	    JavaPairRDD<Integer, String> res = SparkJoins.modifyData(leftJoinOutput);
-	    List<Tuple2<Integer, String>> sortedRes = res.sortByKey().collect();
-	    Assert.assertEquals(1, sortedRes.get(0)._1.intValue());
-	    Assert.assertEquals(1, sortedRes.get(1)._1.intValue());
-	    Assert.assertEquals(1, sortedRes.get(2)._1.intValue());
-	    Assert.assertEquals(2, sortedRes.get(3)._1.intValue());
-	    
-	    Map<Integer, Object> result = SparkJoins.countData(res);
-	    Assert.assertEquals((long)3, result.get(1));
-	    Assert.assertEquals((long)1, result.get(2));
-	    
-	  }
+	@Test
+	public void testExampleJob() {
+	
+		ExampleJob job = new ExampleJob(sc);
+		JavaPairRDD<String, String> result = job.run("./transactions.txt", "./users.txt");
+		    
+		Assert.assertEquals("1", result.collect().get(0)._1);
+		Assert.assertEquals("3", result.collect().get(0)._2);
+		Assert.assertEquals("2", result.collect().get(1)._1);
+		Assert.assertEquals("1", result.collect().get(1)._2);
+	
+	}
 }
 {% endhighlight %}
 
-The test is more or less self-explanatory. As it was mentioned earlier in comparison to the Scala article we do a few more checks on the output here. As usually we check for the expected number of rows in the output and their content.
+The test is more or less self-explanatory. As usually we check content of the output.
 
 
 ## Thoughts
