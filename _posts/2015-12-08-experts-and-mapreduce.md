@@ -20,115 +20,135 @@ I figured instead of flapping my own opinions (which are outdated honestly), I'd
 
 ## Questions
 
-1. Which MapReduce Framework do you prefer to work in?
-2. Why do you like using it vs regular MapReduce?
-3. Why do you like using it vs other MapReduce frameworks?
+
+> 1. Which MapReduce Framework do you prefer to work in?
+> 2. Why do you like using it vs regular MapReduce?
+> 3. Why do you like using it vs other MapReduce frameworks?
 
 Note that opinions expressed by those interviewed are personal and do not nessecerily represent employer opinions.
 
-## Joe Stein, CEO of Elodina
+
+## Experts
+
+### [Joe Stein](https://twitter.com/charmalloc), CEO of [Elodina](http://elodina.net)
+![Joe Stein](/img/experts/joe-stein.jpg){: .small-img .pull-left}
 
 As well as running Elodina, Joe runs [All Things Hadoop](http://allthingshadoop.com/), and talks about distributed computing at a range of conferences and events.
 
-* Which MapReduce Framework do you prefer to work in?
-
-  > Scalding
-
-* Why do you like using it vs regular MapReduce
-
-  > It is easy to reason about composing data together when the language is composing functions around the data.
-
-* Why do you like using it vs other frameworks?
-
-  > After Scalding I would skip over them all and go straight to Python streaming as my next default.
-
-## Sam Wang, Engineering Manager at Foursquare
-
-When I worked at Foursquare I would constantly drag Sam into Hadoop infrastructure projects becuase he was so good at them, even though he was meant to be working on machine learning.
-
-* Which MapReduce Framework do you prefer to work in?
-
-  > Scalding
-
-* Why do you like using it vs regular MapReduce
-
-  > Implementing intuitive joins with Scala types in Scalding is very easy, and is probably the number one feature that our engineers love over writing in any other framework.
-  > 
-  > 
-  > In our ecosystem, writing joins in native MR always required writing throw-away container types for joins in Thrift, which added an unnecessary layer of complexity to a task. Also, implementing any of the join primitives in Scalding in MR (outerJoin, hashJoin, etc.) is very cumbersome in vanilla MR, and usually resulted in code that was not reusable from task to task.
-  > 
-  > Being able to depend on the native Scalding serialization for Scala types is also convenient, as users don't have to think too hard about how data flows over a wire, and how to serialize and deserialize their complex types. Finally, there's just less boilerplate code in general, and the code is much more readable to anyone skimming a flow to figure out exactly what the salient bits of it are.
-
-* Why do you like using it vs other frameworks?
-
-  > Foursquare arrived at Scalding via an organic process, which was partially technical, and partially cultural. We had previously invested in a framework called Scoobi, but we wanted to switch to a framework with a richer ecosystem of developers and support.
-  > 
-  > The Scalding API looks similar to writing Scoobi, so the switch was not as dramatic as if we had switched to something that looked completely different. We had already invested a lot in tuning our cluster to run MR version 1 jobs, and the appeal of Scalding working out of the box on our existing infrastructure was the other major deciding factor in why we chose it.
-  > 
-  > Scalding, at the time, seemed like the best way to mix our existing codebase with more Scala-idiomatic join primitives and classes.
+<div class="clearfix"></div>
 
 
-## David Leifker, Software Architect at Spreadfast
 
-* Which MapReduce Framework do you prefer to work in?
+### [Sam Wang](https://twitter.com/samwang), Engineering Manager at [Foursquare](http://foursquare.com)
+![Sam Wang](/img/experts/sam-wang.png){: .small-img .pull-left}
+Sam was so good at thinking and coding in MapReduce that he now runs the data infrastructure team that keeps Foursquare's petabyte+ cluster humming.
 
-  > Spark
+<div class="clearfix"></div>
 
-* Why do you like using it vs regular MapReduce?
+### David Leifker, Software Architect at [Spredfast](http://spreadfast.com)
+![David Leifker](/img/experts/david-leifker.jpg){: .small-img .pull-left}
+David is a systems engineer with a focus on data firehoses, real time processing, and big data architecture.
 
-  > Simply put Spark is better able to execute iterative operations faster then M/R. This is readily apparent for ML applications. Currently there is MLlib for Spark, but Mahout is also shifting to use Spark for this reason. The ability to cache, or pin, RDDs in memory also helps to speed up certain operations.
+<div class="clearfix"></div>
 
+### [Eli Collins](https://twitter.com/elicollins), Chief Technologist at [Cloudera](http://cloudera.com)
+![Eli Collins](/img/experts/eli-collins.jpg){: .small-img .pull-left}
+Eli runs a cloudera engineering group and helps set the technical vision of the company. If anyone knows the direction of emerging big data technologies, it's him.
 
-* Why do you like using it vs other frameworks?
+<div class="clearfix"></div>
 
-  > Honestly, it was a natural fit for the type of problems I was looking to solve, those being oriented around ML. If you are looking to perform non-iterative batch processing that cannot fit in the distributed memory of your cluster, M/R is still the likely winner.
-  > 
-  > Spark compared to say Storm is a question of is it easier to move your data or read it in place. It depends on where the data is. If the bulk of the data is already collected and stored in the cluster, its easier to reason about moving processing to the where the data is stored, potentially changing how its distributed. Compare that to moving already written data through a topology of processors incurs added complexity and performance implications. However if you're ingesting a stream of incoming data anyway, Storm may have some benefits.
-  > 
-  > Essentially the framework of choice is to pick the right tool for the job, any one solution is always going to have its strengths.
+### [Andrew Walkingshaw](https://twitter.com/covert), Senior Software Engineer at [Jaunt VR](http://www.jauntvr.com)
+![Andrew Walkingshaw](/img/experts/andrew-walkingshaw.jpg){: .small-img .pull-left}
+Andrew is a formiddable engineer with a focus on big data technologies and data science. He's built recommendation systems at Flipboard, and is now designing and building the analytics systems at Jaunt VR.
 
+<div class="clearfix"></div>
 
-## Eli Collins, Chief Technologist at Cloudera
+## Which MapReduce Framework do you prefer to work in?
 
-* Which MapReduce Framework do you prefer to work in?
-
-  > Crunch
-
-* Why do you like using it vs regular MapReduce?
-
-  >  It's easier to develop and debug _pipelines_ than stitching together individual MR jobs
-
-* Why do you like using it vs other frameworks?
-
-  > Crunch (and FlumeJava) is pretty minimal compared to alternatives for writing MR pipelines. ie other frameworks do more, but if you just want to develop MR pipelines Crunch is great. Dataflow is very promising in terms of future direction.
-  > 
-  > [Here's a recent piece on crunch from the Cloudera blog][2].
+* Joe Stein - Scalding
+* Sam Wang - Scalding
+* David Leifker - Spark
+* Eli Collins - Crunch
+* Andrew Walkingshaw - Pig
 
 
-## Andrew Walkingshaw, Senior Software Engineer at Jaunt VR
+## Why do you like your framework vs regular Java MapReduce?
 
-* Which MapReduce Framework do you prefer to work in?
+* **Joe Stein - Scalding**
+  
+  It is easy to reason about composing data together when the language is composing functions around the data.
 
-* Why do you like using it vs regular MapReduce?
+* **Sam Wang - Scalding**
 
-* Why do you like using it vs other frameworks?
+  Implementing intuitive joins with Scala types in Scalding is very easy, and is probably the number one feature that our engineers love over writing in any other framework.
+
+  In our ecosystem, writing joins in native MR always required writing throw-away container types for joins in Thrift, which added an unnecessary layer of complexity to a task. Also, implementing any of the join primitives in Scalding in MR (outerJoin, hashJoin, etc.) is very cumbersome in vanilla MR, and usually resulted in code that was not reusable from task to task.
+
+  Being able to depend on the native Scalding serialization for Scala types is also convenient, as users don't have to think too hard about how data flows over a wire, and how to serialize and deserialize their complex types. Finally, there's just less boilerplate code in general, and the code is much more readable to anyone skimming a flow to figure out exactly what the salient bits of it are.
+
+* **David Leifker - Spark**
+
+  Simply put Spark is better able to execute iterative operations faster then M/R. This is readily apparent for ML applications. Currently there is MLlib for Spark, but Mahout is also shifting to use Spark for this reason. The ability to cache, or pin, RDDs in memory also helps to speed up certain operations.
+
+* **Eli Collins - Crunch**
+
+  It's easier to develop and debug _pipelines_ than stitching together individual MR jobs
+
+* **Andrew Walkingshaw - Pig**
+
+  If I need Hadoop, I'm usually doing something which I can't conveniently do by some other means – for instance by consolidating all the data onto a single machine, by sampling, or by using a relational database. Often, that means I'm not entirely sure how best to build the thing I need when I start out. It's a research process.
+
+  Here, being able to work in Pig's interactive shell, Grunt, is a big win over raw Map/Reduce. In particular, I find it very helpful when getting the basic data-loading-and-reshaping parts of the pipeline up and running. Most of that grouping-and-sorting work, which would otherwise be a bunch of boilerplate, is well handled by any of the frameworks out there; for me, that's a compelling reason to avoid writing raw M/R.
+
+  However, for the kind of problems for which I find myself using Hadoop, I'll usually need to implement some specific piece of business logic. For example, one problem which crops up a lot is sessionization – the heuristics you want for that are typically pretty idiosyncratic to your application. 
+
+  I like to be able to work on those in the same iterative, interactive style as when I'm building the ETL part of the pipeline, and Pig's straightforward UDF interface (and Jython integration) help out substantially there.
 
 
-## What framework do you use?
 
-Which framework do you use and why? Would you recommend it for a beginner? Leave your answers in the comments below.
+## Why do you like your framework vs other MapReduce frameworks?
+
+* **Joe Stein - Scalding**
+
+  After Scalding I would skip over them all and go straight to Python streaming as my next default.
 
 
-## Wrap up
+* **Sam Wang - Scalding**
 
-Clearly my network has a bias towards [Scala][3] frameworks, maybe because the functional nature of the language makes it easy to reason about MapReduce behavior.
+  Foursquare arrived at Scalding via an organic process, which was partially technical, and partially cultural. We had previously invested in a framework called Scoobi, but we wanted to switch to a framework with a richer ecosystem of developers and support.
 
-Spark in particular (while not actually a MapReduce framework per-se) takes this idea a step further by making operations look like native scala list operations, which can be very powerful.
+  The Scalding API looks similar to writing Scoobi, so the switch was not as dramatic as if we had switched to something that looked completely different. We had already invested a lot in tuning our cluster to run MR version 1 jobs, and the appeal of Scalding working out of the box on our existing infrastructure was the other major deciding factor in why we chose it.
 
-One thing everyone agrees upon -- joining data in regular MapReduce is painful, and best avoided. All of these frameworks make data joins a lot more straightforward, and in some cases only a single line of code.
+  Scalding, at the time, seemed like the best way to mix our existing codebase with more Scala-idiomatic join primitives and classes.
 
-For those who are working with Scala, Scalding and Spark are clearly fan favorites, so that's probably a good place to start. If you don't know Scala, maybe now is a good time to start playing with it. :-).
 
+* **David Leifker - Spark**
+
+  Honestly, it was a natural fit for the type of problems I was looking to solve, those being oriented around ML. If you are looking to perform non-iterative batch processing that cannot fit in the distributed memory of your cluster, M/R is still the likely winner.
+
+  Spark compared to say Storm is a question of is it easier to move your data or read it in place. It depends on where the data is. If the bulk of the data is already collected and stored in the cluster, its easier to reason about moving processing to the where the data is stored, potentially changing how its distributed. Compare that to moving already written data through a topology of processors incurs added complexity and performance implications. However if you're ingesting a stream of incoming data anyway, Storm may have some benefits.
+
+  Essentially the framework of choice is to pick the right tool for the job, any one solution is always going to have its strengths.
+
+
+
+* **Eli Collins - Crunch**
+
+  Crunch (and FlumeJava) is pretty minimal compared to alternatives for writing MR pipelines. ie other frameworks do more, but if you just want to develop MR pipelines Crunch is great. Dataflow is very promising in terms of future direction.
+
+
+* **Andrew Walkingshaw - Pig**
+
+  So, why not Hive? Hive's biggest virtue is that it's almost SQL -- and Hive's biggest issue is that it's almost SQL. For interactive work, the Hive DDL is, in my experience, in the way. The Hive metadata model does scale much better to data-warehouse type workloads, though.
+
+  As to Scalding and Cascalog, they're Scala and Clojure, and both those languages have REPLs. So they sound like good options – but, although I'm a little embarrassed to admit this, I haven't gotten round to doing much with Scala or Clojure yet! Furthermore, introducing new languages into a project or a company does come with a cost; Java's unfashionable, but everyone can at least read it, and that's a real virtue; Pig UDFs tend to be short, anyway, so Java is pretty workable.
+
+
+## What is your favorite framework?
+
+Do you agree with the choices above? Do you have your own favorite framework you think is being overlooked? I'd love to hear from you in the comments.
+
+If there are some particularly good responses I'll add them to this post.
 
 
 

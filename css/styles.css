@@ -46,6 +46,21 @@ blockquote p {
   margin:auto;
 }
 
+img.small-img {
+  max-width:125px;
+  margin-right:20px;
+}
+
+img.pull-left {
+  margin-right:20px !important;
+}
+
+
+img.pull-right {
+  margin-left:20px !important;
+}
+
+
 img.rounded {
   border-radius: 50%;
   margin-bottom: 10px
