@@ -4,7 +4,7 @@ date: 2016-01-05
 subject: hadoop
 description: "Software engineers from Cloudera, Foursquare, Spredfast, JauntVR, and Elondina chat about their favorite Hadoop MapReduce frameworks and how they use them day to day."
 layout: post
-published: true
+published: false
 image:
   url: /img/elephant.jpg
   author:
