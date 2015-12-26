@@ -70,6 +70,11 @@ hdfs dfs -put ./users.txt input
 hdfs dfs -put ./transactions.txt input
 {% endhighlight %}
 
+And for command line testing
+{% highlight bash %}
+cat ./transactions.txt ./users.txt > ./transactions_and_users.txt
+{% endhighlight %}
+
 ## Code
 
 We divide the task into two parts. First part solves the question of a join. Second part is responsible for counting distinct by key.
@@ -294,3 +299,4 @@ by Donald Miner: [OREILLY][3].
 [8]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
 [9]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
 [13]: http://blog.matthewrathbone.com/2013/11/17/python-map-reduce-on-hadoop---a-beginners-tutorial.html
+[github]: https://github.com/rathboma/hadoop-framework-examples/
