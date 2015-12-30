@@ -14,31 +14,15 @@ layout: basic
           <h2>Join my newsletter</h2>
           <p>Learn more about Hadoop and Big Data.</p>
             {% include _newsletter_mini.html %}
-            {% include _popular_posts.html %}
+
+            
         </div>
-        <div class="popular card hidden" id="popularPosts">
-          <h2>Popular Posts</h2>
+        <div class="card">
+          {% include _recent_posts.html %}
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-    loadTopPosts("#popularPosts");
-    $("#popularPosts").easyab({
-      "slot": 1,
-      "scope": 1,
-      "name": "popular-sidebar",
-      "alternatives": [
-        {
-          "alternative": function($this) {
-            $this.removeClass("hidden");
-          }
-        }
-      ]
-    });
-
-</script>
 
 

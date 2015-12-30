@@ -48,6 +48,27 @@ layout: default
 
 {% include _me.html %}
 
+<div id="post-nav" class="clearfix">
+  <div class="row-fluid">
+    <div class="span6">
+      {% if page.previous.url %} 
+        <p class="previous-wrapper">
+          <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+        </p>
+        
+      {% endif %} 
+      
+    </div>
+    <div class="span6">
+      {% if page.next.url %}
+        <p class="next-wrapper">
+          <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+        </p>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
 
 
 <div class="research">
@@ -58,27 +79,7 @@ layout: default
 
 <div class="row-fluid" id="relatedContentWrapper">
   <div class="span12" id="relatedWrapper">
-    <div id="related">
-      <h2>{% if page.subject %} Recent {{page.subject}} articles {% else %} articles {% endif %}</h2>
-      <ul class="posts">
-        {% if page.subject %}
-          {% for post in site.posts %}
-            {% if post.subject == page.subject %}
-              {% if page.title != post.title %}
-                <li><span class="related_date">{{ post.date | date: "%Y-%m-%d"}}: </span><a href="{{post.url}}">{{post.title}}</a></li>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {% for post in site.related_posts limit:3 %}
-            <li><span>{{ post.date | date: "%Y-%m-%d"}}</span>: <a href="{{post.url}}">{{post.title}}</a></li>
-          {% endfor %}
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-  <div class="span12" id="popularWrapper">
-    <h2>More Reading</h2>
+    {% include _recent_posts.html subject=page.subject %}
   </div>
 </div>
 
@@ -130,25 +131,6 @@ layout: default
   _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
 
 
-  // popular posts
-  loadTopPosts("#popularWrapper");
-  $("#popularWrapper").hide();
-
-  $("#relatedContentWrapper").easyab({
-    "slot": 2,
-    "scope": 1,
-    "name": "popular-bottom",
-    "alternatives": [
-      {
-        "alternative": function($this) {
-          $this.find("#relatedWrapper").remove();
-          $this.find("#popularWrapper").show();
-        }
-      }
-    ]
-  });
-
-
 
 
   var modal = "#alternativeModal";
@@ -182,9 +164,4 @@ layout: default
       $(modal).modal('hide');
     });
 </script>
-
-{% if jekyll.environment == "production" %}
-  <script src="//popular-posts.herokuapp.com/track.js?token=CrazyTokenString"></script>
-{% endif %}
-
 

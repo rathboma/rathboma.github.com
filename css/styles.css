@@ -326,19 +326,29 @@ div.post img.inline-img {
   text-decoration: none;
 }
 
-div#related {
+.post div.related {
   margin-bottom:50px;
 }
 
-div#related ul.posts {
-  list-style:none;
+
+.page-wrap .previous-wrapper {
+  text-align: left;
 }
 
-div#related ul.posts li {
+.page-wrap .next-wrapper {
+  text-align: right;
+}
+
+div.related ul.posts {
+  list-style:none;
+  margin-left:0;
+}
+
+div.related ul.posts li {
   padding-bottom:8px;
 }
 
-div#related span.related_date {
+div.related span.related_date {
   color:#777;
 }
 
