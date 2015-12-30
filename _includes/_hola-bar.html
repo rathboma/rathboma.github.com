@@ -30,13 +30,11 @@
     $('body').animate({"margin-top": "50px"}, "slow");
   };
 
-  setTimeout(showPanel, 3000);
 
   var dismiss = function() {
     $('#hola-bar').slideUp("slow");
     $('body').animate({"margin-top": "0px"}, "slow")
   }
-
 
 
   $("#hola-bar-close-button").click(function(event){
@@ -49,6 +47,23 @@
     $.cookie("hola-bar-submitted", "true", { expires: 7, path: '/'});
     dismiss();
   })
+
+
+  // only show the hola bar to half of my visitors -- AB Testing!
+  $("#hola-bar").easyab({
+    "slot": 3,
+    "scope": 1, // visitor level
+    "name": "hola-bar",
+    "alternatives": [
+      {
+        "alternative": function($this) {
+          setTimeout(showPanel, 3000);
+        }
+      }
+    ]
+  });
+
+
 
 
 </script>
