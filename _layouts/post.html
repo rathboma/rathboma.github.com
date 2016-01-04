@@ -50,18 +50,20 @@ layout: default
 
 <div id="post-nav" class="clearfix">
   <div class="row-fluid">
-    <div class="span6">
+    <div class="span6 previous-wrapper">
       {% if page.previous.url %} 
-        <p class="previous-wrapper">
+        <h3>Previous</h3>
+        <p>
           <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
         </p>
         
       {% endif %} 
       
     </div>
-    <div class="span6">
+    <div class="span6 next-wrapper">
       {% if page.next.url %}
-        <p class="next-wrapper">
+        <h3>Next</h3>
+        <p>
           <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
         </p>
       {% endif %}
@@ -69,6 +71,7 @@ layout: default
 
   </div>
 </div>
+
 
 
 <div class="research">
