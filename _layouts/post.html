@@ -159,10 +159,9 @@ layout: default
 
   // MODAL STUFF
     var subject = '{{page.subject}}';
-    var env = '{{site.environment}}';
     var modalShownCookie = $.cookie("modalshown");
     var modalShown = false;
-    if (modalShownCookie != undefined && modalShownCookie == 'true' && env == 'production') {
+    if (modalShownCookie != undefined && modalShownCookie == 'true') {
       console.log("modalshown cookie is TRUE!");
       modalShown = true;
     }
