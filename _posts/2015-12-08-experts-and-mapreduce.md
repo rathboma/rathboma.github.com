@@ -45,7 +45,7 @@ Sam was so good at thinking and coding in MapReduce that he now runs the data in
 
 <div class="clearfix"></div>
 
-### David Leifker, Software Architect at [Spredfast](http://spreadfast.com)
+### David Leifker, Software Architect at [Spredfast](http://spredfast.com)
 ![David Leifker](/img/experts/david-leifker.jpg){: .small-img .pull-left}
 David is a systems engineer with a focus on data firehoses, real time processing, and big data architecture.
 
