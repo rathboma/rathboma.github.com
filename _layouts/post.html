@@ -121,11 +121,13 @@ layout: default
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h1>Learn More about Hadoop</h1>
   </div>
+  <div class="modal-image">
+  </div>
   <div class="modal-body">
+
     {% include _newsletter.html source="blog-modal"%}
   </div>
 </div>
-
 
 <!-- <script src="//www.google-analytics.com/cx/api.js?experiment=EzMWXFpWRJeEEZJpkIbD6Q"></script> -->
 <script>
@@ -138,11 +140,29 @@ layout: default
 
   var modal = "#alternativeModal";
 
+  $(".modal-image").easyab({
+    "slot": 4,
+    "scope": 1,
+    "name": "modal-image",
+    "alternatives": [
+      {
+        "alternative": function($this) {
+          $this.append(
+            '<img src="/img/books.jpg" />' + 
+            '<p class="attribution">image by <a href="https://www.flickr.com/photos/96055807@N02/10893926256/">Hung Thai</a></p>'
+          );
+        }
+      }
+    ]
+  });
+
+
   // MODAL STUFF
     var subject = '{{page.subject}}';
+    var env = '{{site.environment}}';
     var modalShownCookie = $.cookie("modalshown");
     var modalShown = false;
-    if (modalShownCookie != undefined && modalShownCookie == 'true') {
+    if (modalShownCookie != undefined && modalShownCookie == 'true' && env == 'production') {
       console.log("modalshown cookie is TRUE!");
       modalShown = true;
     }

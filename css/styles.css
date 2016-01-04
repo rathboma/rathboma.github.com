@@ -524,6 +524,18 @@ ol li ul {
   max-height:450px;
 }
 
+.modal-image .attribution {
+  text-align: right;
+  padding-right:10px;
+  color:#ccc;
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.modal-image .attribution a {
+  color:#ccc;
+}
+
 .modal-body img {
   margin-bottom:10px;
 }
