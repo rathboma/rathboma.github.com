@@ -2,9 +2,9 @@
 title: 5 Industry Veterens Pick Their Favorite MapReduce Frameworks
 date: 2016-01-05
 subject: hadoop
-description: "Software engineers from Cloudera, Foursquare, Spredfast, JauntVR, and Elondina chat about their favorite Hadoop MapReduce frameworks and how they use them day to day."
+description: "Software engineers from Cloudera, Foursquare, Spredfast, JauntVR, and Elondina chat with me about their favorite Hadoop MapReduce frameworks and why they like them."
 layout: post
-published: false
+published: true
 image:
   url: /img/elephant.jpg
   author:
@@ -15,12 +15,11 @@ image:
 
 Over the last 2 years I've published [numberous MapReduce framework guides][1], but I've given no real direction on **which** framework to use and why.
 
-If you're just getting started with Hadoop and MapReduce I know figuring out where to start can be very overwhelming, so getting direction is important!
-
-I figured instead of flapping my own opinions, I'd reach out to folks who are writing production MapReduce code every day and ask them what they use.
+If you're just getting started with Hadoop and MapReduce I know figuring out where to start can be very overwhelming. I figured instead of flapping my own opinions about what frameworks to use I'd reach out to folks who are writing production MapReduce code every day and ask them for their thoughts.
 
 ## Questions
 
+I asked my experts 3 questions about the frameworks that they use:
 
 > 1. Which MapReduce Framework do you prefer to work in?
 > 2. Why do you like using it vs regular MapReduce?
