@@ -1,5 +1,5 @@
 ---
-title: 5 Industry Veterens Pick Their Favorite MapReduce Frameworks
+title: 5 Industry Veterans Pick Their Favorite MapReduce Frameworks
 date: 2016-01-05
 subject: hadoop
 description: "Software engineers from Cloudera, Foursquare, Spredfast, JauntVR, and Elondina chat with me about their favorite Hadoop MapReduce frameworks and why they like them."
