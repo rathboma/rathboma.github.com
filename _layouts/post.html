@@ -122,9 +122,10 @@ layout: default
     <h1>Learn More about Hadoop</h1>
   </div>
   <div class="modal-image">
+    <img src="/img/books.jpg" />
+    <p class="attribution">image by <a href="https://www.flickr.com/photos/96055807@N02/10893926256/">Hung Thai</a></p>
   </div>
   <div class="modal-body">
-
     {% include _newsletter.html source="blog-modal"%}
   </div>
 </div>
@@ -135,26 +136,7 @@ layout: default
   var _gaq = _gaq || [];
   _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
 
-
-
-
   var modal = "#alternativeModal";
-
-  $(".modal-image").easyab({
-    "slot": 4,
-    "scope": 1,
-    "name": "modal-image",
-    "alternatives": [
-      {
-        "alternative": function($this) {
-          $this.append(
-            '<img src="/img/books.jpg" />' + 
-            '<p class="attribution">image by <a href="https://www.flickr.com/photos/96055807@N02/10893926256/">Hung Thai</a></p>'
-          );
-        }
-      }
-    ]
-  });
 
 
   // MODAL STUFF

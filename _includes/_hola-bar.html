@@ -49,20 +49,9 @@
   })
 
 
-  // only show the hola bar to half of my visitors -- AB Testing!
-  $("#hola-bar").easyab({
-    "slot": 3,
-    "scope": 1, // visitor level
-    "name": "hola-bar",
-    "alternatives": [
-      {
-        "alternative": function($this) {
-          setTimeout(showPanel, 3000);
-        }
-      }
-    ]
-  });
-
+  $(document).ready(function(){
+    setTimeout(showPanel, 3000);
+  })
 
 
 
