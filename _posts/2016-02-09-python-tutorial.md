@@ -1,7 +1,7 @@
 ---
-title: Real World Hadoop - Real World Hadoop Guide for Python 
+title: Hadoop MapReduce Python Join Tutorial with Example Code
 layout: post
-description: Data processing pipelines with Spark
+description: Joining and analysing data in Hadoop using Python MapReduce. I compare this solution to the same solution in other MapReduce frameworks.
 topic: engineering
 author: matthew_rathbone
 published: false
@@ -14,6 +14,12 @@ tags:
 - python
 - hadoop
 - hadoop-streaming
+image:
+  url: /img/python.jpg
+  author:
+    url: https://www.flickr.com/photos/archangel12/5466310296
+    name: Archangel12
+
 ---
 
 > This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  
@@ -27,25 +33,25 @@ Let me quickly restate the problem from [my original article][6].
 
 I have two datasets:
 
-1. User information (id, email, language, location)
-2. Transaction information (transaction-id, product-id, user-id, purchase-amount, item-description)
+1. Users (id, email, language, location)
+2. Transactions (transaction-id, product-id, user-id, purchase-amount, item-description)
 
 Given these datasets, I want to find the number of unique locations in which each product has been sold. To do that, I need to join the two datasets together.
 
 Previously I have implemented this solution [in java][7], [with hive][8] and [with pig][9]. The java solution was ~500 lines of code, hive and pig were like ~20 lines tops.
 
-The [Python article][13] i mentioned earlier does not solve this problem. It has a focus on understanding the basics of working with Hadoop-streaming and Python. 
+My [beginners guide to python MapReduce][13] does not solve this problem, but provides a more gentle introduction to running MapReduce with Python. Start there if you're just getting started with these concepts.
 
 ## The Python Solution
 
-Again, this article is a follow up for my [earlier article][13] on [Python][1] that shows the basics of using Python for map reduce in Hadoop. Please refer to it to gather basic understanding on how to write mappers and reducers in Python for Hadoop. Here we focus on implementing join and count distinct by key in Python and will assume some preliminary understanding of hadoop-streaming. 
+This solution assumes some preliminary understanding of hadoop-streaming and python, and uses concepts introduced in my [earlier article][13].
 
 ## Demonstration Data
 
-As previously (and here we mean "versus" the solutions [in java][7], [with hive][8] and [with pig][9]) we use two datasets called `users` and `transactions`. 
+As in previous articles ([java MR][7], [hive][8] and [pig][9]) we use two datasets called `users` and `transactions`. 
 
 {% highlight bash %}
-users
+> cat users
 1	matthew@test.com	EN	US
 2	matthew@test2.com	EN	GB
 3	matthew@test3.com	FR	FR
@@ -54,7 +60,7 @@ users
 and
 
 {% highlight bash %}
-transactions
+> cat transactions
 1	1	1	300	a jumper
 2	1	2	300	a jumper
 3	1	2	300	a jumper
@@ -62,7 +68,7 @@ transactions
 5	1	3	300	a jumper
 {% endhighlight %}
 
-**This time though they will constitute the same input dataset!** Soon it will become clear why.
+One big difference with Python MapReduce is that we treat them **as a single dataset** when we are writing our Mapper. I will show you how just below.
 
 {% highlight bash %}
 hdfs dfs -mkdir input
@@ -71,40 +77,40 @@ hdfs dfs -put ./users.txt input
 hdfs dfs -put ./transactions.txt input
 {% endhighlight %}
 
-And for command line testing
-{% highlight bash %}
-cat ./transactions.txt ./users.txt > ./transactions_and_users.txt
-{% endhighlight %}
-
 ## Code
 
-We divide the task into two parts. First part solves the question of a join. Second part is responsible for counting distinct by key.
+This job logically has two parts, so I will divide the code in the same way. Firstly we solve the problem of joining the two datasets to associate a location to each purchase, and secondly we use this joined dataset to evaluate how many unique locations each product has been sold in.
 
-The code for the both parts of the solution and data used in this post can be found in my [`hive examples` GitHub repository][github].
+The code for the both parts of the solution and data used in this post can be found in my [GitHub repository][github].
 
-## Join
+### Part 1: Joining
 
 Mapper:
 
 {% highlight python %}
+
 #!/usr/bin/env python
 import sys
 for line in sys.stdin:
+    # Setting some defaults
 	user_id = ""
 	product_id = "-"
 	location = "-"
-	line = line.strip()         
-	splits = line.split("\t")         
-	if len(splits) == 5:
+
+	line = line.strip()
+	splits = line.split("\t")
+	if len(splits) == 5: # Transactions have more columns than users
 		user_id = splits[2]
 		product_id = splits[1]
 	else:
 		user_id = splits[0]
 		location = splits[3]                   
 	print '%s\t%s\t%s' % (user_id,product_id,location)
+
 {% endhighlight %}
 
 Reducer:
+
 {% highlight python %}
 #!/usr/bin/env python
 import sys
@@ -123,48 +129,76 @@ for line in sys.stdin:
     elif user_id == last_user_id:
         location = cur_location
         print '%s\t%s' % (product_id,location)
+
 {% endhighlight %}
 
-The Mapper reads both datasets and distinguishes them by the number of columns. Transactions data has more columns than the users data.
+The Mapper reads both datasets and distinguishes them by the number of fields in each row. Transaction records have 5 fields, users have only 4.
 
-The aim of the mapper is to select the data we need to calculate the number of unique locations in which each product has been sold, namely user_id, poduct_id and location, and represent the data in such a way so it would be easy for the reducer to read it line by line. The Reducer will substitute an absent value of location into the rows where user_id and product_id are present. That is the rows from the transactions table.
 
-Using the fact that the data will be sorted by key in Hadoop, we sort it by user_id and product_id (using `-Dstream.num.map.output.key.fields=2`) when running in hadoop-streaming, or applying `sort` when testing from command line: 
+The mapper does two things:
 
-{% highlight bash%}
-cat transactions_and_users.txt | ./joinMapperTU.py | sort
+* For transactions - Extract the `user_id` and `product_id`
+* For users - Extract the `user_id` and the `location`
+
+The mapper outputs three fields: `user_id, product_id, location`.
+
+The output will look something like this:
+
+{% highlight bash %}
+# From transaction data:
+2, 1, -
+# From user data:
+2, -, US
 {% endhighlight %}
 
-Mapper will output the following:
+
+By using a feature of the streaming api we can tell Hadoop to treat BOTH of the first two fields as a combined key. This allows us to guarantee the order in which the reducer will recieve data:
+
+1. User record with location (now we can remember the location)
+2. Each user purchase in turn, ordered by product id.
+
+We do this by specifying an option on the command line: `-Dstream.num.map.output.key.fields=2`.
+If we want to test this without Hadoop we can just use `sort`. 
 
 {% highlight bash%}
-1	-	US
+cat *.txt | ./joinMapperTU.py | sort
+{% endhighlight %}
+
+The output will look like this (I added notes):
+
+{% highlight bash%}
+1	-	US # user record
 1	1	-
-2	-	GB
+2	-	GB # user record
 2	1	-
 2	1	-
-3	-	FR
+3	-	FR # user record
 3	1	-
 3	2	-
 {% endhighlight %}
 
-For each key Reducer will first set location 
+For each new user the Reducer will first remember that user's location:
 
 {% highlight python%}
-if not last_user_id or last_user_id != user_id:
+
+if not last_user_id or last_user_id != user_id: # if this is a new user
     last_user_id = user_id
     cur_location = location
+
 {% endhighlight %}
 
-and then add this location to the lines where it is missing:
+and then add this location to the transactions:
 
 {% highlight python%}
+
 elif user_id == last_user_id:
     location = cur_location
     print '%s\t%s' % (product_id,location)
+
 {% endhighlight %}
 
-Thus, the for each user_id Reducer will get from the mapper a sorted by user_id and product_is list of lines, like:
+
+So the reducer will take an input that looks like this (`user_id, product_id, location`):
 
 {% highlight bash%}
 3	-	FR
@@ -172,21 +206,22 @@ Thus, the for each user_id Reducer will get from the mapper a sorted by user_id 
 3	2	-
 {% endhighlight %}
 
-Reducer reads the first line - `3	-	FR`.
-
-It remembers the location - `FR` - from it.
-
-Then 
-
-`3	1	-` -> `3	1	FR` -> (omitting user_id) -> `1	FR`
-
-`3	2	-` -> `3	2	FR` -> (omitting user_id) -> `2	FR`
+Extract the location, and associate with each product id to produce this:
 
 {% highlight bash%}
-cat transactions_and_users.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort
+1	FR
+2	FR
 {% endhighlight %}
 
-results in
+We can run the whole join pipeline easily without using Hadoop:
+
+{% highlight bash%}
+
+cat *.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort
+
+{% endhighlight %}
+
+And get a list of product/location pairs for stage 2.
 
 {% highlight bash%}
 1	FR
@@ -197,9 +232,12 @@ results in
 {% endhighlight %}
 
 
-## Counting Distinct by Key
+## Stage 2: Counting Distinct Locations for each Product
 
 Mapper:
+
+In fact we can just use `cat` here if we like.
+
 {% highlight python %}
 #!/usr/bin/env python
 import sys
@@ -209,9 +247,11 @@ for line in sys.stdin:
     line = line.strip()
     product_id,location = line.split("\t")
     print '%s\t%s' % (product_id,location)
+
 {% endhighlight %}
 
 Reducer:
+
 {% highlight python %}
 #!/usr/bin/env python
 import sys
@@ -234,28 +274,31 @@ for line in sys.stdin:
         if location != cur_location:
             count_locations = count_locations + 1
             cur_location = location
+
+    # else we're transitioning from the last product to a new one
     else:
         print '%s\t%s' % (last_product_id,count_locations)
         last_product_id = product_id
         cur_location = location
         count_locations = 1
 
+# finally print out the last product / location combo. This is a gotcha! Easy to forget this line :-)
 print '%s\t%s' % (product_id,count_locations)
 {% endhighlight %}
 
-In this case Mapper is more or less an identity Mapper. In the Reducer phase we again exploit the fact that entries are ordered by key. We go through a product_id while it has the same value and calculate the number of distinct location in those rows. 
+Our mapper just echo's it's input and the bulk of work happens in the reducer. In the Reducer phase we again exploit the fact that entries are ordered by key. Notice that unlike regular MapReduce this reducer's API does not distinguish between keys and receives all of them in a big long list, so our reducer has to do it's own bookeeping. See my [beginners article][13] for more of an explaination. 
 
-To calculate the number of distinct locations we rather calculate a number of changes in location values.
+So we go through the list and count the number of locations we see for each product_id, whilst making sure we transition between products properly.
 
 ## Running the code
 
-We can run the code for testing without Hadoop:
+Again, this is easy to test without Hadoop:
 
 {% highlight bash%}
-cat transactions_and_users.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort | ./joinMapperTU1.py | sort | ./joinReducerTU1.py
+cat *.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort | ./joinMapperTU1.py | sort | ./joinReducerTU1.py
 {% endhighlight%}
 
-or using hadoop-streaming
+Or using hadoop-streaming in two steps:
 
 {% highlight bash%}
 bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.tasks=1 -Dstream.num.map.output.key.fields=2 -input transactions_and_users -output transactions_and_users_output -file /path/to/joinMapperTU.py -file /path/to/joinReducerTU.py -mapper joinMapperTU.py -reducer joinReducerTU.py
@@ -263,7 +306,8 @@ bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.t
 bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.tasks=1 -Dstream.num.map.output.key.fields=2 -input transactions_and_users_output -output transactions_and_users_output_final -file /path/to/joinMapperTU1.py -file /path/to/joinReducerTU1.py -mapper joinMapperTU1.py -reducer joinReducerTU1.py
 {% endhighlight%}
 
-The result in both cases is:
+The result in both cases is correct:
+
 {% highlight bash%}
 1	3
 2	1
@@ -271,25 +315,19 @@ The result in both cases is:
 
 ## Testing
 
-It is best to test each part of the process separately. Both Mappers and Reducers.
+Testing Hadoop streaming pipelines is harder than testing regular MapReduce pipelines because our tasks are just scripts. There are some more structured Python frameworks that help in both development and testing of Hadoop pipelines.
 
 ## Thoughts
 
-It was not hard to write the code for both, join and count distinct. An ability to quickly test what is happening by just running a mapper or a reducer or both from a command line with a small input data set is convenient.
+Our Python code is very legible and does not require as much boiler plate as regular Java MapReduce. That said it does require us to use some bookeeping to make sure the mappers and reducers work correctly. The ability to quickly test using the command line is very nice, as is the inclusion of a lot of functionality in the streaming API jar itself.
 
-I would not use this solution unless using python is a must, as the code is very error prone and is not easy to read.
+To be frank -- I would avoid using python streaming to write MapReduce code for Hadoop. If you have to use Python I suggest investigating a python framework like [Luigi](https://github.com/spotify/luigi) or [MRJob](https://github.com/Yelp/mrjob). Hadoop streaming is powerful, but without a framework there are lots of easy ways to make mistakes and it's pretty hard to test.
 
 ## Hadoop Streaming Resources 
 
 Documentation on [Hadoop Streaming][2] by Apache.
 
-## Further Reading
-
-More on writing in Python for Hadoop you may find in 
-
-O'REILLY Publishing ‘Hadoop with Python’ Book
-
-by Donald Miner: [OREILLY][3].
+Check out the O'REILLY ‘Hadoop with Python’ Book by Donald Miner: [OREILLY][3].
 
 [1]: https://www.python.org
 [2]: https://hadoop.apache.org/docs/r1.2.1/streaming.html
