@@ -72,10 +72,11 @@ One big difference with Python MapReduce is that we treat them **as a single dat
 To start, let's upload these files to HDFS.
 
 {% highlight bash %}
-hdfs dfs -mkdir input
+hdfs dfs -mkdir users
+hdfs dfs -mkdir transactions
 
-hdfs dfs -put ./users.txt input
-hdfs dfs -put ./transactions.txt input
+hdfs dfs -put ./users.txt users
+hdfs dfs -put ./transactions.txt transactions
 {% endhighlight %}
 
 ## Code
@@ -301,7 +302,7 @@ cat *.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort | ./joinMapperT
 Or using hadoop-streaming in two steps:
 
 {% highlight bash%}
-bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.tasks=1 -Dstream.num.map.output.key.fields=2 -input transactions_and_users -output transactions_and_users_output -file /path/to/joinMapperTU.py -file /path/to/joinReducerTU.py -mapper joinMapperTU.py -reducer joinReducerTU.py
+bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.tasks=1 -Dstream.num.map.output.key.fields=2 -input transactions -input users -output transactions_and_users_output -file /path/to/joinMapperTU.py -file /path/to/joinReducerTU.py -mapper joinMapperTU.py -reducer joinReducerTU.py
 
 bin/hadoop jar ./contrib/streaming/hadoop-0.20.2-streaming.jar -Dmapred.reduce.tasks=1 -Dstream.num.map.output.key.fields=2 -input transactions_and_users_output -output transactions_and_users_output_final -file /path/to/joinMapperTU1.py -file /path/to/joinReducerTU1.py -mapper joinMapperTU1.py -reducer joinReducerTU1.py
 {% endhighlight%}
