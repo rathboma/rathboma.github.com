@@ -75,6 +75,7 @@ knowledge of programming to operate.
 
 | Python |
 | --- |
+| Regular Python Streaming | [walkthrough](/hadoop/2016/02/09/python-tutorial.html) | [docs](http://hadoop.apache.org/docs/r0.15.2/streaming.html) |
 | MR Job | *coming soon* |[docs](https://github.com/Yelp/mrjob) |
 | Dumbo | *coming soon* | [docs](https://github.com/klbostee/dumbo) |
 | Hadooppy | *coming soon* | [docs](https://github.com/bwhite/hadoopy) |

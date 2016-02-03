@@ -5,6 +5,12 @@ subject: hadoop
 description: In the continuation of my MapReduce guide I take a look at how to solve a real world problem using Spark and Scala
 layout: post
 published: true
+image:
+  url: /img/sparks.jpg
+  author:
+    name: blair_25
+    url: https://www.flickr.com/photos/blair25/3240686470
+
 ---
 
 > This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  

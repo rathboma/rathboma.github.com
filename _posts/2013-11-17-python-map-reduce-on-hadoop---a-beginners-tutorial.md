@@ -291,9 +291,9 @@ TRUE 17
 
 ## A Complex Example in Python
 
-Check out my [Real World Hadoop Guide for Python][real-world-python] to see how to join two datasets together using python.
+Check out my [advanced python MapReduce guide][real-world-python] to see how to join two datasets together using python.
 
-[real-world-python]:#
+[real-world-python]:/hadoop/2016/02/09/python-tutorial.html
 [beginners-guide]:/2013/04/17/what-is-hadoop.html
 [bdm]:http://www.meetup.com/BigDataMadison/events/149122882/
 [play-by-play]:http://www.advancednflstats.com/2010/04/play-by-play-data.html

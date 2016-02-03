@@ -1,5 +1,5 @@
 ---
-title: Hadoop MapReduce Python Join Tutorial with Example Code
+title: Hadoop MapReduce Advanced Python Join Tutorial with Example Code
 layout: post
 description: Joining and analysing data in Hadoop using Python MapReduce. I compare this solution to the same solution in other MapReduce frameworks.
 topic: engineering
@@ -8,8 +8,7 @@ published: false
 coauthor:
   name: Elena Akhmatova
   link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
-categories:
-- hadoop
+subject: hadoop
 tags:
 - python
 - hadoop
@@ -333,10 +332,10 @@ Check out the O'REILLY ‘Hadoop with Python’ Book by Donald Miner: [OREILLY][
 [1]: https://www.python.org
 [2]: https://hadoop.apache.org/docs/r1.2.1/streaming.html
 [3]: http://www.oreilly.com/programming/free/hadoop-with-python.csp
-[4]: http://blog.matthewrathbone.com/2013/01/05/a-quick-guide-to-hadoop-map-reduce-frameworks.html
+[4]: /2013/01/05/a-quick-guide-to-hadoop-map-reduce-frameworks.html
 [6]: /2013/01/05/a-quick-guide-to-hadoop-map-reduce-frameworks.html#walkthrough
 [7]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [8]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
 [9]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
-[13]: http://blog.matthewrathbone.com/2013/11/17/python-map-reduce-on-hadoop---a-beginners-tutorial.html
+[13]: /2013/11/17/python-map-reduce-on-hadoop-a-beginners-tutorial.html
 [github]: https://github.com/rathboma/hadoop-framework-examples/
