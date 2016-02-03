@@ -439,7 +439,7 @@ div.card h2 {
 }
 
 .card.inverted h2 {
-  border-bottom:solid 1px #111;
+  border-bottom:solid 1px #5F5F5F;
 }
 
 .card.inverted p, .inverted h2 {

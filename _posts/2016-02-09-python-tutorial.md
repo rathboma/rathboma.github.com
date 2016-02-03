@@ -70,6 +70,8 @@ and
 
 One big difference with Python MapReduce is that we treat them **as a single dataset** when we are writing our Mapper. I will show you how just below.
 
+To start, let's upload these files to HDFS.
+
 {% highlight bash %}
 hdfs dfs -mkdir input
 
@@ -89,7 +91,6 @@ Mapper:
 
 {% highlight python %}
 
-#!/usr/bin/env python
 import sys
 for line in sys.stdin:
     # Setting some defaults
@@ -168,13 +169,13 @@ The output will look like this (I added notes):
 
 {% highlight bash%}
 1	-	US # user record
-1	1	-
+1	1	-  # transaction record
 2	-	GB # user record
-2	1	-
-2	1	-
+2	1	-  # transaction record
+2	1	-  # transaction record
 3	-	FR # user record
-3	1	-
-3	2	-
+3	1	-  # transaction record
+3	2	-  # transaction record
 {% endhighlight %}
 
 For each new user the Reducer will first remember that user's location:
@@ -221,7 +222,7 @@ cat *.txt | ./joinMapperTU.py | sort | ./joinReducerTU.py | sort
 
 {% endhighlight %}
 
-And get a list of product/location pairs for stage 2.
+And get a list of product/location pairs for stage 2. This shows the location of the purchaser (user) for each transaction, where the key is the product ID. Products are repeated the number of times that it appeared in a transaction.
 
 {% highlight bash%}
 1	FR
@@ -286,7 +287,7 @@ for line in sys.stdin:
 print '%s\t%s' % (product_id,count_locations)
 {% endhighlight %}
 
-Our mapper just echo's it's input and the bulk of work happens in the reducer. In the Reducer phase we again exploit the fact that entries are ordered by key. Notice that unlike regular MapReduce this reducer's API does not distinguish between keys and receives all of them in a big long list, so our reducer has to do it's own bookeeping. See my [beginners article][13] for more of an explaination. 
+Our mapper just echos it's input and the bulk of work happens in the reducer. In the Reducer phase we again exploit the fact that entries are ordered by key. Notice that unlike regular MapReduce this reducer's API does not distinguish between keys and receives all of them in a big long list, so our reducer has to do it's own bookeeping. See my [beginners article][13] for more of an explaination. 
 
 So we go through the list and count the number of locations we see for each product_id, whilst making sure we transition between products properly.
 
