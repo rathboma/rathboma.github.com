@@ -4,7 +4,7 @@ layout: post
 description: Joining and analysing data in Hadoop using Python MapReduce. I compare this solution to the same solution in other MapReduce frameworks.
 topic: engineering
 author: matthew_rathbone
-published: false
+published: true
 coauthor:
   name: Elena Akhmatova
   link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
