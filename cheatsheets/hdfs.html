@@ -1,0 +1,24 @@
+---
+layout: cheatsheet
+title: HDFS Cheat Sheet
+---
+<div class="row text-center">
+  <div class="col-xs-12">{{site.data.cheatsheets.hdfs.description}} <a href="/img/hdfs-cheatsheet.pdf" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-save"></span> Download PDF</a></div>
+  <hr>
+</div>
+<div class="row">
+{% assign per_column = site.data.cheatsheets.hdfs.sections | size | divided_by: 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    {% for section in site.data.cheatsheets.hdfs.sections | limit: per_column %}
+        {% include cheatsheet/_section.html section=section %}      
+    {% endfor %}
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+      {% for section in site.data.cheatsheets.hdfs.sections | offset: per_column %}
+        {% include cheatsheet/_section.html section=section %}
+      {% endfor %}
+  </div>
+
+</div>

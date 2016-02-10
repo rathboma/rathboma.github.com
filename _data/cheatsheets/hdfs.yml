@@ -1,0 +1,98 @@
+name: HDFS Cheatsheet
+description: "Commonly used commands for HDFS. This is not an exhaustive list, but the most useful ones on a day to day basis."
+sections:
+  -
+    name: Listing Files
+    description: This is how you inspect HDFS to see what it contains. Use these commands to find files and their associated metadata.
+    items:
+      -
+        command: "hadoop fs -ls ./example"
+        text: "List files in a directory"
+      -
+        command: "hadoop fs -ls ./example/matthew*"
+        text: "List files matching a pattern"
+      -
+        command: "hadoop fs -ls -h ./example/"
+        text: "List files with human-friendly file sizes (eg 1.3M vs 1331325)"
+      -
+        command: "hadoop fs -ls -R ./example/"
+        text: "Recursively list files in this directory AND all child directories."
+      -
+        command: "hadoop fs -ls -d ./example/"
+        text: "List files, but with directories shown as files. So in this case it will show info about the example folder itself."
+
+  -
+    name: Uploading/Downloading Files
+    description: Moving files between HDFS and the local filesystem and back.
+    items:
+      - command: "hadoop fs -put ./localfile.txt ./example/"
+        text: "Upload a file from your local machne to a specific directory on HDFS."
+
+      - command: "hadoop fs -put -f ./localfile.txt ./example/"
+        text: "Upload a file and overwrite any existing file on HDFS."
+
+      - command: "hadoop fs -put -l ./localfile.txt ./example/"
+        text: "Upload a file and set a replication factor of 1 (you probably shouldn't ever really use this)."
+      - break: true
+
+      - command: "hadoop fs -get ./example/remotefile.txt ./"
+        text: "Download a file from HDFS to your local machine."
+
+      - command: "hadoop fs -get -p ./example/remotefile.txt ./"
+        text: "Download a file from HDFS to your local machine, preserving metadata (eg modified time)."
+
+      - command: "hadoop fs -get ./example/*.txt ./"
+        text: "Download a set of files that match a pattern to your local machine."
+
+
+  -
+    name: "Reading & Writing Files"
+    description: Reading file contents without downloading the file itself.
+    items:
+      - command: "hadoop fs -text ./example/file.txt"
+        text: "Print the contents of a file to the terminal, decompressing if nessecery."
+      - command: "hadoop fs -cat ./example/*.txt"
+        text: "Print to the terminal the contents of all files that match the provided pattern. Note - this will NOT decompress like 'text' will."
+      - command: "hadoop fs [-cat,-text] -ignoreCrc ./example/*.txt"
+        text: "As above, but disable the verification checksum."
+      - command: "hadoop fs -appendToFile ./localfile.txt ./example/remotefile.txt"
+        text: "Append the contents of a local file to a file on HDFS. This is only supported in Hadoop versions 2.1.1+"
+
+  -
+    name: File Management
+    description: "Organize your files with these commands."
+    items:
+      - command: "hafoop fs -mv ./example/f1.txt ./example/f2.txt"
+        text: "Move a file to a different file/directory (omit the filename to name it the same)"
+      - command: "hafoop fs -cp ./example/f1.txt ./example/f2.txt"
+        text: "copy a file to a different file/directory (omit the filename to name it the same)"
+      - break: true
+      - command: "hafoop fs -rm ./example/f1.txt"
+        text: "Delete a file (sends it to the trash)"
+      - command: "hafoop fs -rm -skipTrash ./example/f1.txt"
+        text: "Actually delete the file. No trash."
+      - command: "hafoop fs -rm -r ./example/directory"
+        text: "Recursively delete a directory and it's contents"
+      - break: true
+      - command: "hafoop fs -touchz ./example/somefile"
+        text: "Create a zero-length file (great for creating _SUCCESS files)."
+      - command: "hafoop fs -touchz ./example/somefile"
+        text: "Create a zero-length file (great for creating _SUCCESS files)."
+
+
+  -
+    name: HDFS Administration
+    description: "Check on important stuff that is less about your files and more about HDFS."
+    items:
+      - command: "hadoop fs -df -h ./example"
+        text: "Show capacity and used space of the filesystem. Will show partition space remaining if you have partitions."
+      - command: "hadoop fs -du -h ./example/*.txt"
+        text: "show the amount of space used by matching files"
+      - command: "hadoop fs -expunge"
+        text: "Empty the Trash (useful if you -rm without -skipTrash)"
+      - command: "hadoop fs -chown owner:group ./example"
+        text: "Change ownership of a file (use -R for the directory)"
+      - command: "hadoop fs -chmod 0700 ./example/file.txt"
+        text: "Change the mode of the file (eg to 0700)"
+      - command: "hadoop fs -checksum ./example/*.txt"
+        text: "Fetch checksum information for the matching files (requires a datanode roundtrip, slow and intensive)."

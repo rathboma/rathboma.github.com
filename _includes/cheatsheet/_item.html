@@ -1,0 +1,9 @@
+<tr class="row">
+  {%if include.item.break %}
+    <td></td>
+    <td></td>
+  {% else %}
+    <td class="col-xs-5"><code>{{include.item.command}}</code></td>
+    <td class="col-xs-7">{{include.item.text}}</td>
+  {% endif %}
+</tr>
