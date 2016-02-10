@@ -26,6 +26,10 @@ blockquote p {
   margin-bottom: inherit;
 }
 
+.bordered {
+  border: solid 1px #444;
+}
+
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */

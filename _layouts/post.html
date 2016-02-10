@@ -119,7 +119,7 @@ layout: default
 <div id="alternativeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h1>Learn More about Hadoop</h1>
+    <h1>Learn more about Hadoop</h1>
   </div>
   <div class="modal-image">
     <img src="/img/books.jpg" />
@@ -130,6 +130,24 @@ layout: default
   </div>
 </div>
 
+
+<!-- Learn more about hadoop modal -->
+<div id="cheatsheetModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1>Join my newsletter</h1>
+  </div>
+<!--   <div class="modal-image">
+    <img src="/img/books.jpg" />
+    <p class="attribution">image by <a href="https://www.flickr.com/photos/96055807@N02/10893926256/">Hung Thai</a></p>
+  </div> -->
+  <div class="modal-body">
+    {% include _newsletter-cheatsheet.html source="blog-modal"%}
+  </div>
+</div>
+
+
+
 <!-- <script src="//www.google-analytics.com/cx/api.js?experiment=EzMWXFpWRJeEEZJpkIbD6Q"></script> -->
 <script>
 
@@ -137,6 +155,16 @@ layout: default
   _gaq.push(['_setPageGroup', 1, 'Blog Post']); 
 
   var modal = "#alternativeModal";
+
+  $(document).easyab({
+    'slot': 1,
+    'name': 'hdfs-cheatsheet',
+    'alternatives': [{
+      'alternative': function($this) {
+        modal = "#cheatsheetModal";
+      }
+    }]
+  });
 
 
   // MODAL STUFF
