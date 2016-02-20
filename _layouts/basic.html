@@ -56,6 +56,9 @@
  </div>
 
 
+{% include _hola-bar.html %}
+
+
  <script type="text/javascript">
   
   {% if jekyll.environment == "production" %}
@@ -78,8 +81,24 @@
   });
 
 
+  $("#holaTitle").easyab({
+    'slot': 1,
+    'name': 'cheatsheet-modal-title',
+    'scope': 1,
+    'default-value': "Get Hadoop Tutorials and Big Data Tips",
+    'alternatives': [
+      {
+        'alternative': "Free Hadoop HDFS Cheatsheet"
+      },
+      {
+        'alternative': "Subscribe for a Free HDFS Cheatsheet"
+      }
+    ]
+  });
+
+
+
 </script>
 
-{% include _hola-bar.html %}
 </body>
 </html>

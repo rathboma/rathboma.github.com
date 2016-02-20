@@ -97,6 +97,12 @@ h2 {
   font-weight:bold;
 }
 
+.burnt {
+  background-color:#B03324;
+  color: white;
+  border-color: #B03324;
+}
+
 .post h2 {
   font-size: 1.3em;
   font-weight: normal;
@@ -114,6 +120,10 @@ table.table-fixed {
 
 table.table-fixed th {
   font-size:1.3em;
+}
+
+.top-25 {
+  margin-top:25px;
 }
 
 .page-wrap.breadcrumb {
