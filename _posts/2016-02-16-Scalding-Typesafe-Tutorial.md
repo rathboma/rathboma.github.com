@@ -272,9 +272,7 @@ The [Cascading web-site][2] has resources related to both Cascading and Scalding
 
 Book: 
 
-* PACKT Publishing ‘Programming MapReduce with Scalding: A practical guide to designing, testing, and implementing complex MapReduce applications in Scala’ Book
-
-by Antonios Chalkiopoulos: from [Amazon][10].
+* PACKT Publishing *Programming MapReduce with Scalding: A practical guide to designing, testing, and implementing complex MapReduce applications in Scala*, available from [Amazon][10].
 
 
 [1]: https://github.com/twitter/scalding
