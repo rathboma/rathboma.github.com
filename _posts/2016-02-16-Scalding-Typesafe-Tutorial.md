@@ -115,14 +115,14 @@ class Main (args: Args) extends Job(args) {
 }
 ```
 
-To read the data two case classes, Transaction and User, are defined. You can see immediately that the fields of the classes have types specified. Ids must now be of Type Long, and will not be read as Strings or Integers.
+I've defined two case classes (`User` and `Transaction`) to represent the records in each dataset. You can see immediately that the fields of the classes have types specified, and do not include any Scalding specific special features. Ids must now be of Type Long, and will not be read as Strings or Integers.
 
-{% highlight scala %}
+```scala
 case class Transaction(id: Long, productId: Long, userId: Long, purchaseAmount: Double, itemDescription: String)
 case class User(id: Long, email: String, language: String, location: String)
-{% endhighlight %}
+```
 
-Hence parsing the data requires type conversion.
+Unfortunately, our data is in a delimited format, so to start working with it, we need to convert it to the right types:
 
 {% highlight scala %}
   val usersInput : TypedPipe[User] = input1.map{ s: String =>
@@ -136,7 +136,9 @@ Hence parsing the data requires type conversion.
   }
 {% endhighlight %}
 
-The solution itself is similar to that of the Field based API solution. Please refer to the Field based API solution for details:
+We can then operate on the data by transforming collections of `User` and `Transaction` objects. While the solution is almost identical to my [field API solution][18], this version looks much more like 'regular scala'.
+
+Some stuff is different, and worth noting -- calling `size` after `groupBy` actually counts the list of values, rather than counting how many groups there are overall. This is a little unintuitive with the API closely resembling vanilla scala in all other ways.
 
 {% highlight scala %}
   val joinedBranch =  group2
