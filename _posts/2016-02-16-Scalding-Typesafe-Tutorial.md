@@ -1,28 +1,27 @@
 ---
-title: Real World Hadoop - Implementing a left outer join in Scalding Using Type Safe API
+title: "Real World Hadoop - Implementing a left outer join in Scalding Using Type Safe API"
 layout: post
 description: Data processing pipelines with Scalding
 topic: engineering
 author: matthew_rathbone
 published: false
-coauthor:
+coauthor: 
   name: Elena Akhmatova
-  link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
-categories:
-- hadoop
-tags:
-- hadoop
-- Scala
-- Scalding
+  link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
+categories: 
+  - hadoop
+tags: 
+  - hadoop
+  - Scala
+  - Scalding
 ---
 
+
 > This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  
->  
-> These article is a second article on Scalding and should be read together with the [previous Scalding article][18]. This article talks about the difference in Scalding APIs, and some prior knowledge of Scalding is assumed. Perhaps it is also good to skim over the [Cascading article][17] prior to continue reading this article, as Scalding is build on [Cascading][2] and we do mention Cascading and the article here to point to the source of differences between the APIs.
-> 
-> * [Post 1][18] - Scalding Hadoop MapReduce Tutorial With Example Code
-> * Post 2 - you're reading it!
->
+  
+This article is my second covering Scalding and should be read together with the [previous Scalding article on the 'fields' API][18]. 
+
+I'll talk through the differences in Scalding APIs, so some prior knowledge of Scalding is assumed. It might also be useful to refer to my [Cascading tutorial][17] as Scalding is built on [Cascading][2] and I make a few comparisons.
 
 ## The Problem
 
@@ -39,33 +38,33 @@ Previously I have implemented this solution [in java][7], [with hive][8] and [wi
 
 ## The Type Safe Scalding Solution
 
-[Scalding][1] is a Scala API developed at Twitter for distributed data programming that uses the [Cascading Java API][2], which in turn sits on top of Hadoop's Java API. There are several types of API for Scalding: [Type Safe API][12], [Fields based API][11], and [Matrix API][16]. The [previous article][18] solves the sample task of my Guide to Mapreduce Frameworks using the Fields based API. This time we solve the same problem using Type Safe API and look at the core difference between the APIs.
+[Scalding][1] is a Scala API developed at Twitter for distributed data programming that uses the [Cascading Java API][2], which in turn sits on top of Hadoop's Java MapReduce API. There are several types of API for Scalding: [The Type Safe API][12], [Fields based API][11], and [Matrix API][16]. In my [previous Scalding article][18] I present the solution using the field-based API. This time we solve the same problem using Type Safe API and look at the core difference between the solutions.
 
-First lets look at the code, and then discuss it.
+In general, the type-safe API is the most popular version available as it allows use of scala features like case classes and tuples without too many changes.
 
 ## Demonstration Data
 
 The tables that will be used for demonstration are called `users` and `transactions`. 
 
-{% highlight bash %}
-users
+```bash
+cat users
 1	matthew@test.com	EN	US
 2	matthew@test2.com	EN	GB
 3	matthew@test3.com	FR	FR
-{% endhighlight %}
+```
 
 and
 
-{% highlight bash %}
-transactions
+```bash
+cat transactions
 1	1	1	300	a jumper
 2	1	2	300	a jumper
 3	1	2	300	a jumper
 4	2	3	100	a rubber chicken
 5	1	3	300	a jumper
-{% endhighlight %}
+```
 
-Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS. Unlike Cascading Scalding job wants an output directory to be created for it prior to executing the job.
+Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS. Unlike Cascading (and MapReduce in general), Scalding wants the output directory to be created prior to executing the job.
 
 {% highlight bash %}
 hdfs dfs -mkdir input1
@@ -78,9 +77,10 @@ hdfs dfs -put ./transactions.txt input2
 
 ## Code
 
-All code and data used in this post can be found in my [`hive examples` GitHub repository][github].
+All code and data used in this post can be found in my [Hadoop examples GitHub repository][github].
 
-{% highlight scala %}
+```scala
+
 case class Transaction(id: Long, productId: Long, userId: Long, purchaseAmount: Double, itemDescription: String)
 case class User(id: Long, email: String, language: String, location: String)
 
@@ -113,7 +113,7 @@ class Main (args: Args) extends Job(args) {
     .size
     .write(TypedTsv[(Long, Long)](output))
 }
-{% endhighlight %}
+```
 
 To read the data two case classes, Transaction and User, are defined. You can see immediately that the fields of the classes have types specified. Ids must now be of Type Long, and will not be read as Strings or Integers.
 
