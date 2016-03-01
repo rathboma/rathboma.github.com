@@ -17,6 +17,7 @@ tags:
 ---
 
 
+
 > This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  
   
 This article is my second covering Scalding and should be read together with the [previous Scalding article on the 'fields' API][18]. 
@@ -115,16 +116,16 @@ class Main (args: Args) extends Job(args) {
 }
 ```
 
-I've defined two case classes (`User` and `Transaction`) to represent the records in each dataset. You can see immediately that the fields of the classes have types specified, and do not include any Scalding specific special features. Ids must now be of Type Long, and will not be read as Strings or Integers.
+I've defined two [case classes](http://docs.scala-lang.org/tutorials/tour/case-classes.html) (`User` and `Transaction`) to represent the records in each dataset. You can see immediately that the fields of the classes have types specified, and do not include any Scalding specific special code.
 
 ```scala
 case class Transaction(id: Long, productId: Long, userId: Long, purchaseAmount: Double, itemDescription: String)
 case class User(id: Long, email: String, language: String, location: String)
 ```
 
-Unfortunately, our data is in a delimited format, so to start working with it, we need to convert it to the right types:
+Unfortunately, our data is stored in a delimited format, so to start working with it, we need to convert it to the right types:
 
-{% highlight scala %}
+```scala
   val usersInput : TypedPipe[User] = input1.map{ s: String =>
     val split = s.split("\t")
     User(split(0).toLong, split(1), split(2), split(3))
@@ -134,13 +135,12 @@ Unfortunately, our data is in a delimited format, so to start working with it, w
     val split = s.split("\t")
     Transaction(split(0).toLong, split(1).toLong, split(2).toLong, split(3).toDouble, split(4))
   }
-{% endhighlight %}
-
+```
 We can then operate on the data by transforming collections of `User` and `Transaction` objects. While the solution is almost identical to my [field API solution][18], this version looks much more like 'regular scala'.
 
-Some stuff is different, and worth noting -- calling `size` after `groupBy` actually counts the list of values, rather than counting how many groups there are overall. This is a little unintuitive with the API closely resembling vanilla scala in all other ways.
+Some differences to regular Scala are worth noting -- calling `size` after `groupBy` actually counts the list of values in each group, rather than counting the size of the group list itself. This is a little unintuitive as it is very different behavior compared to vanilla Scala.
 
-{% highlight scala %}
+```scala
   val joinedBranch =  group2
     .leftJoin(group1) // 'user_id -> 'id, 
     .map{ case (k: Long, (t: Transaction, Some(u: User))) => (t.productId, u.location) }
@@ -148,30 +148,30 @@ Some stuff is different, and worth noting -- calling `size` after `groupBy` actu
     .groupBy{ case (productId, location) => productId }
     .size
     .write(TypedTsv[(Long, Long)](output))
-{% endhighlight %}
+```
 
 ## Running the resulting jar
 
-{% highlight bash %}
+```bash
 hadoop jar scala-scalding-1.0-SNAPSHOT-jar-with-dependencies.jar com.twitter.scalding.Tool main.scala.Main --hdfs --input1 input1 --input2 input2 --output output
 
 hdfs dfs -copyToLocal output/part-00000 .
 cat part-00000 
 1	3
 2	1
+```
 
-{% endhighlight%}
- 
 ## Testing
 
-Test again is similar to that of the Field based solution. The main difference can be seen in the line
-{% highlight scala %}
+Testing is similar to that of the Field based solution. The main difference can be seen in the line
+
+```scala
 sink[(Long, Long)]
-{% endhighlight%}
+```
 
-Field based API decided that our ids are Integers. Type safe API did not leave space for "deciding". It was specified from the very beginning that the ids are of type Long.
+The field based API decided itself that our ids are Integers, but in the type-safe solution we defined this up front.
 
-{% highlight scala %}
+```scala
 class MainTypedFunctionJoinText extends WordSpec with Matchers{
   "Our job" should {
     JobTest(new main.scala.com.matthewrathbone.scalding.Main(_))
@@ -194,24 +194,42 @@ class MainTypedFunctionJoinText extends WordSpec with Matchers{
       .finish
   }
 }
-{% endhighlight %}
+```
 
-## Differences between APIs and their roots
+## Differences between the Scalding APIs and their roots
 
-There are three APIs for Scalding: [Fields based API][11], [Type Safe API][12], and [Matrix API][16]. Their names talk for themselves. And, chronologically, they have appeared exactly in the order they are mentioned here. First Fields based API came to existence, then Type Safe API and the latest one is the Matrix API. 
+There are three APIs for Scalding: [Fields based API][11], [Type Safe API][12], and [Matrix API][16]. Their introduction order is the order they are mentioned here. So the Matrix API is the newest.
 
-The problem with Field based API is the type inference at compile time. As Fields based API allows to name the fields but the type of the fields is not specified different latent problems might emerge during runtime.
+One potential problem we might have using the Field API is that fields are not strongly typed, and must be infered at compile time. We name the fields, but we're not defining our data structures in quite the same way we do in the typed API.
 
-To source of the multitude of the APIs lays is the underlying fact that Scalding is based on Cascading. Hence Scalding inherits a lot from Cascading and develops together with it. 
+One reason for having different Scalding APIs is it's close ties to Cascading. Scalding runs on top of Cascading so no only inherits a lot of it's ideas, but develops alongside the Java framework.
 
-Before (when using Fileds Based API) we directly specified the schema of fields we expected:
-{% highlight scala %}
+This is evident when using the field-based API of Scalding. We can see it's close resemblence to regular cascading.
+
+For example, here is how we define the schema for a particular dataset in each:
+
+```scala
+// SCALDING
+
 val users = ( 'id, 'email, 'language, 'location)
 val transactions = ( 'transaction_id, 'product_id, 'user_id, 'purchase_amount, 'item_description)
-{% endhighlight %}
+```
 
-and parsed the input data:
-{% highlight scala %}
+vs
+
+
+```java
+// CASCADING
+
+Fields users = new Fields( "id", "email", "language", "location" );
+
+Fields transactions = new Fields( "transaction-id", "product-id", "user-id", "purchase-amount", "item-description" );
+```
+Data parsing also looks similar, although Scalding relies on a functional approach compared to Cascading's object oriented ideas:
+
+```scala
+// SCALDING
+
 val usersInput = input1.read.mapTo( inputFields -> users ) { te: TupleEntry =>
       val split = te.getString( "line" ).split("\t");
       (split( 0 ), split( 1 ), split( 2 ), split( 3 ))
@@ -221,25 +239,24 @@ val transactionsInput = input2.read.mapTo( inputFields -> transactions ) { te: T
       val split = te.getString( "line" ).split("\t");
       (split( 0 ), split( 1 ), split( 2 ), split( 3 ), split( 4 ))
 }
-{% endhighlight %}
+```
+vs
 
-Lets look at the similar code in Cascading (from my [article on Cascading][17]):
+```java
+// CASCADING
 
-{% highlight scala %}
-Fields users = new Fields( "id", "email", "language", "location" );
 Tap usersTap = new Hfs( new TextDelimited( users, false, "\t" ), usersPath );
       
-Fields transactions = new Fields( "transaction-id", "product-id", "user-id", "purchase-amount", "item-description" );
 Tap transactionsTap = new Hfs( new TextDelimited( transactions, false, "\t" ), transactionsPath );
-{% endhighlight %}
+```
 
-Both solutions are not really type safe. If we look at Cascading's documentation for [TextDelimited][13] class:
+Neither solution is type safe. If we look at Cascading's documentation for [TextDelimited][13] class:
 
-"Safe meaning if a field cannot be coerced into an expected type, a null will be used for the value." 
+> ..if a field cannot be coerced into an expected type, a null will be used for the value.
 
 But Cascading has another structure - a Tuple. See [Tuple][15] and [TupleEntry][14].
 
-"Tuples work in tandem with Fields and the TupleEntry classes. A TupleEntry holds an instance of Fields and a Tuple. It allows a tuple to be accessed by its field names, and will help maintain consistent types if any are given on the Fields instance."
+> Tuples work in tandem with Fields and the TupleEntry classes. A TupleEntry holds an instance of Fields and a Tuple. It allows a tuple to be accessed by its field names, and will help maintain consistent types if any are given on the Fields instance.
 
 That is why Type Safe API for Scalding is often called "tuple-based".
 
