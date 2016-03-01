@@ -4,6 +4,7 @@ layout: post
 description: Data processing pipelines with Scalding
 topic: engineering
 author: matthew_rathbone
+published: false
 coauthor:
   name: Elena Akhmatova
   link: https://ru.linkedin.com/pub/elena-akhmatova/3/877/266
