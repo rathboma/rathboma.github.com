@@ -1,19 +1,22 @@
 ---
-title: "Real World Hadoop - Implementing a left outer join in Scalding Using Type Safe API"
+title: "Type-Safe Scalding MapReduce Tutorial - Joining and Summarizing Data"
 layout: post
-description: Data processing pipelines with Scalding
-topic: engineering
+description: Scalding's scala-like API lets us join and summarize data quickly and easily, but beware -- it looks like regular scala, but sometimes behaves differently.
+subject: hadoop
 author: matthew_rathbone
 published: false
 coauthor: 
   name: Elena Akhmatova
   link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
-categories: 
-  - hadoop
 tags: 
   - hadoop
   - Scala
   - Scalding
+image:
+  url: /img/typed.jpg
+  author:
+    name: Indi Samarajiva
+    url: https://www.flickr.com/photos/indi/3083217907
 ---
 
 
