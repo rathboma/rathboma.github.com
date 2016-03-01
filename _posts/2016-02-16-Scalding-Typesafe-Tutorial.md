@@ -258,20 +258,21 @@ But Cascading has another structure - a Tuple. See [Tuple][15] and [TupleEntry][
 
 > Tuples work in tandem with Fields and the TupleEntry classes. A TupleEntry holds an instance of Fields and a Tuple. It allows a tuple to be accessed by its field names, and will help maintain consistent types if any are given on the Fields instance.
 
-That is why Type Safe API for Scalding is often called "tuple-based".
-
+which more closely resembles Scalding's typed system, which is sometimes referred to as *tuple-based*
 
 ## Thoughts
 
-As before the main code and the test code are really concise and self-explanatory. Newer API does not make the code heavier, less readable, or hard to comprehend. Perhaps it does not really matter which API to choose for smaller tasks where it is easy to detect a type issue. I would definitely choose Type Safe API for more complex tasks though.
+As in my prior Scalding walkthrough the main code and the test code are really concise. The newer API does not make the code heavier, but rather makes it feel more like 'regular Scala'. While either the typed or field based APIs are both totally usable, I would definitely choose Type Safe API for more complex tasks due to it's compile-time safety and more native-scala feel.
+
+In many ways the Typed API feels pretty similar to [Spark](http://blog.matthewrathbone.com/2015/12/14/spark-tutorial.html), which is a good thing.
 
 ## Scalding Resources 
 
-[Cascading web-site][2] has resources related to both Cascading and Scalding.
+The [Cascading web-site][2] has resources related to both Cascading and Scalding.
 
-## Further Reading
+Book: 
 
-PACKT Publishing ‘Programming MapReduce with Scalding: A practical guide to designing, testing, and implementing complex MapReduce applications in Scala’ Book
+* PACKT Publishing ‘Programming MapReduce with Scalding: A practical guide to designing, testing, and implementing complex MapReduce applications in Scala’ Book
 
 by Antonios Chalkiopoulos: from [Amazon][10].
 
@@ -285,7 +286,7 @@ by Antonios Chalkiopoulos: from [Amazon][10].
 [7]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
 [8]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
 [9]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
-[10]: http://www.amazon.com/Programming-MapReduce-Scalding-Antonios-Chalkiopoulos/dp/1783287012
+[10]: http://amzn.to/1QJxKsh
 [11]: https://github.com/twitter/scalding/wiki/Fields-based-API-Reference
 [12]: https://github.com/twitter/scalding/wiki/Type-safe-api-reference
 [13]: http://docs.cascading.org/cascading/2.0/javadoc/cascading/scheme/hadoop/TextDelimited.html
