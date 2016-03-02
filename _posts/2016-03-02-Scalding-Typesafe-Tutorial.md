@@ -1,10 +1,10 @@
 ---
 title: "Type-Safe Scalding MapReduce Tutorial - Joining and Summarizing Data"
 layout: post
-description: Scalding's scala-like API lets us join and summarize data quickly and easily, but beware -- it looks like regular scala, but sometimes behaves differently.
+description: "Scalding's scala-like API lets us join and summarize data quickly and easily, but beware -- it looks like regular scala, but sometimes behaves differently."
 subject: hadoop
 author: matthew_rathbone
-published: false
+published: true
 coauthor: 
   name: Elena Akhmatova
   link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
@@ -12,12 +12,13 @@ tags:
   - hadoop
   - Scala
   - Scalding
-image:
+image: 
   url: /img/typed.jpg
-  author:
+  author: 
     name: Indi Samarajiva
-    url: https://www.flickr.com/photos/indi/3083217907
+    url: "https://www.flickr.com/photos/indi/3083217907"
 ---
+
 
 
 
