@@ -51,40 +51,44 @@ In general, the type-safe API is the most popular version available as it allows
 
 The tables that will be used for demonstration are called `users` and `transactions`. 
 
-```bash
+{% highlight bash %}
 cat users
 1	matthew@test.com	EN	US
 2	matthew@test2.com	EN	GB
 3	matthew@test3.com	FR	FR
-```
+{% endhighlight %}
 
 and
 
-```bash
+{% highlight bash %}
+
 cat transactions
 1	1	1	300	a jumper
 2	1	2	300	a jumper
 3	1	2	300	a jumper
 4	2	3	100	a rubber chicken
 5	1	3	300	a jumper
-```
+
+{% endhighlight %}
 
 Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS. Unlike Cascading (and MapReduce in general), Scalding wants the output directory to be created prior to executing the job.
 
 {% highlight bash %}
+
 hdfs dfs -mkdir input1
 hdfs dfs -mkdir input2
 hdfs dfs -mkdir output
 
 hdfs dfs -put ./users.txt input1
 hdfs dfs -put ./transactions.txt input2
+
 {% endhighlight %}
 
 ## Code
 
 All code and data used in this post can be found in my [Hadoop examples GitHub repository][github].
 
-```scala
+{% highlight scala %}
 
 case class Transaction(id: Long, productId: Long, userId: Long, purchaseAmount: Double, itemDescription: String)
 case class User(id: Long, email: String, language: String, location: String)
@@ -118,18 +122,21 @@ class Main (args: Args) extends Job(args) {
     .size
     .write(TypedTsv[(Long, Long)](output))
 }
-```
+{% endhighlight %}
 
 I've defined two [case classes](http://docs.scala-lang.org/tutorials/tour/case-classes.html) (`User` and `Transaction`) to represent the records in each dataset. You can see immediately that the fields of the classes have types specified, and do not include any Scalding specific special code.
 
-```scala
+{% highlight scala %}
+
 case class Transaction(id: Long, productId: Long, userId: Long, purchaseAmount: Double, itemDescription: String)
 case class User(id: Long, email: String, language: String, location: String)
-```
+
+{% endhighlight %}
 
 Unfortunately, our data is stored in a delimited format, so to start working with it, we need to convert it to the right types:
 
-```scala
+{% highlight scala %}
+
   val usersInput : TypedPipe[User] = input1.map{ s: String =>
     val split = s.split("\t")
     User(split(0).toLong, split(1), split(2), split(3))
@@ -139,12 +146,13 @@ Unfortunately, our data is stored in a delimited format, so to start working wit
     val split = s.split("\t")
     Transaction(split(0).toLong, split(1).toLong, split(2).toLong, split(3).toDouble, split(4))
   }
-```
+{% endhighlight %}
+
 We can then operate on the data by transforming collections of `User` and `Transaction` objects. While the solution is almost identical to my [field API solution][18], this version looks much more like 'regular scala'.
 
 Some differences to regular Scala are worth noting -- calling `size` after `groupBy` actually counts the list of values in each group, rather than counting the size of the group list itself. This is a little unintuitive as it is very different behavior compared to vanilla Scala.
 
-```scala
+{% highlight scala %}
   val joinedBranch =  group2
     .leftJoin(group1) // 'user_id -> 'id, 
     .map{ case (k: Long, (t: Transaction, Some(u: User))) => (t.productId, u.location) }
@@ -152,30 +160,33 @@ Some differences to regular Scala are worth noting -- calling `size` after `grou
     .groupBy{ case (productId, location) => productId }
     .size
     .write(TypedTsv[(Long, Long)](output))
-```
+
+{% endhighlight%}
 
 ## Running the resulting jar
 
-```bash
+{% highlight bash %}
+
 hadoop jar scala-scalding-1.0-SNAPSHOT-jar-with-dependencies.jar com.twitter.scalding.Tool main.scala.Main --hdfs --input1 input1 --input2 input2 --output output
 
 hdfs dfs -copyToLocal output/part-00000 .
 cat part-00000 
 1	3
 2	1
-```
+{% endhighlight %}
 
 ## Testing
 
 Testing is similar to that of the Field based solution. The main difference can be seen in the line
 
-```scala
+{% highlight scala %}
 sink[(Long, Long)]
-```
+{% endhighlight %}
 
 The field based API decided itself that our ids are Integers, but in the type-safe solution we defined this up front.
 
-```scala
+{% highlight scala %}
+
 class MainTypedFunctionJoinText extends WordSpec with Matchers{
   "Our job" should {
     JobTest(new main.scala.com.matthewrathbone.scalding.Main(_))
@@ -198,7 +209,7 @@ class MainTypedFunctionJoinText extends WordSpec with Matchers{
       .finish
   }
 }
-```
+{% endhighlight %}
 
 ## Differences between the Scalding APIs and their roots
 
@@ -212,26 +223,29 @@ This is evident when using the field-based API of Scalding. We can see it's clos
 
 For example, here is how we define the schema for a particular dataset in each:
 
-```scala
+{% highlight scala %}
 // SCALDING
 
 val users = ( 'id, 'email, 'language, 'location)
 val transactions = ( 'transaction_id, 'product_id, 'user_id, 'purchase_amount, 'item_description)
-```
+
+{% endhighlight %}
 
 vs
 
 
-```java
+{% highlight java %}
+
 // CASCADING
 
 Fields users = new Fields( "id", "email", "language", "location" );
 
 Fields transactions = new Fields( "transaction-id", "product-id", "user-id", "purchase-amount", "item-description" );
-```
+{% endhighlight %}
 Data parsing also looks similar, although Scalding relies on a functional approach compared to Cascading's object oriented ideas:
 
-```scala
+{% highlight scala %}
+
 // SCALDING
 
 val usersInput = input1.read.mapTo( inputFields -> users ) { te: TupleEntry =>
@@ -243,16 +257,16 @@ val transactionsInput = input2.read.mapTo( inputFields -> transactions ) { te: T
       val split = te.getString( "line" ).split("\t");
       (split( 0 ), split( 1 ), split( 2 ), split( 3 ), split( 4 ))
 }
-```
+{% endhighlight %}
 vs
 
-```java
+{% highlight java %}
 // CASCADING
 
 Tap usersTap = new Hfs( new TextDelimited( users, false, "\t" ), usersPath );
       
 Tap transactionsTap = new Hfs( new TextDelimited( transactions, false, "\t" ), transactionsPath );
-```
+{% endhighlight %}
 
 Neither solution is type safe. If we look at Cascading's documentation for [TextDelimited][13] class:
 
