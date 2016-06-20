@@ -387,6 +387,11 @@ div.related span.related_date {
   width:100%;
 }
 
+.modal .email-input {
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
 .top-heading {
   margin-top:0;
 }
