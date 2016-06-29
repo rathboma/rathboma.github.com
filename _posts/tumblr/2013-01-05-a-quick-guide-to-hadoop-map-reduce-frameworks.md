@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hadoop Map-Reduce Framework Tutorials with Examples"
+title: "Hadoop MapReduce Framework Tutorials with Examples"
 subject: hadoop
 description: "A constantly expanding list of 12+ hadoop frameworks, with code examples and documentation links"
 tags: 
@@ -17,7 +17,7 @@ published: true
 
 **Updated October 2015** Full sample code is available for many frameworks, see the list [at the bottom of the article](#updates)
 
-There are a lot of frameworks for writing map-reduce pipelines for Hadoop, but
+There are a lot of frameworks for writing MapReduce pipelines for Hadoop, but
 it can be pretty hard to navigate everything to get a good sense of what
 framework you should be using. I felt very overwhelmed when I started working
 with Hadoop, and this has only gotten worse for newcomers as the number of
@@ -31,7 +31,7 @@ Generally speaking, the goal of each framework is to make building pipelines
 easier than when using the basic map and reduce interface provided by hadoop-
 core. This usually means the frameworks do not require you to write these
 functions at all, but something more high-level that the framework can
-'compile' into a pipeline of map-reduce jobs. This is particularly true for
+'compile' into a pipeline of MapReduce jobs. This is particularly true for
 the higher level frameworks (such as hive), which don't really require any
 knowledge of programming to operate.
 
@@ -106,7 +106,7 @@ please tweet me if I have missed any: [@rathboma](http://twitter.com/rathboma)
 ## Framework Walkthroughs ## {#walkthrough}
 
 I will create a separate article for each framework ( [current articles listed here](#updates) ) in which I will build a
-small map-reduce pipeline to do the following:
+small MapReduce pipeline to do the following:
 
 Given two (fake) datasets:
 
@@ -127,7 +127,7 @@ example.
 ## My Commonly used Frameworks
 
 * Hive -- Hive is amazing because anyone can query the data with a little knowledge of SQL. Hook it up to a visual query designer and you don't even need that.
-* Pig -- the perfect framework for prototyping and quick-investigation. It's a simple scripting language with a bunch of powerful map-reduce specific features.
+* Pig -- the perfect framework for prototyping and quick-investigation. It's a simple scripting language with a bunch of powerful MapReduce specific features.
 * Scoobi -- I use this a lot to build pipelines in Scala because it's very functional, and in many way's you just treat the data like a regular list, which is great.
 * Raw Map/Reduce -- Sometimes I like to program directly to the API, especially when doing something mission critical. I also find the individual map and reduce functions easier to test.
 
