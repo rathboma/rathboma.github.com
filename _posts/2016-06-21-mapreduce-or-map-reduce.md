@@ -1,6 +1,6 @@
 ---
 title: Is it 'MapReduce' or 'Map Reduce'?
-date: 2016-06-30
+date: 2016-06-29
 subject: hadoop
 description: Confused about whether Map Reduce is one word or two? Let me settle this once and for all.
 layout: post
