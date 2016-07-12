@@ -4,7 +4,7 @@ layout: cv
 ---
 
 # Matthew Rathbone
-<span class="subtitle">18 S Bedford Street, #302, Madison WI 53703. 347-450-9876. matthew.rathbone@gmail.com. <a href="http://matthewrathbone.com">http://matthewrathbone.com</a></span>
+<span class="subtitle">Dallas TX. 347-450-9876. matthew.rathbone@gmail.com. <a href="http://matthewrathbone.com">http://matthewrathbone.com</a></span>
 
 ## Overview
 
