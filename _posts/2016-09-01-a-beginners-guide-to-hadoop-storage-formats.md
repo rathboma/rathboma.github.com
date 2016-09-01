@@ -3,7 +3,7 @@ title: A Beginner's Guide to Hadoop Storage Formats (or File Formats)
 subject: hadoop
 description: I'll walk through what we mean when we talk about 'storage formats' or 'file formats' for Hadoop and give you some initial advice on what format to use and how.
 layout: post
-published: false
+published: true
 date: 2016-09-01
 image:
   url: /img/file_formats.jpg
