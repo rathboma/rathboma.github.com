@@ -1,6 +1,7 @@
 
 url: http://blog.matthewrathbone.com
 name: Matthew Rathbone's website
+gems: ['jekyll-paginate']
 version: 2.4
 description: Blog posts and articles about Hadoop and other things
 paginate: 5
