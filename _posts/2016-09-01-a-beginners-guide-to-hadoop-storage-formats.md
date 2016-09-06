@@ -40,7 +40,7 @@ user_1	Matthew Rathbone	Dallas, TX
 user_2	Joe Bloggs	London, England
 ```
 
-Ok, time to get to the guts of this
+Ok, time to get to the guts of this.
 
 
 ## A Quick Overview of Storage Formats
@@ -61,7 +61,7 @@ Some common storage formats for Hadoop include:
 
 ## Why Storage Formats are Important
 
-A huge bottleneck for HDFS-enabled applications like MapReduce and Spark is the time it takes to find relevent data in a particular location and the time it takes to write the data back to another location. These issues are exaserbated with the difficulties managing large datasets, such as evolving schemas, or storage constraints. The various Hadoop file formats have evolved as a way to ease these issues across a number of use cases.
+A huge bottleneck for HDFS-enabled applications like MapReduce and Spark is the time it takes to find relevant data in a particular location and the time it takes to write the data back to another location. These issues are exacerbated with the difficulties managing large datasets, such as evolving schemas, or storage constraints. The various Hadoop file formats have evolved as a way to ease these issues across a number of use cases.
 
 Choosing an appropriate file format can have some significant benefits:
 
@@ -150,8 +150,8 @@ For advanced InputFormat usage and if you want to learn more about how to standa
 
 There are many storage formats available but I'll just go through the major ones and talk about their various pros and cons.
 
-### Text Files (eg CSV, TSV)
-Simple text-based files are common in the non-Hadoop world, and they're super common in the Hadoop world too. Data is layed out in lines, with each line being a record. Lines are terminated by a newline character `\n` in the typical unix fashion.
+### Text Files (e.g CSV, TSV)
+Simple text-based files are common in the non-Hadoop world, and they're super common in the Hadoop world too. Data is laid out in lines, with each line being a record. Lines are terminated by a newline character `\n` in the typical unix fashion.
 
 Text-files are inherently splittable (just split on \n characters!), but if you want to compress them you'll have to use a file-level compression codec that support splitting, such as BZIP2
 
@@ -163,7 +163,7 @@ I've used this approach many times and it's a great stepping stone to more struc
 
 > [Website](http://wiki.apache.org/hadoop/SequenceFile)
   
-Sequence files were originally designed for MapReduce, so the integration is smooth. They encode a `key` and a `value` for each record and nothing more. records are stored in a binary format that is smaller than a text-based format would be. Like text files, the format does not encode the structure of the keys and values, so if you make schema migrations they must be additive.
+Sequence files were originally designed for MapReduce, so the integration is smooth. They encode a `key` and a `value` for each record and nothing more. Records are stored in a binary format that is smaller than a text-based format would be. Like text files, the format does not encode the structure of the keys and values, so if you make schema migrations they must be additive.
 
 Sequence files by default use Hadoop's `Writable` interface in order to figure out how to serialize and deserialize classes to the file.
 
@@ -177,9 +177,9 @@ Sequence files are well supported across Hadoop and many other HDFS enabled proj
 
 > [Website](https://avro.apache.org/)
 
-Avro is an opinionated format which understands that data stored in HDFS is usually not a simple key/value combo like `Int/String`. The format encodes the schema of it's contents directly in the file which allows you to store complex objects natively. 
+Avro is an opinionated format which understands that data stored in HDFS is usually not a simple key/value combo like `Int/String`. The format encodes the schema of its contents directly in the file which allows you to store complex objects natively. 
 
-Honestly, Avro is not really a file format, it's a file format plus a serialization and deserilization framework. With regular old sequence files you **can** store complex objects but you have to manage the process. Avro handles this complexity whilst providing other tools to help manage data over time.
+Honestly, Avro is not really a file format, it's a file format plus a serialization and deserialization framework. With regular old sequence files you **can** store complex objects but you have to manage the process. Avro handles this complexity whilst providing other tools to help manage data over time.
 
 Avro is a well thought out format which defines file data schemas in JSON (for interoperability), allows for schema evolutions (remove a column, add a column), and multiple serialization/deserialization use cases. It also supports block-level compression. For most Hadoop-based use cases Avro is a really good choice.
 
@@ -204,16 +204,16 @@ Of the two file formats I mention, Parquet seems to have the most community supp
 
 I'll touch on this in a later post but there are two ways you can compress data in Hadoop.
 
-1. File level compression
-2. Block Level Compression
+1. File-Level Compression
+2. Block-Level Compression
 
-File-level compression means you compress entire files regardless of the file format, the same way you would compress a file in Linux. Some of these formats are splittable (eg bzip2, or LZO if indexed).
+File-level compression means you compress entire files regardless of the file format, the same way you would compress a file in Linux. Some of these formats are splittable (e.g. bzip2, or LZO if indexed).
 
 So you'd end up with a file called `user-data.csv.gzip` for example.
 
 Block-level compression is internal to the file format, so individual blocks of data within the file are compressed. This means that the file remains splittable even if you use a non-splittable compression codec like *Snappy*. However, this is only an option if the specific file format supports it.
 
-So you'd still have a file called `user-data.sequence`, which would include a header noting the compression coded needed to read the remaining file contents.
+So you'd still have a file called `user-data.sequence`, which would include a header noting the compression codec needed to read the remaining file contents.
 
 If you're seriously thinking about file formats then you should use compression. Snappy is a great balance of speed and compression ratio, and I've used it with great success in the past. 
 
