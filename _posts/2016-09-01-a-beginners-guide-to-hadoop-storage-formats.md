@@ -150,7 +150,7 @@ For advanced InputFormat usage and if you want to learn more about how to standa
 
 There are many storage formats available but I'll just go through the major ones and talk about their various pros and cons.
 
-### Text Files (e.g CSV, TSV)
+### Text Files (e.g. CSV, TSV)
 Simple text-based files are common in the non-Hadoop world, and they're super common in the Hadoop world too. Data is laid out in lines, with each line being a record. Lines are terminated by a newline character `\n` in the typical unix fashion.
 
 Text-files are inherently splittable (just split on \n characters!), but if you want to compress them you'll have to use a file-level compression codec that support splitting, such as BZIP2
