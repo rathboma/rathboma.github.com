@@ -12,7 +12,14 @@ tags:
 
 The goal of this article is to provide a 10,000 foot view of Hadoop for those who know next to nothing about it. This article is not designed to get you ready for Hadoop development, but to provide a sound knowledge base for you to take the next steps in learning the technology. 
 
-Lets get down to it:
+## First, some books
+
+Hadoop now covers a lot of different topics, while this guide will provide you a gentle introduction I've compiled a good list of books that could help provide more guidance. 
+
+[My guide to 15+ books for Hadoop.](/2013/05/31/hadoop-resources-books.html)
+
+
+## Hadoop Intro
 
 Hadoop is an [Apache Software Foundation][apache] project that importantly provides two things:
 
