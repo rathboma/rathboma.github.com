@@ -18,8 +18,9 @@ tags:
 <h3>Special Property</h3>
 <p>Quicksort is good because it sorts &#8216;in-place&#8217;. In other words it doesn&#8217;t use a secondary array to sort the elements into. This can save a lot of memory, especially if you are sorting a list of complicated data structures which are a few KB each.</p>
 <h3>My C Implementation</h3>
-<blockquote>
-<pre>void Quicksort(int A[], int p, int r){
+
+{% highlight c %}
+void Quicksort(int A[], int p, int r){
 	
 	if(p&lt;r){
 		int q = Partition(A, p, r);
@@ -47,12 +48,15 @@ int Partition(int A[], int p, int r){
 	A[r] = A[i +1];
 	A[i+1] = temp;
 	
-	return i+1;<br/></pre>
-</blockquote>
+	return i+1;
+
+{% endhighlight %}
+
 <p><span>My Scheme Implementation</span><br/><span> </span></p>
 <p>I think its worth noting that the scheme implementation doesn&#8217;t exactly sort &#8216;in-place&#8217;. Instead it recursivly builds up secondary lists then joins them together at the end as the return value instead of moving the elements around in a single list. However the amount of memory used should still be in the order of the number of elements in the input array unlike other sorting algorithms (counting-sort, and bucket-sort come to mind) which use secondary arrays which do not form part of the solution.</p>
-<blockquote>
-<pre><span><pre>(define pHelper (lambda (all chk l m)
+
+{% highlight scheme %}
+(define pHelper (lambda (all chk l m)
                   (cond ((null? all) (cons l (cons chk (cons m '()))))
                         (else
                         (let ((x (car all)))
@@ -69,8 +73,8 @@ int Partition(int A[], int p, int r){
                     (cond ((null? l) l)
                           (else
                           (let ((lx (partition l)))
-                            (append (quicksort (car lx)) (cons (cadr lx) (quicksort (caddr lx)))))))))</pre>
-</span></pre>
-</blockquote>
-<p><span> </span></p>
-<pre><br/></pre>
+                            (append (quicksort (car lx)) (cons (cadr lx) (quicksort (caddr lx)))))))))
+{% endhighlight %}
+
+<h3>Further Reading</h3>
+<p>If you're looking to learn more about basic CS algorithms like Quicksort, I suggest checking out the book <a href="http://amzn.to/2iJ8wos">Introduction to Algorithms</a> on Amazon</p>
