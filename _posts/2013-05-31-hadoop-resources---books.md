@@ -14,6 +14,8 @@ tags:
 - apache hive
 - apache hbase
 - apache pig
+modified: 2014-02-22
+skipbooks: true
 ---
 If you want to learn more about Hadoop there are many resources at your disposal, one such resource is books. I keep a list of Hadoop books privately, so I thought I'd put it on-line to save other people having to do the same research
 

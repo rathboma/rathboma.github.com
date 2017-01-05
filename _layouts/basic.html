@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{page.description}}">
   <meta name="tags" content="{{page.tags | join: ", "}}">
+  <meta name="author" content="Matthew Rathbone">
+  {% if page.modified %}
+    <meta name="revised" content="{{page.modified}}" />
+    <meta http-equiv="last-modified" content="{{page.modified}}" />
+  {% endif %}
+
+
   <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
