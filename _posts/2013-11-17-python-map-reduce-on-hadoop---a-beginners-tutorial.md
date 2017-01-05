@@ -293,6 +293,29 @@ TRUE 17
 
 Check out my [advanced python MapReduce guide][real-world-python] to see how to join two datasets together using python.
 
+
+
+## Python MapReduce Book
+
+While there are no books specific to Python MapReduce development the following book has some pretty good examples:
+
+<div class="row-fluid">
+  <div class="span12">
+    <a href="http://amzn.to/2hVekf0" target="_blank">
+      <img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1784390151&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=matratsblo-20" class="book-img">
+    </a>
+
+    <h3>
+      <a href="http://amzn.to/2hVekf0">Mastering Python for Data Science</a>
+    </h3>
+    <p>While not specific to MapReduce, this book gives some examples of using the Python 'HadoopPy' framework to write some MapReduce code. It's also an excellent book in it's own right.</p>
+
+  </div>
+</div>
+
+
+
+
 [real-world-python]:/hadoop/2016/02/09/python-tutorial.html
 [beginners-guide]:/2013/04/17/what-is-hadoop.html
 [bdm]:http://www.meetup.com/BigDataMadison/events/149122882/

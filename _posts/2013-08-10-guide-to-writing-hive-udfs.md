@@ -264,7 +264,24 @@ Hopefully this article has given you an idea of how to extend Hive with custom f
 Although I ignored them in this article, there are also [User Defined Aggregation Functions (UDAF)][udaf] which allow the processing and aggregation of many rows in a single function.
 If you're interested in learning more, there are a [few][case-study] [resources][adaltas] on-line on this topic which can help.
 
-Also worth a note is the [Apache Hive Book from O'Reilly][book] which contains brief tutorials and code samples for both UDFs and UDAFs, and at the very least gives you a good idea of how to structure these functions, what exceptions you should use, and what types you should return.
+
+
+## Read More about Hive
+
+<div class="row-fluid">
+  <div class="span12">
+    <a href="https://www.amazon.com/Programming-Hive-Warehouse-Language-Hadoop/dp/1449319335/ref=as_li_ss_il?ie=UTF8&qid=1483631002&sr=8-4&keywords=apache+hive&linkCode=li2&tag=matratsblo-20&linkId=19440b00340527c32fde447f14163a30" target="_blank">
+      <img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1449319335&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=matratsblo-20" class="book-img">
+    </a>
+
+    <h3>
+      <a href="http://amzn.to/2hUSwLM">Programming Hive: Data Warehouse and Query Language for Hadoop</a>
+    </h3>
+    <p>Programming Hive contains brief tutorials and code samples for both UDFs and UDAFs. The examples are different to mine, so they should help in building your understanding.</p>
+
+  </div>
+</div>
+
 
 
 [simple-api]:http://hive.apache.org/docs/r0.10.0/api/org/apache/hadoop/hive/ql/exec/UDF.html
@@ -275,4 +292,4 @@ Also worth a note is the [Apache Hive Book from O'Reilly][book] which contains b
 [udaf]:http://hive.apache.org/docs/r0.9.0/api/org/apache/hadoop/hive/ql/exec/UDAF.html
 [adaltas]:http://www.adaltas.com/blog/2012/03/06/hive-udaf-map-conversion/
 [case-study]:https://cwiki.apache.org/confluence/display/Hive/GenericUDAFCaseStudy
-[book]:http://www.amazon.com/Programming-Hive-Edward-Capriolo/dp/1449319335?tag=matratsblo-20
+[book]:http://amzn.to/2hUSwLM
