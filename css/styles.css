@@ -319,7 +319,15 @@ div.post img.book-img {
   display: inline-block;
   float: left;
   margin-right: 20px;
+  max-height: 200px;
 }
+
+div.post img.book-img.right-img {
+  float: right;
+  margin-right: 0;
+  margin-left: 20px;
+}
+
 
 div.post .header-img img {
   width:100%;
