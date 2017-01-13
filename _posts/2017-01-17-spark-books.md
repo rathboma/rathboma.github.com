@@ -27,7 +27,7 @@ The books are roughly in an order that I recommend, but each has it's unique str
 
 {% include _book.html url="http://amzn.to/2jg01l7" img="/img/blog/spark-books/1.png" alt="Learning Spark" %}
 
-*Learning Spark* is in part written by Holden Karau, a Software Engineer at IBM's Spark Technology Center and my former co-worker at Foursquare. His book has been quickly adopted as a de-facto reference for Spark fundamentals and Spark architecture by many in the community. The book does a good job of explaining core principles such as RDDs (Resilient Distributed Datasets), in-memory processing and persistence, and how to use the Spark Interactive Shell.
+*Learning Spark* is in part written by Holden Karau, a Software Engineer at IBM's Spark Technology Center and my former co-worker at Foursquare. Her book has been quickly adopted as a de-facto reference for Spark fundamentals and Spark architecture by many in the community. The book does a good job of explaining core principles such as RDDs (Resilient Distributed Datasets), in-memory processing and persistence, and how to use the Spark Interactive Shell.
 
 Non-core Spark technologies such as Spark SQL, Spark Streaming and MLib are introduced and discussed, but the book doesn't go into too much depth, instead focusing on getting you up and running quickly.
 
