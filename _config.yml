@@ -1,5 +1,5 @@
 
-url: http://blog.matthewrathbone.com
+url: https://blog.matthewrathbone.com
 name: Matthew Rathbone's website
 gems: ['jekyll-paginate', 'jekyll-sitemap']
 version: 2.4
