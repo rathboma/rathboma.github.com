@@ -78,7 +78,7 @@ div.buttoncontainer {
 
 @media print {
   div.mainwrapper {
-    padding: 0;
+    /*padding: 0;*/
     border: none;
   }
   ul {

@@ -8,7 +8,7 @@ layout: cv
 
 ## Overview
 
-I am passionate about leading teams to build top quality software products. Measurement, instrumentation, automation, and experimentation are at the center of my product development philosophy.
+I am passionate about leading teams to build top quality software products that focus on customer needs. Measurement, instrumentation, automation, and experimentation are at the center of my product development philosophy.
 
 ## Professional Experience
 
@@ -16,25 +16,28 @@ I am passionate about leading teams to build top quality software products. Meas
 
 #### Co-founder and CEO
 
-- Beekeeper Data lets executives and non-technical staff quickly ask many different questions of their data.
+- Beekeeper Data provides business intelligence, reporting, and analytics for Hadoop, Hive, Postgres, MySQL, Redshift and more.
+- Raised over $800,000 from venture capital investors and angel investors.
+- Built the product in Scala, Java, and Javascript, then managed a 3 person development team to continue the work.
+- Hiring and managing sales, marketing, and development staff.
+- Financial management, bookeeping, goverment filings, all that stuff.
 
 ### Shoutlet, Madison, WI <span class="date">Sep 2013 - Aug 2014</span>
 
 #### Lead Architect and Engineering Manager
 
-- Designed distributed software systems and managed a team of 9 engineers.
-- Constructed and led a team to design, build, and scale a set of internal API services for business data.
-- Pushed engineers to embrace testing, monitoring, and automation
+- Managed the API server engineering team to build, deploy, and manage microservices.
+- Architected product systems and lead teams to implement them in PHP, Python and Javascript.
+- Managed engineers, performed performance reviews, tracked progress, and interfaced with the executive team.
 
 ### Foursquare, New York, NY <span class="date">Nov 2010 - Sep 2013</span>
 
 #### Software Engineer - Data Infrastructure
 
-- Built and supported production batch data processing infrastructure using Hadoop.
-- Created ETL pipelines in Map/Reduce to ingest 1TB of daily data and feed production systems.
-- Worked closely with other engineers to design and produce a suite of software tools for easy development (and testing) of data processing and machine learning algorithms.
-- Designed and built internal tools to allow the whole company to access and query large-scale datasets.
-- Led an initiative to integrate a standardized event-logging system across all 5 major clients.
+- Built and supported Hadoop systems to perform batch and real time data processing algorithms.
+- Created ETL pipelines in MapReduce to ingest 1TB of daily data and feed production systems.
+- Constructed a real-time data processing workflow using Scala and Kafka to process 1bn+ daily events.
+- Built a distributed event-logging system for use across Android, iOS, Web, Windows Phone, and Blackberry.
 
 ### Drop.io, Brooklyn, NY <span class="date">May 2010 - Nov 2010</span>
 
@@ -46,16 +49,16 @@ I am passionate about leading teams to build top quality software products. Meas
 
 ### New York University, New York, NY <span class="date">Jan 2010 - May 2010</span>
 
-#### Grader - Graduate Operating Systems
+#### TA - Graduate Operating Systems
 
-- Graded programming assignments in linking, memory paging, resource allocation, etc.
+- Evaluated programming assignments in linking, memory paging, resource allocation, and other OS concepts.
 
 ### Threadneedle Asset Management, London, UK <span class="date">Aug 2007 - Jun 2009</span>
 
 #### Software Engineer - Front Office
 
-- Lead development of a portfolio management system used to manage fund assets.
-- Enhanced legacy software to integrate with strategic in-house platforms and utilize external APIs.
+- Led development of a portfolio management system used to manage over $200m of fund assets across equity and fixed income products.
+- Enhanced legacy software to integrate with strategic in-house platforms and utilize external APIs (like Bloomberg).
 - Worked with a team to create common order processing APIs. The API's were used across multiple projects.
 
 ### UBS Investment Bank, London, UK <span class="date">Oct 2006 - Aug 2007</span>
