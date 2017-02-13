@@ -93,17 +93,24 @@ I am passionate about leading teams to build top quality software products that 
 
 ## Activities
 
+### Author - [blog.matthewrathbone.com](http://blog.matthewrathbone.com)
+
+- I write articles on Hadoop, Spark, Hive, and Scala with 20,000+ monthly readers, and 3000+ email subscribers
+- Tutorials, how-to articles, open-source code, and more
+
+
 ### Public Speaking <span class="date">2009 - Present</span>
 
 - [Hadoop Summit Conference, San Jose, CA][hadoop-summit], June 2013.
 - [Madison Ruby Conference, Madison, WI][madison-ruby], August 2012.
 - Various Meetups - Highlights: NYC Machine Learning, Madison Big Data, Mad Railers.
 
-### Big Data Madison Meetup <span class="date">Jan 2013 - Present</span>
+### Big Data Madison Meetup <span class="date">Jan 2013 - Jan 2016</span>
 
 #### Organizer
 
 - [Meetup group][big-data] focusing on big data technologies.
+- Built the group from 10 members to over 1000
 - Arranging speakers, organizing meetups, finding funding, etc.
 
 ### Media Arts and Game Development @ UW-Whitewater <span class="date">2011 - Present</span>
