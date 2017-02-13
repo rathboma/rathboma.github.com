@@ -12,7 +12,7 @@ I am passionate about leading teams to build top quality software products that 
 
 ## Professional Experience
 
-### Beekeeper Data, Madison WI <span class="date">Aug 2014 - Present</span>
+### Beekeeper Data, Dallas TX <span class="date">Aug 2014 - Present</span>
 
 #### Co-founder and CEO
 
