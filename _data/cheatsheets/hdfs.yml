@@ -62,21 +62,21 @@ sections:
     name: File Management
     description: "Organize your files with these commands."
     items:
-      - command: "hafoop fs -mv ./example/f1.txt ./example/f2.txt"
+      - command: "hadoop fs -mv ./example/f1.txt ./example/f2.txt"
         text: "Move a file to a different file/directory (omit the filename to name it the same)"
-      - command: "hafoop fs -cp ./example/f1.txt ./example/f2.txt"
+      - command: "hadoop fs -cp ./example/f1.txt ./example/f2.txt"
         text: "copy a file to a different file/directory (omit the filename to name it the same)"
       - break: true
-      - command: "hafoop fs -rm ./example/f1.txt"
+      - command: "hadoop fs -rm ./example/f1.txt"
         text: "Delete a file (sends it to the trash)"
-      - command: "hafoop fs -rm -skipTrash ./example/f1.txt"
+      - command: "hadoop fs -rm -skipTrash ./example/f1.txt"
         text: "Actually delete the file. No trash."
-      - command: "hafoop fs -rm -r ./example/directory"
+      - command: "hadoop fs -rm -r ./example/directory"
         text: "Recursively delete a directory and it's contents"
       - break: true
-      - command: "hafoop fs -touchz ./example/somefile"
+      - command: "hadoop fs -touchz ./example/somefile"
         text: "Create a zero-length file (great for creating _SUCCESS files)."
-      - command: "hafoop fs -touchz ./example/somefile"
+      - command: "hadoop fs -touchz ./example/somefile"
         text: "Create a zero-length file (great for creating _SUCCESS files)."
 
 

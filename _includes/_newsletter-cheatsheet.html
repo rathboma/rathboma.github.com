@@ -6,7 +6,14 @@
         <img class="bordered" src="/img/cheatsheet-image.png" alt="">
       </div>
       <div class="span8">
-        <h4>Get a free HDFS cheatsheet when you subscribe</h4>
+        <h4>
+          {% if include.title %}
+            {{include.title}}
+          {% else %}
+            Get a free HDFS cheatsheet when you subscribe
+          {% endif %}
+
+        </h4>
         plus awesome content, like:
         <ul class="fa-ul">
           <li><i class="fa fa-li fa-check"></i> Hadoop Tutorials</li>
@@ -19,7 +26,7 @@
       </div>
   </div>
   <div class="row-fluid">
-    <div class="span12">
+    <div class="span12 subscribe-wrapper">
       <form class="signup" action="https://matthewrathbone.us4.list-manage.com/subscribe/post?u=e3dea64cd163454dc3b759330&amp;id=4520f50363" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
           <div class="controls">
           <input type="hidden" value="{{include.source}}" name="SOURCE" id="SOURCE" />
