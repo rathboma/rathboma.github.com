@@ -179,8 +179,8 @@ Scoobi comes somewhere inbetween Pig and Java in terms of ease of use. If you're
 [2]: https://github.com/nicta/scoobi
 [3]: /2013/01/05/a-quick-guide-to-hadoop-map-reduce-frameworks.html#walkthrough
 [4]: /2013/02/09/real-world-hadoop-implementing-a-left-outer-join-in-hadoop-map-reduce.html
-[5]: /2013/02/20/real-world-hadoop---implementing-a-left-outer-join-in-hive.html
-[6]: /2013/04/07/real-world-hadoop---implementing-a-left-outer-join-in-pig.html
+[5]: /2013/02/20/real-world-hadoop-implementing-a-left-outer-join-in-hive.html
+[6]: /2013/04/07/real-world-hadoop-implementing-a-left-outer-join-in-pig.html
 [7]: https://github.com/rathboma/hadoop-framework-examples/blob/master/scoobi/src/main/scala/com/matthewrathbone/example/Example.scala
 [8]: https://groups.google.com/forum/#!topic/scoobi-users/qAMxek-rMw4
 [9]: https://github.com/twitter/scalding
