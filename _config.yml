@@ -10,3 +10,10 @@ markdown: kramdown
 kramdown:
   syntax_highlighter: rogue
   input: GFM
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      sitemap: true

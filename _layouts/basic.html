@@ -11,6 +11,10 @@
     <meta http-equiv="last-modified" content="{{page.modified}}" />
   {% endif %}
 
+  {% unless page.sitemap %}
+     <meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
+  {% endunless %}
+
 
   <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css" />
