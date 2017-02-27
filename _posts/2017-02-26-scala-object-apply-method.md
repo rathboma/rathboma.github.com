@@ -35,7 +35,7 @@ This is really done with some compile time sugar which translates funtion calls 
 
 However, while the apply function is fairly simple, it's used in several ways.
 
-## Case Classes
+## Free With Case Classes
 
 Scala provides a special kind of class called the `case class`. I'll not go into details here, but consider the case class a simple version of a regular Java class that is designed to be a POJO, IE hold a set of simple fields and not much more.
 
@@ -64,6 +64,40 @@ val p3 = Person.apply("Frank", 23, "Blue")
 
 
 {% end highlight %}
+
+## The Apply Function is Not a Constructor
+
+Note that although case classes use `apply` like a constructor it is **not** a constructor. If you're passing classes to libraries that require a specific constructor the apply function won't work as a substitute. The `new` keyword just simply cannot be used with the apply function.
+
+So in our earlier example, this doesn't work: `val greeting = new Greet("bob")`.
+
+## The Apply Function Can Return Anything
+
+Just because you commonly see apply functions alongside case classes in place of a constructor does not mean it has to return an instance of it's companion class. In our original example `Greet.apply()` returned a string, not an instance of a class called `Greet`.
+
+So for example, this is totally kosher, although admittedly confusing:
+
+{% highlight scala %}
+
+case class Company(name: String)
+
+class Person(val name: String) {}
+
+object Person {
+
+  def apply(name: String): Company = new Company(name)
+
+}
+
+// this is confusing, but works fine
+val c = Person("Bob")
+// => Company("Bob"): Company
+
+
+{% end highlight %}
+
+Also note that like all functions in Scala and Java, you can override `apply` several times and have each function do something different.
+
 
 
 
