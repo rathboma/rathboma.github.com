@@ -71,6 +71,8 @@ Note that although case classes use `apply` like a constructor it is **not** a c
 
 So in our earlier example, this doesn't work: `val greeting = new Greet("bob")`.
 
+Remember, `apply` is just a special function that lets us call the parent object directly, like a function. It has nothing to do with object orientation, classes, or constructors in the slightest.
+
 ## The Apply Function Can Return Anything
 
 Just because you commonly see apply functions alongside case classes in place of a constructor does not mean it has to return an instance of it's companion class. In our original example `Greet.apply()` returned a string, not an instance of a class called `Greet`.
