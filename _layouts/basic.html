@@ -15,22 +15,15 @@
      <meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
   {% endunless %}
 
-
-  <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css" />
-  <!-- <link rel="stylesheet" href="/css/pygment.css" /> -->
-  <link rel="stylesheet" href="/css/zenburn.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/css/styles.css?v={{site.version}}" />
-  <link rel="stylesheet" href="/css/hola-bar.css?v={{site.version}}" />
+  {% stylesheet app %}
+
+  <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
+
+
   <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
-  <script type="text/javascript" src="/js/jquery-1.10.2.min.js" ></script>
-  <script type="text/javascript" src="/js/jquery.cookie.js" ></script>
-  <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
-  <script type="text/javascript" src="/js/jquery.sticky-kit.min.js" ></script>
-  <script type="text/javascript" src="/js/easyab.min.js" ></script>
+
 
   {% include _twitter_card.html %}
   {{head}}
@@ -87,6 +80,7 @@
 
 {% include _hola-bar.html %}
 
+  {% javascript app %}
 
  <script type="text/javascript">
   
@@ -103,6 +97,7 @@
 
   {% endif %}
 
+  window.pageSubject = '{{page.subject}}'
 
 
 
