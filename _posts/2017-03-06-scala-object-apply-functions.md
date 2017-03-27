@@ -7,6 +7,11 @@ subject: hadoop
 description: Scala's apply functions are commonly seen alongside case classes, but they can do so much more. Here are 4 fun ways they are used in Scala.
 published: true
 skipbooks: true
+tags:
+  - scala
+  - programming
+  - functional programming
+  - tutorial
 image:
   url: /img/companion-cube.jpg
   author:

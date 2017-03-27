@@ -6,6 +6,19 @@
   <meta name="description" content="{{page.description}}">
   <meta name="tags" content="{{page.tags | join: ", "}}">
   <meta name="author" content="Matthew Rathbone">
+
+
+  <meta property="og:site_name" content="Matthew Rathbone's Blog" />
+  {% if page.is_post %}
+    {% include _open_graph.html %}
+  {% endif %}
+
+  {% if page.author_page %}
+    {% include _open_graph_profile.html %}
+  {% endif %}
+
+
+
   {% if page.modified %}
     <meta name="revised" content="{{page.modified}}" />
     <meta http-equiv="last-modified" content="{{page.modified}}" />
@@ -23,6 +36,7 @@
 
 
   <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
+
 
 
   {% include _twitter_card.html %}

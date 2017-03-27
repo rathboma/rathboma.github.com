@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About Me
+author_page: true
 ---
 
 # About Me
