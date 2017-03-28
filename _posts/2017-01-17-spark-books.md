@@ -6,6 +6,7 @@ layout: post
 published: true
 date: 2017-01-13
 skipbooks: true
+subject: spark
 image:
   url: /img/spark-books.jpg
   author:

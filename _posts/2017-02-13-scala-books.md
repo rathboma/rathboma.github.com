@@ -5,6 +5,7 @@ description: While Scala is amazing it has an overwhelming number of features. T
 layout: post
 published: true
 date: 2017-02-13 18:00 -0600
+subject: scala
 skipbooks: true
 image:
   url: /img/blog/scala-books/title.jpg

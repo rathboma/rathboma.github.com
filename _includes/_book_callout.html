@@ -1,0 +1,19 @@
+{% unless page.skipbooks %}
+  
+  {% if page.subject == "hadoop" %}
+    {% include books/_hadoop.html %}
+  {% endif %}
+
+
+  {% if page.subject == "spark" %}
+    {% include books/_spark.html %}
+  {% endif %}
+
+
+  {% if page.subject == "scala" %}
+    {% include books/_scala.html %}
+  {% endif %}
+
+
+
+{% endunless %}

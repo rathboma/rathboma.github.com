@@ -2,14 +2,9 @@
 layout: archive
 title: Blog Topics
 topicsactive: active
-topics:
-  - hadoop
-  - office
-  - personal
-  - android
-  - programming
 ---
-{% for topic in page.topics %}
+{% assign topics = site.posts | map: "subject" | uniq | sort %}
+{% for topic in topics %}
   {% if topic != lasttopic %}
     {% assign lasttopic = topic %}
     <h3 id="{{topic}}">{{topic | capitalize}}</h3>

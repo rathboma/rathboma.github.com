@@ -5,7 +5,7 @@ description: "To follow my post implementing a pipeline in regular Spark, I do t
 coauthor: 
   name: Elena Akhmatova
   link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
-subject: hadoop
+subject: spark
 published: true
 tags: 
 - hive
