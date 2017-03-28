@@ -1,7 +1,7 @@
 ---
-title: A Quick Introduction to Concurrency in Scala
+title: A Quick Guide to Concurrency in Scala
 layout: post
-description: I'll talk through Threads, Akka, Futures, and Timers in this quick overview of concurrency for Scala. Great for those building apps in Scala.
+description: I'll talk through the basics of Threads, Akka, Futures, and Timers in this quick overview of concurrency for Scala. Great for those building apps in Scala.
 subject: scala
 tags:
 - scala
