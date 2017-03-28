@@ -178,7 +178,11 @@ result.map{ result =>
 
 Uniquely, Akka can also be set up as a distributed system, where consumers can run across any number of machines, not just within your local JVM. This means message passing happens over a remote RPC call rather than an internal function call, but the complexity is entirely handled by the Akka runtime, so your code can stay the same (which is great).
 
-In theory, this allows you to scale your system easily to multiple machines as your needs grow. However setting up Akka as a distributed system is fiddly and needlessly complicated, but it is used in production at a number of high profile technology companies, so once set-up it can be stable and powerful. Try Googling [Akka Monitoring](https://www.google.com/search?q=akka+monitoring) to see how a lot of the core infrastructure for managing a cluster of Akka machines is still very labor intensive (unless you pay for it!).
+The ability to distribute computation across a cluster of machines is one of the main benefits of Akka, although it does come with a learning curve.
+
+In theory Akka allows you to scale your system easily to multiple machines as your needs grow. However setting up Akka as a distributed system is fiddly and complicated, but it is used in production at a number of high profile technology companies, so once set-up it can be stable and powerful. It is also supported by the excellent [Lightbend](https://www.lightbend.com/).
+
+Try Googling [Akka Monitoring](https://www.google.com/search?q=akka+monitoring) to see how a lot of the core infrastructure for managing a cluster of Akka machines is still very early in development (unless you pay for a premium product).
 
 Akka is a great way to compartmentalize your code and organize workers into functional clusters, but for quick background jobs (like calling an API and storing the results), Futures are definitely quicker and easier to use.
 
@@ -245,9 +249,74 @@ Of course being on the JVM gives you access to other cool background processing 
 Here's a [great guide to Java concurrency](http://www.vogella.com/tutorials/JavaConcurrency/article.html) if you want to learn more and go more in-depth.
 
 
+## Stream Processing
+
+The guide so far has really been focused on concurrency scenarios where you have an action to perform and you need to figure out a way to perform it in the background.
+
+Another abstraction for concurrency is to think of actions as events in a stream that need continual, real-time processing.
+
+For example you may want to process a stream of database changes, or click events from a website.
+
+The Akka project also incorporates a system called **Akka Streams** which is built on the Actor system, but who's api is firmly about streams of data.
+
+Typically in a stream processing pipeline you have several components:
+
+- **Source** - where data comes from, think of it like a box that produces data, like a database, or stream of website clicks
+- **Sink** - where data goes when it has been processed, like a database, log file, array, or whatever
+- **Flow / Transformation node** - In Akka it's called a 'flow', in other systems it is called something different, basically a thing that filters or changes data elements, for example filtering all clicks from bots.
+
+With Akka Streams you can join these together to make a workflow of actions to be taken to a stream of data, and all these actions will happen distributed across the Akka cluster.
+
+
+Here's a quick example of Akka Streams in action (taken from [this excellent Stack Overflow walkthrough](http://stackoverflow.com/questions/35120082/how-to-get-started-with-akka-streams):
+
+
+{% highlight scala %}
+
+// source and sink definitions
+val source = Source(1 to 3)
+val sink = Sink.foreach[Int](println)
+
+// flow transformations
+val invert = Flow[Int].map(elem => elem * -1)
+val doubler = Flow[Int].map(elem => elem * 2)
+
+// join them all together
+val runnable = source via invert via doubler to sink
+
+// run them
+runnable.run()
+/*
+OUTPUT:
+-2
+-4
+-6
+*/
+
+{% endhighlight %}
+
+
+### Use Sparingly
+
+I've used stream processing frameworks in the past, and they're fantastic for a particular use case (we were processing web traffic, site clicks, and app interactions), speficially **real-time** data processing. 
+
+To be honest I see them as very different to the thread / future use case that is more common to the average Scala app, so just think about what you really need before jumping into a stream-based solution, as they come with a learning curve above and beyond typical threading problems.
+
+I include them here for those interested in large-scale real-time data processing use cases.
+
+### Other Stream processing frameworks
+
+There are a bunch of stream processing frameworks available, and not all of them are Scala specific (although many are built with Scala, and support Scala first and foremost). They are all built on the assumption that work needs distributing across a number of machines, rather than simply executing on a separate thread.
+
+
+- [Apache Samza](http://samza.apache.org/) - from the team that built [Kafka](https://kafka.apache.org/), one of my favorite infrastructure projects.
+- [Apache Spark Streaming](http://spark.apache.org/streaming/) - part of the class-leading Spark project
+- [Apache Storm](http://storm.apache.org/)
+
+
 ## Quick Shout-Out to Jesque
 
-Aside from Scala and Java I also work a lot with Ruby (stick with me). Ruby is a single-threaded scripting language, and so the community built a set of alternative tools for performing 'background work'. One of the biggest frameworks in the Ruby landscape is [Resque](https://github.com/resque/resque), it's a simple job-queue backed by [Redis](https://redis.io/). Background jobs run in entirely different processes, and pull jobs from the Redis queue.
+Aside from Scala and Java I also work a lot with Ruby (stick with me on this). Ruby is a single-threaded scripting language, and so the community built a set of alternative tools for performing 'background work'. One of the biggest frameworks in the Ruby landscape is [Resque](https://github.com/resque/resque), it's a simple job-queue backed by [Redis](https://redis.io/). Background jobs run in entirely different processes, and pull jobs from the Redis queue.
 
 I found it to be an elegant system that made testing my background jobs easy and provided me with a sane project structure.
 
