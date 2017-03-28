@@ -111,7 +111,11 @@
 
   {% endif %}
 
-  window.pageSubject = '{{page.subject}}'
+  var modalSubjects = ["hadoop", "spark", "scala"];
+
+  var pageSubject = '{{page.subject}}'
+
+  window.showModal = $.inArray(pageSubject, modalSubjects);
 
 
 

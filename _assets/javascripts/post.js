@@ -26,7 +26,7 @@ $(document).ready(function(){
   var modal = "#cheatsheetModal";
 
   // MODAL STUFF
-    var subject = window.pageSubject;
+    var validSubject = window.showModal;
     var modalShownCookie = $.cookie("modalshown");
     var modalShown = false;
     if (modalShownCookie != undefined && modalShownCookie == 'true') {
@@ -47,7 +47,7 @@ $(document).ready(function(){
     }
 
     $(window).on('scroll', function(e) {
-      if(isScrolledIntoView($('#modal-trigger')) && modalShown == false && subject == 'hadoop') {
+      if(isScrolledIntoView($('#modal-trigger')) && modalShown == false && validSubject) {
         modalShown = true;
         $.cookie('modalshown', 'true', {expires: 1, path: '/'});
         $(modal).modal();
