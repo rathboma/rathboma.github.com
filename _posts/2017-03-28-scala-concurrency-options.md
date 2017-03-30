@@ -196,6 +196,7 @@ To use threads in Java and Scala you can implement your own class and run it as 
 
 {% highlight scala %}
 
+// this is terrible code and you should not use it in production
 class OrderProcessor extends Thread {
   override def run() {
     // runs forever
