@@ -18,15 +18,15 @@ image:
 
 Scala is a programming language that runs on the Java Virtual Machine (JVM). As such it has full access to the JVM's multi-threading capabilities.
 
-Unlike Java, Scala is not limited by default to Thread primitives for concurrency (although they are still an option), but there are a range of useful ways to do things in the background.
+Unlike Java, Scala is not limited by default to Threads for concurrency (although they are still an option), but there are a range of useful ways to do things in the background.
 
 ## Why Concurrency is Awesome with Scala
 
-[Scala](https://www.scala-lang.org/) is a functional programming language that aims to avoid [*side effects*](http://softwareengineering.stackexchange.com/questions/40297/what-is-a-side-effect) by encouraging you to use immutable variables (called 'values'), and data structures.
+[Scala](https://www.scala-lang.org/) is a functional programming language that aims to avoid [*side effects*](http://softwareengineering.stackexchange.com/questions/40297/what-is-a-side-effect) by encouraging you to use both immutable data structures, and values rather than variables.
 
-So by default in Scala when you build a list, array, string, or other object, that object is immutable and cannot be changed or updated.
+So by default when you build a `List`, `Map`, or `Case Class` in Scala it is immutable and cannot be changed (you can of course use mutable versions of these classes, or make your class values into variables). Likewise, if you use `val` instead of `var`, no re-assignment is possible.
 
-This might seem unrelated, but think about a thread which has been given a list of strings to process, perhaps each string is a website that needs crawling.
+Immutability might seem unrelated to threading, but think about a thread which has been given a list of strings to process, perhaps each string is a website that needs crawling.
 
 In the Java model, this list might be updated by other threads at the same time (adding / removing websites), so you need to make sure you either have a thread-safe list, or you safeguard access to it with the `protected` keyword or a Mutex.
 
@@ -35,7 +35,7 @@ By default in Scala this list is immutable, so you can be sure that the list can
 While this does force you to program in different ways to work around the immutability, it does have the tremendous effect of simplifying thread-safety concerns. The value of this cannot be understated, it's a huge burden to worry about thread safety all the time, but in Scala much of that burden goes away.
 
 
-## Concurrency Primitives in Scala
+## Concurrency Options for Scala
 
 Alright, I mentioned that using a `Thread` is only one of several options, so let me go through the main ones briefly. I'll talk about Futures, Actors, and Threads. I'll drop some extra props to Timers too.
 
@@ -174,9 +174,9 @@ result.map{ result =>
 
 {% endhighlight %}
 
-### Distributed Akka
+### Clustered Akka
 
-Uniquely, Akka can also be set up as a distributed system, where consumers can run across any number of machines, not just within your local JVM. This means message passing happens over a remote RPC call rather than an internal function call, but the complexity is entirely handled by the Akka runtime, so your code can stay the same (which is great).
+Uniquely, Akka can also be set up as a distributed system, where actors can run across any number of machines, not just within your local JVM. This means message passing happens over a remote RPC call rather than an internal function call, but the complexity is entirely handled by the Akka runtime, so your code can stay the same (which is great).
 
 The ability to distribute computation across a cluster of machines is one of the main benefits of Akka, although it does come with a learning curve.
 
@@ -257,7 +257,7 @@ Another abstraction for concurrency is to think of actions as events in a stream
 
 For example you may want to process a stream of database changes, or click events from a website.
 
-The Akka project also incorporates a system called **Akka Streams** which is built on the Actor system, but who's api is firmly about streams of data.
+The Akka project also incorporates a system called **Akka Streams** which is built on the Actor system, but who's API is firmly about streams of data.
 
 Typically in a stream processing pipeline you have several components:
 
@@ -332,5 +332,5 @@ Hopefully you have a sense of the concurrency options available to you with Scal
 
 My personal opinion is that Futures are a great way of performing quick background tasks, but something more comprehensive like Akka or Jesque is more appropriate for building a manageable background-job processing stack.
 
-I have a fondness for the simplicity of the Java Threading primatives, and even with Scala you're going to be dealing with Thread Pools, Executors, and Runnables, so the humble `Thread` is not a terrible place to start playing around with concurrency.
+I have a fondness for the simplicity of the Java Thread, and even with Scala you're going to be dealing with Thread Pools, Executors, and Runnables, so the humble `Thread` is not a terrible place to start playing around with concurrency.
 
