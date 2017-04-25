@@ -34,3 +34,7 @@ I have a MS in Computer Science from the [NYU Courant School of Mathematics](htt
 
 Seriously! Get in touch. I'm [on twitter](http://twitter.com/rathboma) and I bet you can guess my work email :-).
 
+
+## Resume
+
+[Check it out here](/img/matthew-rathbone-executive-resume.pdf).
