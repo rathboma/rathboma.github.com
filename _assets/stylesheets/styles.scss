@@ -103,6 +103,19 @@ h2 {
   border-color: #B03324;
 }
 
+.bg-darkgray {
+  background-color: #545050;
+  color: white;
+  a {
+    border-bottom: none !important;
+    text-decoration: underline;
+    color: #fafad2;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
 .post h2 {
   font-size: 1.3em;
   font-weight: normal;

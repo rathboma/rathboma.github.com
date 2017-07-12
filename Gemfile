@@ -6,4 +6,4 @@ gem 'jekyll-sitemap'
 gem 'jekyll-paginate'
 gem 'jekyll-assets'
 
-ruby '2.3.1'
+ruby '2.3.3'
