@@ -1,12 +1,12 @@
 
 url: https://blog.matthewrathbone.com
-name: Matthew Rathbone's website
-gems: 
+name: Matthew Rathbone's Website
+plugins: 
   - 'jekyll-paginate'
   - 'jekyll-sitemap'
   - 'jekyll-assets'
 version: 2.4
-description: Blog posts and articles about Hadoop and other things
+description: Tutorials and guides for big data technologies. I write about Scala, Spark, Hadoop, HDFS, and more.
 paginate: 5
 exclude: ['ideas', 'drafts']
 markdown: kramdown

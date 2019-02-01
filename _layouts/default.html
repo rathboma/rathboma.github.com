@@ -17,10 +17,12 @@ layout: basic
 
             
         </div>
+        {% if page.is_post %}
         <div class="card">
           {% include _recent_posts.html %}
         </div>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>

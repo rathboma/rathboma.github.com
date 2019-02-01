@@ -1,0 +1,64 @@
+
+
+.markdown-content {
+
+  font-size: 20px;
+  p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    a {
+      font-weight: normal;
+      text-decoration: underline;
+      color: inherit;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  h1 {
+
+  }
+
+  h2, h3, h4 {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: black;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    font-weight: normal;
+  }
+
+
+  img {
+    display:block;
+    margin:auto;
+    border: solid 2px #eee;
+  }
+
+
+  img.inline-img {
+    float:left;
+    max-width: 150px;
+    padding:5px;
+    border:solid 1px #eee;
+    margin-right:20px;
+  }
+
+  img.book-img {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    max-height: 200px;
+  }
+
+  img.book-img.right-img {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+  }
+
+
+}

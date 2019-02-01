@@ -35,18 +35,12 @@ layout: default
     </div>
   {% endif %}
   
-<div class="well bg-darkgray">
-  <div class="media">
-    <a href="https://click.linksynergy.com/deeplink?id=KuenSouhzgQ&mid=40328&murl=https%3A%2F%2Fwww.coursera.org%2Fspecializations%2Fbig-data" class="pull-left"><img width="72px" src="https://d15cw65ipctsrr.cloudfront.net/a6/35516029cf11e6b8dfdbd5deea5f21/UCSD_BigData_PartnerProvided.jpg" alt="" class="media-object"></a>
-    <div class="media-body">
-      <h4 class="media-heading">Learning Hadoop and Spark?</h4>
-            <p>I've scoured the internet and I think <a href="https://click.linksynergy.com/deeplink?id=KuenSouhzgQ&mid=40328&murl=https%3A%2F%2Fwww.coursera.org%2Fspecializations%2Fbig-data">this free Big Data course from UC San Diego</a> is a great way to jump in. It's hosted on Coursera, so you can audit the course for free.</p>
-    </div>
+  {% include _hire_me.html %}
+
+  <div class="markdown-content">
+    {{ content }}
   </div>
-</div>
 
-
-  {{ content }}
 
   <div class="share">
     <p>
@@ -61,7 +55,8 @@ layout: default
 
 {% include _me.html %}
 
-{% include _book_callout.html %}
+{% include _hire_me.html %}
+
 
 
 

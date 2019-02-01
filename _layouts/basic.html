@@ -17,8 +17,6 @@
     {% include _open_graph_profile.html %}
   {% endif %}
 
-
-
   {% if page.modified %}
     <meta name="revised" content="{{page.modified}}" />
     <meta http-equiv="last-modified" content="{{page.modified}}" />
@@ -30,7 +28,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  {% stylesheet app %}
+  {% asset app.css %}
 
   <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
 
@@ -96,7 +94,7 @@
 
 {% include _hola-bar.html %}
 
-  {% javascript app %}
+  {% asset app.js %}
 
 
 <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=e5e46bb7-1275-4418-a940-e749bffb583d"></script>
