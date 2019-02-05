@@ -1,6 +1,6 @@
 ---
-title: Real World Hadoop -  Implementing a Left Outer Join in Map Reduce
-description: A walkthrough to a real-world hadoop map reduce example in which two datasets are joined together, requiring multiple computation stages, custom partitioning, sorting, and grouping.
+title: Hadoop MapReduce Tutorial - Left Outer Join
+description: I walk through using Hadoop MapReduce to join two datasets together and rank the results. I talk through the concepts involved and provide the full working code for you to use.
 subject: hadoop
 layout: post
 tags:
@@ -11,23 +11,6 @@ tags:
 - hdfs
 - java
 - scala
----
-<!--   
-- reintroduction of the series of posts
-- restate the problem (# locations a product is sold in)
-- general description of solution
-  - join two datasets (on user-id)
-  - associate location with product
-  - count # of distinct locations for each product
-- explain the naive solution
-  - explain that you get location out of order
-  - you could read all into memory then extract location
-  - its bad because # records could be ~1 billion, so your job would crash
-- explain what the real solution needs to do
-  - this requires custom grouper and comparator [diagrams of both]
-- implementing the real solution
-  - created my own tuple writable to have a composite key
-  - created my own partition, sorter, grouper -->
 
 
 This article is part of [my guide to map reduce frameworks][1], in which I implement a solution to a real-world problem in each of the most popular hadoop frameworks.
