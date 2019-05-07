@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Apache Spark Java Tutorial with Code Examples
+title: Apache Spark Java Tutorial [Code Walkthrough With Examples]
 description: "To follow my post implementing a pipeline in regular Spark, I do the same thing with Java. The walkthrough includes open source code and unit tests."
-coauthor: 
+coauthor:
   name: Elena Akhmatova
   link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
 subject: spark
 published: true
-tags: 
+tags:
 - hive
 - hadoop
 - Spark
@@ -19,10 +19,10 @@ image:
     url: https://www.flickr.com/photos/adactio/1450394876
 ---
 
-> This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  
->  
+> This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
+>
 > Spark is itself a general-purpose framework for cluster computing. It can be run, and is often run, on the Hadoop YARN. Thus it is often associated with Hadoop and so I have included it in [my guide to map reduce frameworks][4] as well. Spark is designed to be fast for interactive queries and iterative algorithms that Hadoop MapReduce can be slow with.
-> 
+>
 
 ## The Problem
 
@@ -49,7 +49,7 @@ It contains a number of different components, such as Spark Core, Spark SQL, Spa
 
 ## Demonstration Data
 
-The tables that will be used for demonstration are called `users` and `transactions`. 
+The tables that will be used for demonstration are called `users` and `transactions`.
 
 {% highlight bash %}
 users
@@ -69,7 +69,7 @@ transactions
 5 1 3 300 a jumper
 {% endhighlight %}
 
-For this task we have used Spark on a Hadoop YARN cluster. Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS. 
+For this task we have used Spark on a Hadoop YARN cluster. Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS.
 
 {% highlight bash %}
 hdfs dfs -mkdir input
@@ -84,12 +84,12 @@ All code and data used in this post can be found in my [hadoop examples GitHub r
 
 {% highlight java %}
 public class ExampleJob {
-    private static JavaSparkContext sc; 
-    
+    private static JavaSparkContext sc;
+
     public ExampleJob(JavaSparkContext sc){
       this.sc = sc;
     }
-    
+
     public static final PairFunction<Tuple2<Integer, Optional<String>>, Integer, String> KEY_VALUE_PAIRER =
     new PairFunction<Tuple2<Integer, Optional<String>>, Integer, String>() {
       public Tuple2<Integer, String> call(
@@ -98,21 +98,21 @@ public class ExampleJob {
         return new Tuple2<Integer, String>(a._1, a._2.get());
       }
   };
-  
+
   public static JavaRDD<Tuple2<Integer,Optional<String>>> joinData(JavaPairRDD<Integer, Integer> t, JavaPairRDD<Integer, String> u){
         JavaRDD<Tuple2<Integer,Optional<String>>> leftJoinOutput = t.leftOuterJoin(u).values().distinct();
         return leftJoinOutput;
   }
-  
+
   public static JavaPairRDD<Integer, String> modifyData(JavaRDD<Tuple2<Integer,Optional<String>>> d){
     return d.mapToPair(KEY_VALUE_PAIRER);
   }
-  
+
   public static Map<Integer, Object> countData(JavaPairRDD<Integer, String> d){
         Map<Integer, Object> result = d.countByKey();
         return result;
   }
-  
+
   public static JavaPairRDD<String, String> run(String t, String u){
         JavaRDD<String> transactionInputFile = sc.textFile(t);
         JavaPairRDD<Integer, Integer> transactionPairs = transactionInputFile.mapToPair(new PairFunction<String, Integer, Integer>() {
@@ -121,7 +121,7 @@ public class ExampleJob {
                 return new Tuple2<Integer, Integer>(Integer.valueOf(transactionSplit[2]), Integer.valueOf(transactionSplit[1]));
             }
         });
-        
+
         JavaRDD<String> customerInputFile = sc.textFile(u);
         JavaPairRDD<Integer, String> customerPairs = customerInputFile.mapToPair(new PairFunction<String, Integer, String>() {
             public Tuple2<Integer, String> call(String s) {
@@ -131,7 +131,7 @@ public class ExampleJob {
         });
 
         Map<Integer, Object> result = countData(modifyData(joinData(transactionPairs, customerPairs)));
-        
+
         List<Tuple2<String, String>> output = new ArrayList<>();
       for (Entry<Integer, Object> entry : result.entrySet()){
         output.add(new Tuple2<>(entry.getKey().toString(), String.valueOf((long)entry.getValue())));
@@ -140,7 +140,7 @@ public class ExampleJob {
       JavaPairRDD<String, String> output_rdd = sc.parallelizePairs(output);
       return output_rdd;
   }
-  
+
     public static void main(String[] args) throws Exception {
         JavaSparkContext sc = new JavaSparkContext(new SparkConf().setAppName("SparkJoins").setMaster("local"));
         ExampleJob job = new ExampleJob(sc);
@@ -199,9 +199,9 @@ new PairFunction<Tuple2<Integer, Optional<String>>, Integer, String>() {
 };
 {% endhighlight %}
 
-Reading input data is done in exactly same manner as in Scala. Note that the explicit KEY_VALUE_PAIRER transformation is not needed in Scala, but in Java there seems to be no way to skip it. 
+Reading input data is done in exactly same manner as in Scala. Note that the explicit KEY_VALUE_PAIRER transformation is not needed in Scala, but in Java there seems to be no way to skip it.
 
-Spark has added an `Optional` class for Java (similar to Scala's `Option`) to box values and avoid nulls. There is a special function `isPresent()` in the `Optional` class that allows to check whether the value is present, that is it is not null. Calling `get()` returns the boxed value. 
+Spark has added an `Optional` class for Java (similar to Scala's `Option`) to box values and avoid nulls. There is a special function `isPresent()` in the `Optional` class that allows to check whether the value is present, that is it is not null. Calling `get()` returns the boxed value.
 
 The main code is again more or less a chain of pre-defined functions.
 
@@ -227,7 +227,7 @@ public static Map<Integer, Object> countData(JavaPairRDD<Integer, String> d){
 
 The `processData()` function from the Scala version was broken into three new functions `joinData()`, `modifyData()` and `countData()`. We simply did this to make the code more clear -- Java is verbose. All the data transformation steps could have been put into one function that would be similar to `processData()` from the Scala solution.
 
-The `leftOuterJoin()` function joins two RDDs on key. 
+The `leftOuterJoin()` function joins two RDDs on key.
 
 The `values()` functions allows us to omit the key of the Key Value RDD as it is not needed in the operations that follow the join. The `distinct()` function selects distict Tuples.
 
@@ -257,10 +257,10 @@ $ hadoop fs -tail sparkout/part-00003
 $ hadoop fs -tail sparkout/part-00007
 2 1
 {% endhighlight%}
- 
+
 ## Testing
 
-The idea and the set up are exactly the same for Java and Scala. 
+The idea and the set up are exactly the same for Java and Scala.
 
 {% highlight java %}
 public class SparkJavaJoinsTest implements Serializable {
@@ -281,15 +281,15 @@ public class SparkJavaJoinsTest implements Serializable {
 
   @Test
   public void testExampleJob() {
-  
+
     ExampleJob job = new ExampleJob(sc);
     JavaPairRDD<String, String> result = job.run("./transactions.txt", "./users.txt");
-        
+
     Assert.assertEquals("1", result.collect().get(0)._1);
     Assert.assertEquals("3", result.collect().get(0)._2);
     Assert.assertEquals("2", result.collect().get(1)._1);
     Assert.assertEquals("1", result.collect().get(1)._2);
-  
+
   }
 }
 {% endhighlight %}
@@ -305,7 +305,7 @@ The Scala and Java Spark APIs have a very similar set of functions. Looking beyo
 
 All things considered, if I were using Spark, I'd use Scala. The functional aspects of Spark are designed to feel native to Scala developers, which means it feels a little alien when working in Java (eg `Optional`). That said, if Java is the only option (or you really don't want to learn Scala), Spark certainly presents a capable API to work with.
 
-## Spark Resources 
+## Spark Resources
 
 The Spark [official site][1] and [Spark GitHub][12] have resources related to Spark.
 

@@ -1,18 +1,18 @@
 ---
-title: Scalding Hadoop MapReduce Tutorial With Example Code
+title: Scalding Hadoop MapReduce Tutorial [Code Walkthrough With Examples]
 layout: post
 description: "How to implement some real world code with Scalding, a Scala wrapper for Cascading"
 subject: hadoop
-coauthor: 
+coauthor:
   name: Elena Akhmatova
   link: "https://ru.linkedin.com/pub/elena-akhmatova/3/877/266"
-tags: 
+tags:
   - hive
   - hadoop
   - Cascading
-image: 
+image:
   url: /img/simplify.jpg
-  author: 
+  author:
     name: Paul Dineed
     url: "https://www.flickr.com/photos/pauldineen/"
 published: true
@@ -23,9 +23,9 @@ published: true
 
 This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
 
->  
+>
 > Perhaps it is best to read this article together with my article about Cascading, as Scalding is based on Cascading.
-> 
+>
 > * [Real World Hadoop - Implementing a left outer join in Java with Cascading][5]
 >
 
@@ -45,7 +45,7 @@ Previously I have implemented this solution [in several other languages][4], inc
 ## The Scalding Solution
 
 
-[Scalding][1] is a Scala API developed at Twitter for distributed data programming that uses the [Cascading Java API][2], which in turn sits on top of Hadoop's Java API. Scalding is pitched as *a scala DSL for cascading*, with the assetion that writing regular Cascading [*seem like assembly language programming in comparison*](https://www.safaribooksonline.com/library/view/enterprise-data-workflows/9781449359584/ch04.html). 
+[Scalding][1] is a Scala API developed at Twitter for distributed data programming that uses the [Cascading Java API][2], which in turn sits on top of Hadoop's Java API. Scalding is pitched as *a scala DSL for cascading*, with the assetion that writing regular Cascading [*seem like assembly language programming in comparison*](https://www.safaribooksonline.com/library/view/enterprise-data-workflows/9781449359584/ch04.html).
 
 As in the case with Cascading, the goal of Scalding is to make building data processing pipelines easier than using the basic map and reduce interface provided by Hadoop. The Scalding community is very active (as of the time of writing - October 2015), and there are many libraries built on top of scalding extending it's functionality. Some pretty big organizations use Scalding, like Twitter, Foursquare, LinkedIn, Etsy, eBay and more.
 
@@ -54,7 +54,7 @@ For those who have read my [scoobi walkthrough](http://blog.matthewrathbone.com/
 
 ## Demonstration Data
 
-The tables that will be used for demonstration are called `users` and `transactions`. 
+The tables that will be used for demonstration are called `users` and `transactions`.
 
 {% highlight bash %}
 cat users.txt
@@ -97,11 +97,11 @@ class Main ( args: Args ) extends Job( args ) {
     val inputFields = 'line
     val users = ( 'id, 'email, 'language, 'location)
     val transactions = ( 'transaction_id, 'product_id, 'user_id, 'purchase_amount, 'item_description);
-  
+
     val input1 = TextLine( args( "input1" ) )
     val input2 = TextLine( args( "input2" ) )
     val output = Tsv( args( "output" ) )
-  
+
     val usersInput = input1.read.mapTo( inputFields -> users ) { te: TupleEntry =>
       val split = te.getString( "line" ).split("\t");
       (split( 0 ), split( 1 ), split( 2 ), split( 3 ))
@@ -111,7 +111,7 @@ class Main ( args: Args ) extends Job( args ) {
       val split = te.getString( "line" ).split("\t");
       (split( 0 ), split( 1 ), split( 2 ), split( 3 ), split( 4 ))
     }
-  
+
     val joinedBranch =  transactionsInput
       .joinWithSmaller('user_id -> 'id, usersInput)
       .project('product_id, 'location)
@@ -169,7 +169,7 @@ hdfs fs -text output/part-*
 2 1
 
 {% endhighlight%}
- 
+
 ## Testing
 
 The [JobTest class][11] is used to construct unit tests for scalding jobs. The official scalding documentation on [cascading.org][3] advises that it should not be used unless it is for testing purposes, so I guess some folks have tried to use it in production somehow (don't do this). For examples of unit testing the different parts of scalding code, see the tests included in the [main scalding repository][3]. The most relevant to our case and the most neat test example there is a [WordCount test][12]. Drawing on that I have written a fairly concise test that you can see below.
@@ -210,7 +210,7 @@ Both the main code and the test code are really concise with Scalding. The seria
 The caveat to this is that you need to know scala to get a lot out of Scalding. Scala is a pretty complex language, so if you're new to both Hadoop and Scala, this might be a pretty rough place to start.
 
 
-## Scalding Resources 
+## Scalding Resources
 
 The [Cascading web-site][2] has resources related to both Cascading and Scalding.
 

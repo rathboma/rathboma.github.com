@@ -1,5 +1,5 @@
 ---
-title: Apache Spark Scala Tutorial with Examples
+title: Apache Spark Scala Tutorial [Code Walkthrough With Examples]
 layout: post
 description: I implement a realistic pipeline in Spark as part of my series on Hadoop frameworks. The walkthrough includes open source code and a unit test.
 topic: engineering
@@ -21,10 +21,10 @@ image:
     link: https://www.flickr.com/photos/diversey/5800133829
 ---
 
-> This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.  
->  
+> This article is part of [my guide to map reduce frameworks][4] in which I implement a solution to a real-world problem in each of the most popular Hadoop frameworks.
+>
 > Spark is isn't actually a MapReduce framework. Instead it is a general-purpose framework for cluster computing, however it can be run, and is often run, on Hadoop's YARN framework. Because it is often associated with Hadoop I am including it in [my guide to map reduce frameworks][4] as it often serves a similar function. Spark was designed to be fast for interactive queries and iterative algorithms that Hadoop MapReduce is a bit slow with.
-> 
+>
 
 ## The Problem
 
@@ -45,7 +45,7 @@ Previously I have implemented this solution [in java][7], [with hive][8] and [wi
 
 ## Demonstration Data
 
-The tables that will be used for demonstration are called `users` and `transactions`. 
+The tables that will be used for demonstration are called `users` and `transactions`.
 
 {% highlight bash %}
 users
@@ -65,7 +65,7 @@ transactions
 5 1 3 300 a jumper
 {% endhighlight %}
 
-For this task we have used Spark on Hadoop YARN cluster. Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS. 
+For this task we have used Spark on Hadoop YARN cluster. Our code will read and write data from/to HDFS. Before starting work with the code we have to copy the input data to HDFS.
 
 {% highlight bash %}
 hdfs dfs -mkdir input
@@ -82,21 +82,21 @@ All code and data used in this post can be found in my [Hadoop examples GitHub r
 class ExampleJob(sc: SparkContext) {
   def run(t: String, u: String) : RDD[(String, String)] = {
         val transactions = sc.textFile(t)
-  val newTransactionsPair = transactions.map{t =>                
+  val newTransactionsPair = transactions.map{t =>
       val p = t.split("\t")
       (p(2).toInt, p(1).toInt)
   }
-  
+
   val users = sc.textFile(u)
-  val newUsersPair = users.map{t =>                
+  val newUsersPair = users.map{t =>
       val p = t.split("\t")
       (p(0).toInt, p(3))
   }
-  
+
   val result = processData(newTransactionsPair, newUsersPair)
   return sc.parallelize(result.toSeq).map(t => (t._1.toString, t._2.toString))
-  } 
-  
+  }
+
   def processData (t: RDD[(Int, Int)], u: RDD[(Int, String)]) : Map[Int,Long] = {
   var jn = t.leftOuterJoin(u).values.distinct
   return jn.countByKey
@@ -142,7 +142,7 @@ In Spark all work is expressed as either creating new RDDs, transforming existin
 
 [Transforming existing RDDs][13] is different from [calling an `action`][14] to compute a result. Actions trigger actual computations, where transformations are lazy, so transformation code is not executed until a downstream action is called.
 
-In our code we utilize a lot of Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as countByKey(), and are useful for joins, such as leftOuterJoin(). 
+In our code we utilize a lot of Key/Value RDDs. Key/Value RDDs are commonly used to perform aggregations, such as countByKey(), and are useful for joins, such as leftOuterJoin().
 
 In our case we use the action `countByKey()` (and `saveAsTextFile()` that is used to output result to HDFS). Where a transformation only returns info about the format the data after the transformation (because it doesn't actually do anything), calling an action will immediately result in  logs about what is being done and the progress of the computation pipeline.
 
@@ -154,7 +154,7 @@ The process of transforming the input text file into a Key/value RDD is rather s
 
 {% highlight scala %}
 val transactions = sc.textFile(t)
-val newTransactionsPair = transactions.map{t =>                
+val newTransactionsPair = transactions.map{t =>
   val p = t.split("\t")
   (p(2).toInt, p(1).toInt)
 }
@@ -175,11 +175,11 @@ var jn = t.leftOuterJoin(u).values.distinct
 return jn.countByKey
 {% endhighlight %}
 
-The `leftOuterJoin()` function joins two RDDs on key, that is why it was important that our RDDs are Key/Value RDDs. The result of the join is an RDD of a form `RDD[(Int, (Int, Option[String]))]`. 
+The `leftOuterJoin()` function joins two RDDs on key, that is why it was important that our RDDs are Key/Value RDDs. The result of the join is an RDD of a form `RDD[(Int, (Int, Option[String]))]`.
 
-The `values()` functions allows to omit the key of the join (user_id) as it is not needed in the operations that follow the join. 
+The `values()` functions allows to omit the key of the join (user_id) as it is not needed in the operations that follow the join.
 
-The `distinct()` function selects distinct Tuples from the values of the join. 
+The `distinct()` function selects distinct Tuples from the values of the join.
 
 The result of `values()` and `distinct()` functions is in a form of `RDD[(Int, Option[String])]`.
 
@@ -195,7 +195,7 @@ The best way to run a spark job is using spark-submit.
 1 3
 2 1
 {% endhighlight%}
- 
+
 ## Testing
 
 As with other frameworks the idea was to follow closely the existing official tests in [Spark GitHub][2], using scalatests and JUnit in our case.
@@ -204,18 +204,18 @@ As with other frameworks the idea was to follow closely the existing official te
 class SparkJoinsScalaTest extends AssertionsForJUnit {
 
   var sc: SparkContext = _
-  
+
   @Before
   def initialize() {
     val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
     sc = new SparkContext(conf)
   }
-  
+
   @After
   def tearDown() {
     sc.stop()
   }
-  
+
   @Test
   def testExamleJobCode() {
     val job = new ExampleJob(sc)
@@ -239,7 +239,7 @@ In addition, Spark can run over a variety of cluster managers, including Hadoop 
 
 The tool is very versatile and useful to learn due to variety of usages. It's easy to get started running Spark locally without a cluster, and then upgrade to a distributed deployment as needs increase.
 
-## Spark Resources 
+## Spark Resources
 
 The Spark [official site][1] and [Spark GitHub][12] contain many resources related to Spark.
 
