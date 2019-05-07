@@ -1,7 +1,7 @@
 
 url: https://blog.matthewrathbone.com
 name: Matthew Rathbone's Website
-plugins: 
+plugins:
   - 'jekyll-paginate'
   - 'jekyll-sitemap'
   - 'jekyll-assets'
@@ -26,3 +26,4 @@ defaults:
       path: ""
     values:
       is_post: true
+      subject: "unclassified"

@@ -2,7 +2,7 @@
 title: A Quick Guide to Concurrency in Scala
 layout: post
 description: I'll talk through the basics of Threads, Akka, Futures, and Timers in this quick overview of concurrency for Scala. Great for those building apps in Scala.
-subject: scala
+subject: "scala"
 tags:
 - scala
 - concurrency
@@ -44,12 +44,12 @@ Alright, I mentioned that using a `Thread` is only one of several options, so le
 Think of a [Scala Future](http://docs.scala-lang.org/overviews/core/futures.html) as a simple way of saying *do this thing in the background*. You can start the execution of a future pretty simply like this:
 
 {% highlight scala %}
-  
+
   val future = Future {
     val result = someLongRunningThing()
     result
   }
-  
+
 
 {% endhighlight %}
 
@@ -132,8 +132,8 @@ In practice a simple example looks something like this:
 
 // Actor
 class Worker extends Actor {
- 
-  
+
+
   def receive = {
     case UserJob(user, purchases) =>
       processPurchases(user, purchases)
@@ -156,8 +156,8 @@ You can even have an actor return a value to the sender wrapped in a future, alt
 // Actor
 
 class Worker extends Actor {
- 
-  
+
+
   def receive = {
     case UserJob(user, purchases) =>
       sender ! processPurchases(user, purchases)
@@ -167,8 +167,8 @@ class Worker extends Actor {
 
 // Producer
 val resultFuture = actor ? UserJob(currentUser, purchases)
-result.map{ result => 
-  println(result.toString()) 
+result.map{ result =>
+  println(result.toString())
 }
 
 
@@ -225,7 +225,7 @@ A `Runnable` is a simple class with a `run` method. Here's a simple example:
 {% highlight scala %}
 
 class OrderProcessorRunnable(order: Order) extends Runnable {
-  
+
   override def run() {
     order.process() // runs a long time
     order.save()
@@ -299,7 +299,7 @@ OUTPUT:
 
 ### Use Sparingly
 
-I've used stream processing frameworks in the past, and they're fantastic for a particular use case (we were processing web traffic, site clicks, and app interactions), speficially **real-time** data processing. 
+I've used stream processing frameworks in the past, and they're fantastic for a particular use case (we were processing web traffic, site clicks, and app interactions), speficially **real-time** data processing.
 
 To be honest I see them as very different to the thread / future use case that is more common to the average Scala app, so just think about what you really need before jumping into a stream-based solution, as they come with a learning curve above and beyond typical threading problems.
 
