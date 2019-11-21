@@ -1,73 +1,40 @@
 ---
 layout: basic
 title: Rathboma (Matthew Rathbone)
-description: I'm a systems engineer and entrepreneur specializing in data accessibility, automation, and distributed systems. I run a meetup group, talk at conferences, and make the occasional Android app.
+description: I'm a systems engineer and entrepreneur specializing in data accessibility, automation, and distributed systems. I work for myself building big data stuff for my clients, and make the occasional (terrible) Android app.
 ---
 
 <div class="bigheader">
   <div class="container-fluid">
   <div class="hero-unit">
     <div class="row-fluid">
-      <div class="span3">
-        <img clss="rounded" src="/img/matthew.png" alt="">
-      </div>
-      <div class="span9">
-        <h1>Join my Newsletter</h1>
+      <div class="span8 offset2">
+        <h1>Join My Big Data Newsletter</h1>
         {% include _newsletter.html source="homepage" %}
       </div>
 
     </div>
-   
+
   </div>
- 
+
   </div>
 </div>
 
 <div class="frontpage-stuff">
   <div class="container-fluid">
+      <h2>Recent Articles <span class="pull-right more-link"><a href="/archive">View All</a></span></h2>
     <div class="row-fluid">
-      <div class="span4">
-        <div class="stuff-wrapper">
-        <h2><i class="fa fa-book"></i> Articles</h2>
-          <div class="postlist">
-            <dl>
-              {% for post in site.posts limit: 3 %}
-                <dt><a href="{{post.url}}">{{post.title}}</a></dt>
-                <dd class="post-meta">{{post.date | date: "%Y-%m-%d"}} in <a href="/archive/topics.html#{{post.subject}}">{{post.subject | capitalize}}</a></dd>
-              {% endfor %}    
-            </dl>
-            <a href="/archive">more</a>
-          </div>
-        </div>
 
-      </div>
-      <div class="span4">
-        <div class="stuff-wrapper">
-          <h2><i class="fa fa-group"></i> Community</h2>
-          <dl>
-            <dt><a href="http://www.meetup.com/bigdatamadison/">Big Data Madison</a></dt>
-            <dd>Data infrastructure meetup group I run in coordination with Pitt Fagan</dd>
-            <dt><i class="fa fa-youtube-play"></i> <a href="http://www.youtube.com/watch?v=V07Kuo41A8M">Building and improving products with Hadoop</a></dt>
-            <dd>Hadoop Summit, San Jose CA, June 2013</dd>
-            <dt><i class="fa fa-youtube-play"></i> <a href="http://www.youtube.com/watch?v=jCzTD2Fpb-Y">Integrating batch processing into your app</a></dt>
-            <dd>Madison Ruby, Madison WI, August 2012</dd>
-          </dl>
-        </div>
+      {% for post in site.posts limit: 3 %}
+        {% include _post-card.html %}
+      {% endfor %}
 
-      </div>
-      <div class="span4">
-        <div class="stuff-wrapper">
-          <h2><i class="fa fa-code"></i> Projects</h2>
-          <dl>
-            <dt><i class="fa fa-github"></i> <a href="https://github.com/rathboma">Assored Github projects</a></dt>
-            <dd>Mostly libraries and example code for Hadoop.</dd>
-            <dt><i class="fa fa-android"></i> <a href="https://play.google.com/store/apps/details?id=com.matthewrathbone.simplecheckin">Simple Check-In for Foursquare</a></dt>
-            <dd>Check in on Foursquare in 5 seconds.</dd>
-            <dt><i class="fa fa-android"></i> <a href="https://play.google.com/store/apps/details?id=com.matthewrathbone.wificheckin">Wi-Fi Check-in for Foursquare</a></dt>
-            <dd>Automatically check-in to Foursquare when you connect to wi-fi.</dd>
-          </dl>
-        </div>
-      </div>
     </div>
-  </div>  
+
+    <div class="row-fluid">
+      {% for post in site.posts limit: 3 offset: 3%}
+        {% include _post-card.html %}
+      {% endfor %}
+    </div>
+  </div>
 </div>

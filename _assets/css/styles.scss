@@ -5,7 +5,7 @@ body {
   line-height:26px;
   background: url('/img/concrete_seamless.png');
   background-repeat: repeat;
-  font-family: 'Lato', sans-serif !important; 
+  font-family: 'Lato', sans-serif !important;
 }
 
 
@@ -33,7 +33,7 @@ blockquote p {
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -100px; 
+  margin-bottom: -100px;
 }
 .page-wrap:after {
   content: "";
@@ -43,6 +43,11 @@ blockquote p {
   height: 100px;
 }
 
+.header span.website-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
 
 
 .container-fluid {
@@ -193,8 +198,11 @@ table.table-fixed th {
 
 
 div.header {
+  margin-top: 20px;
+  margin-bottom:10px;
   /*margin-bottom: 30px;*/
   /*border-bottom: solid 1px #ccc;*/
+
 }
 
 div.header ul.nav {
@@ -208,7 +216,7 @@ div.header h2.muted a {
   font-size:1em;
 }
 
-div.header h2.muted a:hover {
+div.header span.muted a:hover {
   text-decoration: none;
 }
 
@@ -248,6 +256,17 @@ div.bigheader {
 }
 
 .frontpage-stuff h2 {
+  font-size: 3em;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  .more-link a {
+    font-size: 1.5rem;
+    font-weight: normal;
+  }
+}
+
+.frontpage-stuff h3 {
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -271,11 +290,34 @@ div.bigheader {
 
 
 .frontpage-stuff .stuff-wrapper {
-  background-color: white;
-  padding: 20px;
-  border:solid 1px #ccc;
+
   margin-top:10px;
-  margin-bottom: 10px
+  background-color: white;
+  border:solid 1px #ccc;
+  margin-bottom: 10px;
+
+  .stuff-image {
+    height: 140px;
+    overflow: hidden;
+    img {
+      // max-width: 100%;
+      // max-height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .stuff-body {
+    height: 300px;
+    padding: 20px;
+  }
+  .stuff-footer {
+    text-align: right;
+    padding-bottom:20px;
+    padding-right:20px;
+
+  }
+
+
 }
 
 

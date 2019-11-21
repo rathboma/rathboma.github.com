@@ -10,6 +10,7 @@
 
   <meta property="og:site_name" content="Matthew Rathbone's Blog" />
   {% if page.is_post %}
+    <link rel="canonical" href="{{ page.url | prepend: site.url }}">
     {% include _open_graph.html %}
   {% endif %}
 
@@ -50,16 +51,16 @@
               <li><a href="/">Home</a></li>
               <li><a href="/about.html">About Me</a></li>
               <li><a href="/archive">Archive</a></li>
+              <li><a href="https://rathbonelabs.com" target="_blank">Hire Me</a></li>
 
-              <li><a href="/feed.xml">RSS</a></li>
             </ul>
-            <h2 class="muted"><a href="/">Matthew Rathbone</a></h2>
+            <span class="muted website-title"><a href="/">Matthew Rathbone</a></span>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
     {{content}}
-    
+
   </div>
   <div class="site-footer">
     <div class="footer">
@@ -100,7 +101,7 @@
 <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=e5e46bb7-1275-4418-a940-e749bffb583d"></script>
 
  <script type="text/javascript">
-  
+
   {% if jekyll.environment == "production" %}
 
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -8,10 +8,10 @@ date: 2017-01-13
 skipbooks: true
 subject: spark
 image:
-  url: /img/spark-books.jpg
+  url: /img/blog/books.jpg
   author:
-    name: Thomas Leuthard
-    url: https://www.flickr.com/photos/thomasleuthard/9786288611/
+    name: Ed Robertson
+    url: https://unsplash.com/photos/eeSdJfLfx1A
 coauthor:
   name: Ayoub Fakir
   link: https://www.linkedin.com/in/afakir
@@ -60,7 +60,7 @@ Again written in part by Holden Karau, *High Performance Spark* focuses on data 
 
 {% include _book.html url="http://amzn.to/2itnHkL" img="/img/blog/spark-books/spark-action.jpg" alt="Spark in Action" right="1" %}
 
-*Spark in Action* tries to skip theory and get down to the nuts and bolts or doing stuff with Spark. The book will guide you through writing Spark Applications (with Python and Scala), understanding the APIs in depth, and spark app deployment options. 
+*Spark in Action* tries to skip theory and get down to the nuts and bolts or doing stuff with Spark. The book will guide you through writing Spark Applications (with Python and Scala), understanding the APIs in depth, and spark app deployment options.
 
 <div class="clearfix"></div>
 
