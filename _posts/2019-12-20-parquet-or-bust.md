@@ -90,7 +90,7 @@ To recap on my columnar file format guide, the advantage to Parquet (and columna
 
 I cannot overstate the benefit of a 100x improvement in record throughput. It provides a truly massive and fundamental improvement to data processing pipelines that it is very hard to overlook.
 
-Here's an illustration of this benefit from a Cloudera case study back in 2016 on a small dataset of less than 200GB.
+Here's an illustration of this benefit from a [Cloudera case study](https://blog.cloudera.com/benchmarking-apache-parquet-the-allstate-experience/) back in 2016 on a small dataset of less than 200GB.
 
 When simply counting rows, Parquet blows Avro away, thanks to the metadata parquet stores in the header of row groups.
 
@@ -109,7 +109,7 @@ I have heard some folks argue in favor of Avro vs Parquet. Such arguments are ty
 1. When you are reading entire records at once, Avro wins in performance.
 2. Write-time is increased drastically for writing Parquet files vs Avro files
 
-While these two points are valid, they are minor footnotes against Parquet performance improvements overall. There are many benchmarks available online for Avro vs Parquet, but let me draw a chart from a Hortonworks 2016 presentation comparing file format performance in various situations.
+While these two points are valid, they are minor footnotes against Parquet performance improvements overall. There are many benchmarks available online for Avro vs Parquet, but let me draw a chart from [a Hortonworks 2016 presentation](https://www.slideshare.net/oom65/file-format-benchmarks-avro-json-orc-parquet) comparing file format performance in various situations.
 
 #### How much worse is Parquet for whole-record scans?
 
