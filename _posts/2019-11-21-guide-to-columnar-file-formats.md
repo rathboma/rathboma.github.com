@@ -16,6 +16,8 @@ image:
     url: https://unsplash.com/photos/xgn822lnt4Q
 ---
 
+*This article is a follow-up to my [guide to Spark and Hadoop file formats](https://blog.matthewrathbone.com/2016/09/01/a-beginners-guide-to-hadoop-storage-formats.html), which is a good place to start if you don't know anything about big data file formats yet.*
+
 ## What does 'columnar file format' actually mean?
 
 People throw this term around a lot, but I don't think it is always clear exactly what this means in practice.

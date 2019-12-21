@@ -1,9 +1,10 @@
 ---
-title: A Beginner's Guide to Hadoop Storage Formats (or File Formats)
+title: An Introduction to Hadoop and Spark Storage Formats (or File Formats)
 subject: hadoop
 description: I'll walk through what we mean when we talk about 'storage formats' or 'file formats' for Hadoop and give you some initial advice on what format to use and how.
 layout: post
 published: true
+subject: hadoop
 date: 2016-09-01
 image:
   url: /img/file_formats.jpg
@@ -199,6 +200,8 @@ Overall these formats can drastically optimize workloads, especially for Hive an
 
 Of the two file formats I mention, Parquet seems to have the most community support and is the format I would use.
 
+*I've written a follow-up blog post to gently walkthrough the priciples of columnar file formats, [check it out here](https://blog.matthewrathbone.com/2019/11/21/guide-to-columnar-file-formats.html)*
+
 
 ## Bonus: Compression Codecs
 
@@ -226,5 +229,7 @@ Hopefully by now you've learned a little about what file formats actually are an
 
 This is not an exhaustive guide, so if you want to learn more about the particular codecs I encourage you to visit their respective web pages.
 
+
+## 
 
 [beginners-guide]:/2013/04/17/what-is-hadoop.html
