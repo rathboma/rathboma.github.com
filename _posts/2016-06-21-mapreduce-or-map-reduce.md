@@ -34,7 +34,7 @@ The [Apache Hadoop website](http://hadoop.apache.org) and big Hadoop vendors lik
 
 However, outside of the Hadoop ecosystem naming is less clear. MongoDB has it's own MapReduce implementation, but [it is referred to as 'Map-reduce'](https://docs.mongodb.com/manual/core/map-reduce/) (they don't even capitalize the R! \*Gasps\*).
 
-Even back in Hadoop-land not all content has settled on the *MapReduce*. There are [several](http://ksat.me/map-reduce-a-really-simple-introduction-kloudo/) [examples](https://www.hackerrank.com/domains/distributed-systems/mapreduce-basics) of places where folks are confused, or even [use several different spellings](https://www.linkedin.com/pulse/map-reduce-tutorial-gives-brief-overview-application-agrawal).
+Even back in Hadoop-land not all content has settled on the *MapReduce*. There are [several](http://ksat.me/map-reduce-a-really-simple-introduction-kloudo) [examples](https://www.hackerrank.com/domains/distributed-systems/mapreduce-basics) of places where folks are confused, or even [use several different spellings](https://www.linkedin.com/pulse/map-reduce-tutorial-gives-brief-overview-application-agrawal).
 
 ## Wrap-Up
 

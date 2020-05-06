@@ -97,7 +97,7 @@ knowledge of programming to operate.
 
 | Other |
 |---|
-| Spark | [walkthrough](http://beekeeperdata.com/posts/hadoop/2015/12/14/spark-scala-tutorial.html) | [docs](http://spark.apache.org/) |
+| Spark | [walkthrough](https://blog.matthewrathbone.com/2015/12/14/spark-scala-tutorial.html) | [docs](http://spark.apache.org/) |
 {: .table.table-striped .table-fixed}
 
 
