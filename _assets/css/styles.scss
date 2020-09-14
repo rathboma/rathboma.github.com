@@ -43,6 +43,17 @@ blockquote p {
   height: 100px;
 }
 
+
+.header .nav {
+  a {
+    i.fa {
+      margin-left: 5px;
+      color: #00000040;
+      font-size: 0.8em;
+    }
+  }
+}
+
 .header span.website-title {
   font-weight: bold;
   font-size: 1.8rem;
@@ -432,10 +443,14 @@ div.card {
 }
 
 div.card h2 {
-  text-align: center;
+  text-align: left;
   font-size: 1.3em;
-  border-bottom: solid 1px #eee;
   padding-bottom: 10px;
+
+  img {
+    max-width: 27px;
+    margin-bottom: 3px;
+  }
 }
 
 .card.inverted {

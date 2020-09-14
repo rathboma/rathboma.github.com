@@ -11,7 +11,11 @@ This is me presenting at [Texata](http://www.summit.texata.com/2015-photos/)
 
 ## Hi there, I'm Matthew
 
-I'm an engineer, entrepreneur, and owner of [Rathbone Labs](https://www.rathbonelabs.com) - a big data applications development consultancy. I spend my workdays helping businesses get to grips with their 'big data'. That usually means architecting, building, deploying, and monitoring data pipelines using Scala in Hadoop, Spark, Kafka, and more.
+I'm a software engineer who likes creating apps and businesses. I have a lot of experience with 'big data' technology, and with web-app tech like Ruby on Rails, JavaScript, Node, and Vue.js.
+
+I currently run my own software consultancy [Rathbone Labs](https://www.rathbonelabs.com). I spend my workdays helping businesses with Hadoop, Spark, Kafka, Splunk, Databricks, and more.
+
+I also co-created, and maintain, [Beekeeper Studio](https://beekeeperstudio.io), a popular open source SQL editor and database manager. Beekeeper Studio is cross platform and works with all your favorite databases. We have a large focus on usability, so it feels really good to use.
 
 I'm a father and husband, and would not be doing anything useful without my [super smart and supportive wife, Alexandra](http://alexandrapavlakis.com).
 
@@ -28,7 +32,7 @@ My goal is to make your life with Hadoop and related technologies easier, so let
 
 Prior to running Rathbone Labs, I've mostly spent my time starting companies, leading engineering teams, and building useful software.
 
-I was VP of engineering at [Kickbox](https://kickbox.com), raised VC money and built a data analytics start-up called Beekeeper Data (shut down in 2018), ran an engineering team at Shoutlet (acquired by Spredfast), built data infrastructure at Foursquare, and created a real-time analytics engine at Drop.io (acquired by Facebook).
+I have been VP of engineering at [Kickbox](https://kickbox.com), raised VC money and built a data analytics start-up called Beekeeper Data (shut down in 2018), ran an engineering team at Shoutlet (acquired by Spredfast), built data infrastructure at Foursquare, and created a real-time analytics engine at Drop.io (acquired by Facebook). I also build and sold [99Inbound](https://99inbound.com), a form API and form-builder app.
 
 I've spent a lot of time building Hadoop clusters, data ingestion pipelines, data reporting software, map-reduce jobs, and all sorts of horrible hacks to get nice clean data.
 
