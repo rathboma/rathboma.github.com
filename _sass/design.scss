@@ -528,23 +528,25 @@ a:hover { text-decoration: underline; }
 }
 
 // dark "terminal" code blocks for fenced/highlighted code
+// post.js wraps every block in .code-block and prepends the terminal chrome
+// (traffic-light dots + language label). These rules also stand alone as a
+// no-JS fallback so blocks always frame consistently — regardless of whether
+// Rouge emitted a bare <pre> (unknown lexer) or a .highlighter-rouge wrapper.
 .article-body {
-  pre,
-  div.highlight,
-  figure.highlight {
+  // 1) the frame — applied to whichever element is outermost
+  .code-block,
+  div.highlighter-rouge,
+  figure.highlight,
+  pre {
     margin: 0 0 26px;
     border-radius: 12px;
     border: 1px solid var(--rule-faint);
     overflow: hidden;
     background: #20201d;
   }
-  figure.highlight pre,
-  div.highlight pre,
-  pre.highlight,
+
+  // 2) the code surface itself
   pre {
-    margin: 0;
-    border: 0;
-    border-radius: 0;
     padding: 20px 22px;
     background: #20201d;
     overflow-x: auto;
@@ -553,9 +555,58 @@ a:hover { text-decoration: underline; }
     line-height: 1.7;
     color: #e8e2d6;
   }
-  // code inside a code block: reset the inline-code chrome
+
+  // 3) strip the frame from anything nested inside another framed container,
+  //    so exactly one frame shows (on the outermost element)
+  .code-block div.highlighter-rouge,
+  .code-block figure.highlight,
+  .code-block pre,
+  div.highlighter-rouge pre,
+  div.highlighter-rouge div.highlight,
+  figure.highlight pre,
+  div.highlight,
+  div.highlight pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+  }
+  // keep horizontal scroll on the actual <pre>
+  .code-block pre,
+  div.highlighter-rouge pre,
+  div.highlight pre,
+  figure.highlight pre { overflow-x: auto; }
+
+  // 4) terminal chrome bar (added by post.js)
+  .code-block__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #2a2824;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .code-block__dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex: none;
+  }
+  .code-block__dot--r { background: #e06c4f; }
+  .code-block__dot--y { background: #e3b341; }
+  .code-block__dot--g { background: #5aa86f; }
+  .code-block__lang {
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #9a9183;
+    letter-spacing: 0.04em;
+  }
+
+  // 5) code inside a block: reset the inline-code pill chrome
   pre code,
-  .highlight code {
+  .highlight code,
+  code[class*="language-"] {
     background: none;
     color: inherit;
     padding: 0;
