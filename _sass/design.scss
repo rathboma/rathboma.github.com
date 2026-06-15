@@ -86,25 +86,22 @@ a:hover { text-decoration: underline; }
 // =============================================================
 //  Site header
 // =============================================================
-// Per-page frame width — the header and footer both track the width of the
-// page's primary content column so the whole site lines up vertically.
-body              { --site-frame: 920px;  } // archive / about / generic pages
-body.frame-home   { --site-frame: 1080px; } // matches .wrap on the home index
-body.frame-post   { --site-frame: 760px;  } // matches .article-head column
-
+// The header spans full width (it is a flex child of <body>); the bordered
+// inner row is centered at the design's 1200px frame via normal block flow,
+// which centers reliably regardless of the surrounding flex context.
 .site-header {
-  max-width: var(--site-frame);
-  margin: 0 auto;
-  padding: 30px 36px 0;
+  padding-top: 30px;
 }
 
 .site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 36px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
-  padding-bottom: 20px;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -155,7 +152,8 @@ body.frame-post   { --site-frame: 760px;  } // matches .article-head column
 }
 
 @media (max-width: 600px) {
-  .site-header { padding: 22px 22px 0; }
+  .site-header { padding-top: 22px; }
+  .site-header__inner { padding-left: 22px; padding-right: 22px; }
   .site-nav { gap: 18px; width: 100%; }
 }
 
@@ -171,7 +169,7 @@ body.frame-post   { --site-frame: 760px;  } // matches .article-head column
   flex-shrink: 0;
 
   .footer__cols {
-    max-width: var(--site-frame);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 52px 36px 30px;
   }
@@ -217,7 +215,7 @@ body.frame-post   { --site-frame: 760px;  } // matches .article-head column
     }
   }
   .footer__legal {
-    max-width: var(--site-frame);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 36px 40px;
     .footer__legal-inner {
