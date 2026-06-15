@@ -2,3 +2,5 @@ _site/*
 .asset-cache
 .jekyll-cache
 .DS_Store
+vendor/
+.bundle/

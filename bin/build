@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Build the production site into _site/
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+export JEKYLL_ENV="${JEKYLL_ENV:-production}"
+exec mise exec -- bundle exec jekyll build "$@"

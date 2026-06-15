@@ -1,7 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '~>3.8.5'
-gem 'pygments.rb'
+gem 'jekyll', '~> 4.3'
+
+# Plugins
 gem 'jekyll-sitemap'
-gem 'jekyll-paginate'
-gem 'jekyll-assets'
+
+# Markdown: kramdown with GitHub-Flavored-Markdown input.
+# kramdown 2.x ships the GFM parser as a separate gem.
+gem 'kramdown-parser-gfm'
+
+# WEBrick was removed from Ruby's standard library in Ruby 3.0,
+# but `jekyll serve` still needs it.
+gem 'webrick'

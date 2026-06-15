@@ -29,7 +29,8 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  {% asset app.css %}
+  <link rel="stylesheet" href="/css/app.css">
+
 
   <title>{% if page.title %}{{ page.title }}{% else %}Matthew Rathbone{% endif %}</title>
 
@@ -97,7 +98,14 @@
 
 {% include _hola-bar.html %}
 
-  {% asset app.js %}
+  <script src="/js/vendor/jquery-1.10.2.min.js"></script>
+  <script src="/js/vendor/jquery.cookie.js"></script>
+  <script src="/js/vendor/jquery.sticky-kit.min.js"></script>
+  <script src="/js/vendor/bootstrap.min.js"></script>
+  <script src="/js/vendor/easyab.min.js"></script>
+  <script src="/js/post.js"></script>
+  <script src="/js/hola-bar.js"></script>
+
 
 
 <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=e5e46bb7-1275-4418-a940-e749bffb583d"></script>
