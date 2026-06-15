@@ -1,40 +1,31 @@
 ---
 layout: basic
-title: Rathboma (Matthew Rathbone)
-description: I'm a systems engineer and entrepreneur specializing in data accessibility, automation, and distributed systems. I work for myself building big data stuff for my clients, and make the occasional (terrible) Android app.
+title: Rathboma's Blog
+nav: home
+description: I run a couple of open source businesses and write a bunch of code. I have lots of opinions, and sometimes I even say something interesting.
 ---
 
-<div class="bigheader">
-  <div class="container-fluid">
-  <div class="hero-unit">
-    <div class="row-fluid">
-      <div class="span8 offset2">
-        <h1>Join My Big Data Newsletter</h1>
-        {% include _newsletter.html source="homepage" %}
-      </div>
+<div class="wrap home-intro">
+  <section class="home-intro__head">
+    <p class="kicker">My writing</p>
+    <h1>Ramblings of an open source business owner.</h1>
+  </section>
+  <p class="home-intro__lede">AI-free writing from the maintainer of <a href="https://beekeeperstudio.io">Beekeeper Studio</a> and <a href="https://tabulator.info">Tabulator</a>, both sustainable indie open source businesses.</p>
 
-    </div>
+  <section class="post-index">
+    {% for post in site.posts limit: 12 %}
+      <a class="post-row" href="{{ post.url }}">
+        <span class="post-row__year">{{ post.date | date: "%Y" }}</span>
+        <span>
+          <span class="post-row__title">{{ post.title }}</span>
+          {% if post.description %}<span class="post-row__desc">{{ post.description }}</span>{% endif %}
+        </span>
+        {% if post.subject %}<span class="post-row__topic">{{ post.subject | capitalize }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </section>
 
-  </div>
-
-  </div>
-</div>
-
-<div class="frontpage-stuff">
-  <div class="container-fluid">
-      <h2>Recent Articles <span class="pull-right more-link"><a href="/archive">View All</a></span></h2>
-    <div class="row-fluid">
-
-      {% for post in site.posts limit: 3 %}
-        {% include _post-card.html %}
-      {% endfor %}
-
-    </div>
-
-    <div class="row-fluid">
-      {% for post in site.posts limit: 3 offset: 3%}
-        {% include _post-card.html %}
-      {% endfor %}
-    </div>
+  <div class="index-more">
+    <a href="/archive">View the full archive &rarr;</a>
   </div>
 </div>

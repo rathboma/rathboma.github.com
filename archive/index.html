@@ -1,22 +1,68 @@
 ---
-layout: archive
-archiveactive: active
-topic: Blog
+layout: basic
+title: Archive
+nav: archive
+description: Everything I've written on data engineering, distributed systems, and the tools around them.
 ---
 
-<table class="table table-striped table-condensed">
-  <thead>
-    <tr>
-      <th style="width:100px;">Date</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for post in site.posts %}
-      <tr>
-        <td>{{ post.date | date: "%Y-%m-%d"}}</td>
-        <td><a href="{{ post.url }}">{{ post.title }}</a></td>
-      </tr>
-    {% endfor %}  
-  </tbody>
-</table>
+<div class="wrap-medium archive-head">
+  <p class="kicker">Archive</p>
+  <h1>Everything I've written.</h1>
+  <p class="archive-head__count">{{ site.posts.size }} articles on data engineering, distributed systems, and the tools around them.</p>
+
+  {% assign subjects = site.posts | map: "subject" | compact | uniq | sort %}
+  <div class="topic-chips" id="topic-chips">
+    <button type="button" class="chip is-active" data-topic="all">All</button>
+    {% for subject in subjects %}
+      {% unless subject == "unclassified" %}
+        <button type="button" class="chip" data-topic="{{ subject | downcase }}">{{ subject | capitalize }}</button>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+  {% assign byyear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for group in byyear %}
+    <section class="year-group" data-year="{{ group.name }}">
+      <div class="year-group__head">
+        <h2>{{ group.name }}</h2>
+        <span class="year-group__rule"></span>
+      </div>
+      {% for post in group.items %}
+        <a class="archive-row" href="{{ post.url }}" data-topic="{{ post.subject | downcase }}">
+          <span class="archive-row__title">{{ post.title }}</span>
+          <span class="archive-row__meta">
+            {% if post.subject %}<span class="archive-row__topic">{{ post.subject | capitalize }}</span>{% endif %}
+            <span class="archive-row__date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          </span>
+        </a>
+      {% endfor %}
+    </section>
+  {% endfor %}
+</div>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('#topic-chips .chip');
+  var rows = document.querySelectorAll('.archive-row');
+  var groups = document.querySelectorAll('.year-group');
+
+  function apply(topic) {
+    rows.forEach(function (row) {
+      var match = topic === 'all' || row.getAttribute('data-topic') === topic;
+      row.classList.toggle('is-hidden', !match);
+    });
+    groups.forEach(function (group) {
+      var visible = group.querySelectorAll('.archive-row:not(.is-hidden)').length;
+      group.classList.toggle('is-hidden', visible === 0);
+    });
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      apply(chip.getAttribute('data-topic'));
+    });
+  });
+})();
+</script>

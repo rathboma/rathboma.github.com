@@ -1,10 +1,10 @@
 
-url: https://blog.matthewrathbone.com
-name: Matthew Rathbone's Website
+url: https://www.rathboma.com
+name: Rathboma's blog
 plugins:
   - 'jekyll-sitemap'
 version: 2.4
-description: Tutorials and guides for big data technologies. I write about Scala, Spark, Hadoop, HDFS, and more.
+description: Ramblings of an indie open source business owner.
 exclude: ['ideas', 'drafts']
 markdown: kramdown
 kramdown:

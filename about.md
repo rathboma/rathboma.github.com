@@ -1,10 +1,12 @@
 ---
 layout: page
 title: About Me
+kicker: About
+nav: about
 author_page: true
 ---
 
-# About Me
+# I build big-data systems — and write about the messy parts.
 
 ![Matthew Rathbone presenting at Texata](/img/texata.jpg)
 This is me presenting at [Texata](http://www.summit.texata.com/2015-photos/)
