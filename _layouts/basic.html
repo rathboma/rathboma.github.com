@@ -43,7 +43,12 @@
   {% include _twitter_card.html %}
   {{head}}
 </head>
-<body>
+{% comment %} site frame width: header + footer track each page's content column {% endcomment %}
+{% assign framecls = "frame-default" %}
+{% if page.layout == "post" %}{% assign framecls = "frame-post" %}
+{% elsif page.url == "/" %}{% assign framecls = "frame-home" %}
+{% endif %}
+<body class="{{ framecls }}">
 
   {% comment %} active-nav detection {% endcomment %}
   {% assign nav = page.nav %}

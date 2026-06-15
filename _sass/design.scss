@@ -86,8 +86,14 @@ a:hover { text-decoration: underline; }
 // =============================================================
 //  Site header
 // =============================================================
+// Per-page frame width — the header and footer both track the width of the
+// page's primary content column so the whole site lines up vertically.
+body              { --site-frame: 920px;  } // archive / about / generic pages
+body.frame-home   { --site-frame: 1080px; } // matches .wrap on the home index
+body.frame-post   { --site-frame: 760px;  } // matches .article-head column
+
 .site-header {
-  max-width: 1200px;
+  max-width: var(--site-frame);
   margin: 0 auto;
   padding: 30px 36px 0;
 }
@@ -165,7 +171,7 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
 
   .footer__cols {
-    max-width: 1200px;
+    max-width: var(--site-frame);
     margin: 0 auto;
     padding: 52px 36px 30px;
   }
@@ -211,7 +217,7 @@ a:hover { text-decoration: underline; }
     }
   }
   .footer__legal {
-    max-width: 1200px;
+    max-width: var(--site-frame);
     margin: 0 auto;
     padding: 0 36px 40px;
     .footer__legal-inner {
@@ -272,12 +278,10 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--rule-soft);
   padding: 30px 4px;
   text-decoration: none;
-  transition: padding 0.2s, background 0.2s;
 
   &:hover {
     text-decoration: none;
-    padding-left: 14px;
-    background: linear-gradient(90deg, rgba(180, 83, 9, 0.04), transparent);
+    .post-row__title { color: var(--accent-link); }
   }
 
   .post-row__year {
@@ -660,11 +664,9 @@ a:hover { text-decoration: underline; }
     border-bottom: 1px solid var(--rule-faint);
     padding: 16px 4px;
     text-decoration: none;
-    transition: padding 0.2s, background 0.2s;
     &:hover {
       text-decoration: none;
-      padding-left: 10px;
-      background: linear-gradient(90deg, rgba(180, 83, 9, 0.05), transparent);
+      .related__title { color: var(--accent-link); }
     }
     .related__title {
       font-family: var(--serif);
@@ -757,12 +759,10 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--rule-faint);
   padding: 18px 4px;
   text-decoration: none;
-  transition: padding 0.2s, background 0.2s;
 
   &:hover {
     text-decoration: none;
-    padding-left: 12px;
-    background: linear-gradient(90deg, rgba(180, 83, 9, 0.05), transparent);
+    .archive-row__title { color: var(--accent-link); }
   }
   &.is-hidden { display: none; }
 
