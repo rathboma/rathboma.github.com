@@ -2,12 +2,9 @@
 # Empty front matter tells Jekyll to compile this SCSS file via jekyll-sass-converter.
 # Partials are imported from the _sass directory.
 ---
-@import 'vendor/bootstrap.min';
-@import 'vendor/bootstrap-responsive.min';
-@import 'vendor/pygment';
+// Syntax-highlighting token colors (Rouge). The dark code-block chrome
+// itself lives in design.scss; these just colour the tokens.
 @import 'vendor/zenburn';
 
-@import 'styles';
-@import 'markdown';
-@import 'post';
-@import 'hola-bar';
+// Editorial redesign — see _sass/design.scss
+@import 'design';

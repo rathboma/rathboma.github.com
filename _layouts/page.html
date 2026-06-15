@@ -1,7 +1,7 @@
 ---
-layout: default
+layout: basic
 ---
-
-<div class="markdown-content">
+<div class="wrap-medium page-body markdown-content">
+  {% if page.kicker %}<p class="kicker">{{ page.kicker }}</p>{% endif %}
   {{ content }}
 </div>

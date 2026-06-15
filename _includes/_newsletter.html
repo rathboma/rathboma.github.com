@@ -1,36 +1,18 @@
-
-
-
-<div class="row-fluid">
-      <div class="span6">
-        <ul class="fa-ul">
-          <li><i class="fa fa-li fa-check"></i> Hadoop Tutorials</li>
-          <li><i class="fa fa-li fa-check"></i> Engineering Walkthroughs</li>
-        </ul>
-      </div>
-      <div class="span6">
-        <ul class="fa-ul">
-          <li><i class="fa fa-li fa-check"></i> Book Recommendations</li>
-          <li><i class="fa fa-li fa-check"></i> Open Source Code</li>
-        </ul>
-      </div>
-  </div>
-  <div class="row-fluid">
-    <div class="span12">
-
-
-
-      <form class="signup" action="https://app.99inbound.com/api/e/K-wp0Mrv" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-          <div class="controls">
-          <div style="position: absolute; left: -5000px;">
-            <input type="checkbox" name="messy_green_spotted_mission" value="1" tabindex="-1" autocomplete="no">
-          </div>
-          <input type="hidden" value="{{include.source}}" name="SOURCE" id="SOURCE" />
-          <input type="email" value="" name="EMAIL" class="email-input span12" id="mce-EMAIL" placeholder="enter your email here" required />
-          <button name="subscribe" id="mc-embedded-subscribe" class="btn btn-success pull-right">Subscribe</button>
-          </div>
-        <span class="help-block">100% privacy guaranteed</span>
+<div class="newsletter">
+  <div class="newsletter__inset">
+    <div class="newsletter__body">
+      <div class="newsletter__kicker">The newsletter</div>
+      <h2>Big data, minus the noise.</h2>
+      <p class="newsletter__lede">Tutorials, engineering walkthroughs, book picks, and open-source finds &mdash; sent occasionally, only when there's something worth reading.</p>
+      <form class="signup" action="https://app.99inbound.com/api/e/K-wp0Mrv" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="checkbox" name="messy_green_spotted_mission" value="1" tabindex="-1" autocomplete="no">
+        </div>
+        <input type="hidden" value="{{ include.source }}" name="SOURCE" id="SOURCE" />
+        <input type="email" name="EMAIL" placeholder="you@example.com" required />
+        <button type="submit" name="subscribe">Subscribe</button>
       </form>
+      <div class="newsletter__fineprint">100% privacy. Unsubscribe anytime.</div>
     </div>
-
   </div>
+</div>

@@ -1,40 +1,35 @@
 ---
 layout: basic
 title: Rathboma (Matthew Rathbone)
+nav: home
 description: I'm a systems engineer and entrepreneur specializing in data accessibility, automation, and distributed systems. I work for myself building big data stuff for my clients, and make the occasional (terrible) Android app.
 ---
 
-<div class="bigheader">
-  <div class="container-fluid">
-  <div class="hero-unit">
-    <div class="row-fluid">
-      <div class="span8 offset2">
-        <h1>Join My Big Data Newsletter</h1>
-        {% include _newsletter.html source="homepage" %}
-      </div>
+<div class="wrap home-intro">
+  <section class="home-intro__head">
+    <p class="kicker">The writing</p>
+    <h1>Big data, distributed systems, and the occasional rabbit hole.</h1>
+  </section>
+  <p class="home-intro__lede">Long-form notes from years of building data infrastructure &mdash; written to be read, not skimmed.</p>
 
-    </div>
+  <section class="post-index">
+    {% for post in site.posts limit: 12 %}
+      <a class="post-row" href="{{ post.url }}">
+        <span class="post-row__year">{{ post.date | date: "%Y" }}</span>
+        <span>
+          <span class="post-row__title">{{ post.title }}</span>
+          {% if post.description %}<span class="post-row__desc">{{ post.description }}</span>{% endif %}
+        </span>
+        {% if post.subject %}<span class="post-row__topic">{{ post.subject | capitalize }}</span>{% endif %}
+      </a>
+    {% endfor %}
+  </section>
 
+  <div class="index-more">
+    <a href="/archive">View the full archive &rarr;</a>
   </div>
 
-  </div>
-</div>
-
-<div class="frontpage-stuff">
-  <div class="container-fluid">
-      <h2>Recent Articles <span class="pull-right more-link"><a href="/archive">View All</a></span></h2>
-    <div class="row-fluid">
-
-      {% for post in site.posts limit: 3 %}
-        {% include _post-card.html %}
-      {% endfor %}
-
-    </div>
-
-    <div class="row-fluid">
-      {% for post in site.posts limit: 3 offset: 3%}
-        {% include _post-card.html %}
-      {% endfor %}
-    </div>
+  <div class="newsletter-section">
+    {% include _newsletter.html source="homepage" %}
   </div>
 </div>
