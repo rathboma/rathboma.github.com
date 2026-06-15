@@ -36,6 +36,10 @@
 
   <link rel="stylesheet" href="/css/app.css">
 
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/favicon.svg">
+
   <title>{% if page.title %}{{ page.title }} · Rathboma's Blog{% else %}Rathboma's Blog{% endif %}</title>
 
   <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Blog RSS Feed" />
@@ -78,7 +82,7 @@
     <div class="footer__cols row gx-4">
       <div class="col-12 col-md-6 mb-4 mb-md-0">
         <div class="footer__brand">Rathboma's Blog</div>
-        <p class="footer__blurb">Notes on data, distributed systems, and building things that last.</p>
+        <p class="footer__blurb">{{ site.description }}</p>
         <a href="https://rathboma.com" target="_blank" rel="noopener" class="footer__site">rathboma.com &#8599;</a>
       </div>
       <div class="col-6 col-md-3">

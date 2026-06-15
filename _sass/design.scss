@@ -930,6 +930,24 @@ a:hover { text-decoration: underline; }
   img { max-width: 100%; height: auto; border-radius: 10px; margin: 24px 0; }
 }
 
+// editorial download / call-to-action button
+a.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 999px;
+  padding: 13px 26px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  &:hover { background: var(--accent); color: var(--paper); text-decoration: none; }
+}
+
 // =============================================================
 //  Newsletter — focused dark inset
 // =============================================================
