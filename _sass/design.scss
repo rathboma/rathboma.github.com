@@ -582,25 +582,33 @@ a:hover { text-decoration: underline; }
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 16px;
+    padding: 9px 14px 9px 16px;
     background: #2a2824;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
-  .code-block__dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    flex: none;
-  }
-  .code-block__dot--r { background: #e06c4f; }
-  .code-block__dot--y { background: #e3b341; }
-  .code-block__dot--g { background: #5aa86f; }
   .code-block__lang {
-    margin-left: 8px;
     font-family: var(--mono);
     font-size: 11px;
     color: #9a9183;
     letter-spacing: 0.04em;
+  }
+  .code-block__copy {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: #9a9183;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    &:hover { color: #e8e2d6; border-color: rgba(255, 255, 255, 0.24); background: rgba(255, 255, 255, 0.05); }
+    &.is-copied { color: #5aa86f; border-color: rgba(90, 168, 111, 0.4); }
   }
 
   // 5) code inside a block: reset the inline-code pill chrome
