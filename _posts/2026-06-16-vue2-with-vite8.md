@@ -41,12 +41,9 @@ I hope, if you are reading this, that you can use our library for your Vue2 proj
 
 [VoidZero](https://voidzero.dev/), the company that was founded by Evan You and which now controls the development of both Vite and Vue.js have done a great job with Vite and Vue.JS, but they have made it clear that they are unwilling to maintain Vite compatibility with the legacy (EoL) Vue.js 2.0 codebase.
 
-VoidZero control both Vue and Vite, so this is a deliberate choice by them. I'm sure resources are tight, but the decision is painful given the difficult upgrade path between Vue.js 2 and Vue.js 3.
+VoidZero control both Vue and Vite, so this is a deliberate choice by them. I'm sure resources are tight, but the decision is painful given the difficult upgrade path between Vue.js 2 and Vue.js 3. (if you're reading this, please add a link to the repo!).
 
-If anyone on the VoidZero team reads this post - linking to this package (or another), or possibly leaving a note in the README would be much appreciated and helpful for others who are stuck with Vue.js 2.7 for a while longer.
-
-
-Either way, I hope if you read this article you find our new library useful. Hope to see you [on GitHub](https://github.com/beekeeper-studio/vite-ng-plugin-vue2)
+Vite 8's tooling nethertheless makes it easy to maintain compatibility ourselves. Hope to see you [on GitHub](https://github.com/beekeeper-studio/vite-ng-plugin-vue2).
 
 
 Have a great day,
