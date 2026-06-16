@@ -39,11 +39,12 @@ I hope, if you are reading this, that you can use our library for your Vue2 proj
 
 ## Why aren't VoidZero interested in merging patches?
 
-[VoidZero](https://voidzero.dev/), the company that was founded by Evan You and which now controls the development of both Vite and Vue.js seems uninterested in maintaining compatibility with the legacy Vue.js 2.0 codebase. 
+[VoidZero](https://voidzero.dev/), the company that was founded by Evan You and which now controls the development of both Vite and Vue.js have done a great job with Vite and Vue.JS, but they have made it clear that they are unwilling to maintain Vite compatibility with the legacy (EoL) Vue.js 2.0 codebase.
 
-VoidZero control both Vue and Vite, so this is a deliberate choice by them to abandon the vue2 Vite plugin. I'm sure resources are tight, but the decision is especially disappointing given the difficult upgrade path between Vue.js 2 and Vue.js 3, and that upgrading Vite beyond version 5 is a requirement by many businesses due to the outdated and vulnerable packages is relies on.
+VoidZero control both Vue and Vite, so this is a deliberate choice by them. I'm sure resources are tight, but the decision is painful given the difficult upgrade path between Vue.js 2 and Vue.js 3.
 
-The Vite team could alternatively have brought on outside maintainers and made it clear that the plugin wasn't "officially" supported anymore, or even linked to a good community fork in the README to help stuck developers looking for a solution, or even replied to the Issue, rather than archiving the project and cutting off all communication.
+If anyone on the VoidZero team reads this post - linking to this package (or another), or possibly leaving a note in the README would be much appreciated and helpful for others who are stuck with Vue.js 2.7 for a while longer.
+
 
 Either way, I hope if you read this article you find our new library useful. Hope to see you [on GitHub](https://github.com/beekeeper-studio/vite-ng-plugin-vue2)
 
